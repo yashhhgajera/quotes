@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-header',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHeaderComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  home(){
+    this.router.navigate(['user/home'])
+  }
+  create(){
+    this.router.navigate(['user/create'])
   }
 
 }

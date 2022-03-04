@@ -16,23 +16,24 @@
 
 	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 		<li>
-			<a href="#"
-				class="nav-link px-2 link-secondary">
+			<a (click)="home()"
+			class="nav-link px-2 link-secondary">
 				Home
 			</a>
 		</li>
 		<li>
-			<a href="#"
-				class="nav-link px-2 link-dark">
+			<a (click)="create()"
+			class="nav-link px-2 link-secondary">
 				Create
 			</a>
 		</li>
 	</ul>
 
 	<div class="col-md-3 text-end">
-		<button type="button"
-			class="btn btn-primary">
+
+		<a href="#"
+			class="btn bg-black text-white">
 			Log out
-		</button>
+		</a>
 	</div>
 </header>

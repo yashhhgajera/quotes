@@ -8,3 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+.btn {
+    box-shadow: none;
+}
+.btn:focus {
+    box-shadow: none;
+}
