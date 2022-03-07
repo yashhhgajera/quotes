@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-user-header',
@@ -8,17 +9,29 @@ import { Router } from '@angular/router';
 })
 export class UserHeaderComponent implements OnInit {
 
+  modalRef?: BsModalRef;
   
-  constructor(private router:Router) { }
+  constructor(private router:Router, private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
 
-  home(){
-    this.router.navigate(['user/home'])
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
-  create(){
-    this.router.navigate(['user/create'])
+ 
+  confirm(): void {
+    this.modalRef?.hide();
+    this.router.navigate(['../']);
   }
+ 
+  decline(): void {
+    this.modalRef?.hide();
+  }
+
+  navigateMenu(url:string){
+    this.router.navigate(['user/',url])
+  }
+
 
 }

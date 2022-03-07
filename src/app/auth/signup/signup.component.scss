@@ -1,0 +1,19 @@
+.form-control {
+    border: 2px solid black;
+    &:focus {
+        box-shadow: none;
+    }
+}
+.btn {
+    border: 2px solid black;
+    &:focus {
+        box-shadow: none;
+    }
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
 import { GuestHeaderComponent } from './guest-header/guest-header.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatMenuModule} from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AuthModule } from '../auth/auth.module';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -14,8 +15,9 @@ import {MatMenuModule} from '@angular/material/menu';
   ],
   imports: [
     CommonModule,
-    MatDialogModule,
-    MatMenuModule
+    RouterModule,
+    ModalModule.forRoot(),
+    AuthModule
   ],
   exports: [
     FooterComponent,

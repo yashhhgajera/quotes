@@ -5,7 +5,6 @@ import { GuestRoutingModule } from './guest-routing.module';
 import { GuestComponent } from './guest.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 
-
 @NgModule({
   declarations: [
     GuestComponent
@@ -13,7 +12,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     GuestRoutingModule,
-    ComponentsModule
+    ComponentsModule,
   ]
 })
 export class GuestModule { }

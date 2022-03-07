@@ -13,7 +13,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     UserRoutingModule,
-    ComponentsModule
+    ComponentsModule,
   ]
 })
 export class UserModule { }
