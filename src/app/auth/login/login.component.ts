@@ -12,9 +12,19 @@ import { SignupComponent } from '../signup/signup.component';
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-    email:['',Validators.email],
-    password:['',Validators.required]
+    email:['',
+      [
+        Validators.email,
+        Validators.required
+      ]],
+    password:['',
+      [
+        Validators.required,
+        Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$')
+      ]]
   });
+
+  isValid = true;
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -27,7 +37,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['user']);
+    if(this.loginForm.valid){
+      this.router.navigate(['user']);
+      this.isValid=true;
+      this.bsModalRef?.hide();
+      console.log(this.loginForm.value);
+    }
+    else{
+      this.isValid=false;
+    }
   }
   openSignup() {
     this.bsModalRef = this.modalService.show(SignupComponent)

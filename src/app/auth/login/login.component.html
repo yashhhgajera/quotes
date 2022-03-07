@@ -1,4 +1,4 @@
-<div class="modal-header">
+<div class="modal-header d-md-none">
 	<button (click)="bsModalRef?.hide()"
 		type="button"
 		class="btn-close close pull-right"
@@ -39,14 +39,32 @@
 					formControlName="email"
 					class="form-control"
 					placeholder="Email">
+				<div *ngIf="(loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)) && !isValid"
+					class="alert alert-danger">
+					<div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</div>
+					<div *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid.</div>
+				</div>
 			</div>
 			<div class="mb-3">
 				<input type="password"
 					formControlName="password"
 					class="form-control"
 					placeholder="Password">
+				<div *ngIf="(loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)) && !isValid"
+					class="alert alert-danger">
+					<div *ngIf="loginForm.get('password')?.errors?.['required']">
+						Password is required.
+					</div>
+					<div *ngIf="loginForm.get('password')?.errors?.['pattern']">
+						Password is invalid.
+					</div>
+				</div>
 			</div>
-			<button (click)="login();bsModalRef?.hide()"
+			<div *ngIf="!isValid"
+				class="text-danger">
+				Fill all values.
+			</div>
+			<button (click)="login()"
 				type="button"
 				class="col-12 btn bg-black text-white mt-2">
 				Log in
