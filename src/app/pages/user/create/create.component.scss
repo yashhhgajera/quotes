@@ -38,14 +38,22 @@
     width: 100px;
     align-items: center;
 }
-
-@media screen and (max-width: 600px) {
-    .bgtitle, .bgtext {
-        margin-left: 40px;
-    }
+textarea{
+    resize: auto;
+    overflow: hidden;
+    text-align: justify;
 }
+textarea::placeholder{
+    color:black;
+}
+
+// @media screen and (max-width: 600px) {
+//     .bgtitle, .bgtext {
+//         margin-left: 40px;
+//     }
+// }
 @media screen and (max-width: 987px) {
     .bgtitle, .bgtext {
-        margin-left: 80px;
+        margin-left: 20px;
     }
 }
