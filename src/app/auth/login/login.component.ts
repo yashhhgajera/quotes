@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AuthService } from 'src/app/services/auth.service';
 import { SignupComponent } from '../signup/signup.component';
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     password:['',
       [
         Validators.required,
-        Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$')
+        Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
       ]]
   });
 
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
     public bsModalRef: BsModalRef,
     public modalService: BsModalService,
     private router: Router,
-    private fb : FormBuilder
+    private fb : FormBuilder,
+    private auth:AuthService
     ) { }
 
   ngOnInit(): void {
@@ -38,10 +40,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     if(this.loginForm.valid){
-      this.router.navigate(['user']);
       this.isValid=true;
       this.bsModalRef?.hide();
-      console.log(this.loginForm.value);
+      this.auth.loginUser(this.loginForm.value).subscribe(res=>{
+        localStorage.setItem('token',res.data.token)
+        this.router.navigate(['user']);
+      },err=>{
+        console.log(err);
+      })
     }
     else{
       this.isValid=false;

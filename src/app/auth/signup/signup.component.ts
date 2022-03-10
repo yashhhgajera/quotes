@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -24,12 +25,7 @@ export class SignupComponent implements OnInit {
     password:['',
       [
         Validators.required,
-        Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$')
-      ]],
-    confirmPassword:['',
-      [
-        Validators.required,
-        Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$')
+        Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
       ]]
   });
   isValid=true;
@@ -38,17 +34,23 @@ export class SignupComponent implements OnInit {
     public bsModalRef: BsModalRef,
     public modalService:BsModalService, 
     private router:Router,
-    private fb:FormBuilder) { }
+    private fb:FormBuilder,
+    private auth:AuthService) { }
 
   ngOnInit(): void {
   }
 
-  login() {
+  signup() {
     if(this.signupForm.valid){
-      this.router.navigate(['user']);
       this.isValid=true;
       this.bsModalRef?.hide();
-      console.log(this.signupForm.value);
+      this.auth.createUser(this.signupForm.value).subscribe(res=>{
+        console.log(res.data.token);
+        localStorage.setItem('token',res.data.token);
+        this.router.navigate(['user']);
+      },err=>{
+        console.log(err);
+      })
     }
     else{
       this.isValid=false;
