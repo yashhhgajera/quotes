@@ -19,4 +19,7 @@ export class BlogService {
   deleteBlog(id:any){
     return this.http.delete(this.blogAPI+`${id}`);
   }
+  getallBlog(){
+    return this.http.get(this.blogAPI);
+  }
 }

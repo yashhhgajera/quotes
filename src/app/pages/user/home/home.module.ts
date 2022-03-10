@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+import { BlogService } from 'src/app/services/blog.service';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
   imports: [
     CommonModule,
     HomeRoutingModule
-  ]
+  ],
+  providers:[BlogService]
 })
 export class HomeModule { }

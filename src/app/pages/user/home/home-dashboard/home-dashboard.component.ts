@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-home-dashboard',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDashboardComponent implements OnInit {
 
-  n = new Array(5);
-  constructor() { }
+  blogList:any = [];
+  constructor(private blog:BlogService) { }
 
   ngOnInit(): void {
+    this.blog.getallBlog().subscribe(res=>{
+      this.blogList=res;
+    })
   }
 
 }
