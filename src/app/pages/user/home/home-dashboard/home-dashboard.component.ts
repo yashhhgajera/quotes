@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDashboardComponent implements OnInit {
 
+  n = new Array(5);
   constructor() { }
 
   ngOnInit(): void {
