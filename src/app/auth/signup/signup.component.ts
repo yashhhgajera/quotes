@@ -45,7 +45,6 @@ export class SignupComponent implements OnInit {
       this.isValid=true;
       this.bsModalRef?.hide();
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
-        console.log(res.data.token);
         localStorage.setItem('token',res.data.token);
         this.router.navigate(['user']);
       },err=>{

@@ -1,4 +1,4 @@
-<!-- <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 px-4 mb-4 border-bottom sticky bg-white">
+<!-- <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 px-4 mb-4 sticky bg-white">
 	<a href="#"
 		class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
 		<img src="../../../assets/blacknamelogo.svg"
@@ -28,53 +28,71 @@
 </header> -->
 <ng-template #logout>
 	<div class="modal-body text-center">
-	  <p class="mt-1">Are you sure?</p>
-	  <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-	  <button type="button" class="btn bg-black text-white" (click)="decline()" >No</button>
+		<p class="mt-1">Are you sure?</p>
+		<button (click)="confirm()"
+			type="button"
+			class="btn btn-default">
+			Yes
+		</button>
+		<button (click)="decline()"
+			type="button"
+			class="btn bg-black text-white">
+			No
+		</button>
 	</div>
 </ng-template>
-<div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-      <svg class="bi" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="visually-hidden">Icon-only</span>
-    </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
-        <a (click)="navigateMenu('home')" class="nav-link active py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
-        </a>
-      </li>
-      <li>
-        <a (click)="navigateMenu('create')" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
-        </a>
-      </li>
-    </ul>
-    <div class="dropdown border-top">
-      <a (click)="openModal(logout)" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="d-flex flex-column bg-black sidebar align-items-center justify-content-between py-3"
+	style="width: 5rem;">
+	<a (click)="navigateMenu('home')"
+		class="d-block link-dark text-decoration-none"
+		title="Icon-only">
+		<img src="../../../assets/whitelogo.svg"
+			height="50"
+			width="50"
+			alt="logo">
+	</a>
+	<ul class="nav flex-column text-center">
+		<li class="nav-item">
+			<a (click)="navigateMenu('home')"
+				class="nav-link py-3"
+				title="Home">
+				<img src="../../../assets/icon_home.svg"
+					alt="home">
+			</a>
+		</li>
+		<li>
+			<a href="#"
+				class="nav-link py-3"
+				title="List">
+				<img src="../../../assets/icon_list.svg"
+					alt="list">
+			</a>
+		</li>
+		<li>
+			<a (click)="navigateMenu('create')"
+				class="nav-link py-3"
+				title="Create">
+				<img src="../../../assets/icon_create.svg"
+					alt="create">
+			</a>
+		</li>
+	</ul>
+	<ul class="nav flex-column text-center">
+		<li class="nav-item">
+			<a href="#"
+				class="nav-link py-3"
+				title="Profile">
+				<img src="../../../assets/icon_account.svg"
+					alt="account">
+			</a>
+		</li>
+		<li>
+			<a (click)="openModal(logout)"
+				class="nav-link py-3"
+				title="Logout">
+				<img src="../../../assets/icon_logout.svg"
+					alt="logout">
+			</a>
+		</li>
+	</ul>
+</div>
