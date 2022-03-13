@@ -9,7 +9,7 @@ import { BlogService } from 'src/app/services/blog.service';
 @NgModule({
   declarations: [
     HomeComponent,
-    HomeDashboardComponent
+    HomeDashboardComponent,
   ],
   imports: [
     CommonModule,

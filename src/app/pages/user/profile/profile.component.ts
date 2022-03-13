@@ -14,9 +14,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.blog.getuserBlog(this.blog.getUserId()).subscribe((res:any)=>{
-      this.userName = res.data[0].userId.fullName;
       this.blogsCount = res.data.length;
     })
+    this.userName=this.blog.getuserName();
   }
 
 }

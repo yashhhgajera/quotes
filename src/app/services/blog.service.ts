@@ -30,11 +30,6 @@ export class BlogService {
     return localStorage.getItem('userId');
   }
   getuserName(){
-    let userName:any;
-    this.getuserBlog(this.getUserId()).subscribe((res:any)=>{
-      console.log(res.data[0].userId.fullName);
-    })
-    console.log(userName);
-    return userName;
+    return localStorage.getItem('userName');
   }
 }

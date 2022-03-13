@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
       this.bsModalRef?.hide();
       this.auth.loginUser(this.loginForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
-        localStorage.setItem('userId',res.data.findUser._id);
+        localStorage.setItem('userId',res.data.userdata.id);
+        localStorage.setItem('userName',res.data.userdata.fullName);
         this.router.navigate(['user']);
       },err=>{
         console.log(err);

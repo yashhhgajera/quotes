@@ -20,9 +20,7 @@ export class CreateComponent implements OnInit {
   constructor(private fb: FormBuilder,private blog:BlogService) { }
 
   ngOnInit(): void {
-    this.blog.getuserBlog(this.blog.getUserId()).subscribe((res:any)=>{
-      this.userName = res.data[0].userId.fullName;
-    })
+    this.userName=this.blog.getuserName()
   }
 
   publish(){

@@ -47,6 +47,7 @@ export class SignupComponent implements OnInit {
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
         localStorage.setItem('userId',res.data.findUser._id);
+        localStorage.setItem('userName',res.data.findUser.fullName);
         this.router.navigate(['user']);
       },err=>{
         console.log(err);

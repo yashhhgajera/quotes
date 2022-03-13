@@ -12,7 +12,7 @@ export class HomeDashboardComponent implements OnInit {
   constructor(private blog:BlogService) { }
 
   ngOnInit(): void {
-    this.blog.getallBlog().subscribe(res=>{
+    this.blog.getallBlog().subscribe((res:any)=>{
       this.blogList=res;
     })
   }
