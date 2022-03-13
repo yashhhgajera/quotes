@@ -11,12 +11,14 @@ import { BlogService } from 'src/app/services/blog.service';
 export class UserBlogListComponent implements OnInit {
 
   blogList:any = [];
+  userName:any;
   constructor(private blog:BlogService,private router:Router) { }
 
   ngOnInit(): void {
     this.blog.getuserBlog(this.blog.getUserId()).subscribe(res=>{
       this.blogList=res;
     })
+    this.userName = this.blog.getuserName();
   }
 
   navigateBlog(id:any){
