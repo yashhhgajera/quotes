@@ -92,3 +92,10 @@
       box-shadow: 10px 10px 5px rgb(0 0 0 / 18%) !important;
   
   }
+  .card .card-text{
+    height: 100px;
+    overflow:hidden;
+  }
+  a{
+      cursor: pointer;
+  }

@@ -8,18 +8,22 @@ import { UserBlogListComponent } from './user-blog-list/user-blog-list.component
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
     UserBlogListComponent,
-    ProfileComponent
+    ProfileComponent,
+    BlogComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ComponentsModule,
+    AlertModule.forRoot()
   ],
   providers:[AuthService,BlogService]
 })

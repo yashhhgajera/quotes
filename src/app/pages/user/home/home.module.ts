@@ -5,7 +5,6 @@ import { HomeComponent } from './home.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 import { BlogService } from 'src/app/services/blog.service';
 
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -13,7 +12,8 @@ import { BlogService } from 'src/app/services/blog.service';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+
   ],
   providers:[BlogService],
   exports:[HomeDashboardComponent]
