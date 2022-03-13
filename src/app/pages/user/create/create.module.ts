@@ -5,6 +5,7 @@ import { CreateRoutingModule } from './create-routing.module';
 import { CreateComponent } from './create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { BlogService } from 'src/app/services/blog.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers:[BlogService]
+  providers:[BlogService,AuthService]
 })
 export class CreateModule { }

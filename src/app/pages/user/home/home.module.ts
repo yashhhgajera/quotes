@@ -15,6 +15,7 @@ import { BlogService } from 'src/app/services/blog.service';
     CommonModule,
     HomeRoutingModule
   ],
-  providers:[BlogService]
+  providers:[BlogService],
+  exports:[HomeDashboardComponent]
 })
 export class HomeModule { }

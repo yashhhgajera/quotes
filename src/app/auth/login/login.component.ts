@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    // this.loginForm.setValue({
+    //   'email':['yashgajera6202@gmail.com'],
+    //   'password':['P@$$w0rd']
+    // })
   }
 
   login() {
@@ -43,7 +47,8 @@ export class LoginComponent implements OnInit {
       this.isValid=true;
       this.bsModalRef?.hide();
       this.auth.loginUser(this.loginForm.value).subscribe(res=>{
-        localStorage.setItem('token',res.data.token)
+        localStorage.setItem('token',res.data.token);
+        localStorage.setItem('userId',res.data.findUser._id);
         this.router.navigate(['user']);
       },err=>{
         console.log(err);

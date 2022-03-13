@@ -46,6 +46,7 @@ export class SignupComponent implements OnInit {
       this.bsModalRef?.hide();
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
+        localStorage.setItem('userId',res.data.findUser._id);
         this.router.navigate(['user']);
       },err=>{
         console.log(err);

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,27 @@ export class BlogService {
   createBlog(data:any){
     return this.http.post<any>(this.blogAPI,data);
   }
-  editBlog(data:any,id:any){
+  updateBlog(data:any,id:any){
     return this.http.put(this.blogAPI+`/${id}`,data);
   }
   deleteBlog(id:any){
-    return this.http.delete(this.blogAPI+`${id}`);
+    return this.http.delete(this.blogAPI+`/${id}`);
   }
   getallBlog(){
     return this.http.get(this.blogAPI);
+  }
+  getuserBlog(id:any){
+    return this.http.get(this.blogAPI+`/${id}`);
+  }
+  getUserId(){
+    return localStorage.getItem('userId');
+  }
+  getuserName(){
+    let userName:any;
+    this.getuserBlog(this.getUserId()).subscribe((res:any)=>{
+      console.log(res.data[0].userId.fullName);
+    })
+    console.log(userName);
+    return userName;
   }
 }
