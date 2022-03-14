@@ -33,5 +33,8 @@ export class UserBlogListComponent implements OnInit {
     this.blog.deleteBlog(id).subscribe();
     this.ngOnInit();
   }
+  editBlog(id:any){
+    this.router.navigate(['./user/edit',id]);
+  }
 
 }

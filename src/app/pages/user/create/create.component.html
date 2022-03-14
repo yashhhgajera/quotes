@@ -8,7 +8,10 @@
                   </div>
               <div class="font mx-3">Draft in {{ userName | titlecase }}</div>
           </div>
-        <div><button type="submit" (click)="publish()" class="btn btn-success mx-3 btnpub">Publish</button></div>
+        <div>
+          <button type="submit" *ngIf="!blogId" (click)="publish()" class="btn btn-success mx-3 btnpub">Publish</button>
+          <button type="submit" *ngIf="blogId" (click)="update()" class="btn btn-success mx-3 btnpub">Update</button>
+        </div>
       </div>
       <div class="row mt-5">
         <div class="col-8">

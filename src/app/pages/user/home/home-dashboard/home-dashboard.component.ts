@@ -21,6 +21,7 @@ export class HomeDashboardComponent implements OnInit {
       this.blogList=res;
     })
   }
+
   navigateBlog(id:any){
     this.router.navigate(['./user/blog',id]);
   }

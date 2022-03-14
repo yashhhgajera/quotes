@@ -73,7 +73,7 @@
 									<mat-icon>more_vert</mat-icon>
 								</button>
 								<mat-menu #menu="matMenu" class="p-1">
-									<button mat-menu-item>
+									<button mat-menu-item (click)="editBlog(blog._id)">
 										<mat-icon>edit</mat-icon>
 										<span>Edit</span>
 									</button>

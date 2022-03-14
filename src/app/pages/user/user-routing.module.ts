@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren:()=>import('./create/create.module').then(m=>m.CreateModule)
       },
       {
+        path:'edit/:id',
+        loadChildren:()=>import('./create/create.module').then(m=>m.CreateModule)
+      },
+      {
         path:'list',
         component:UserBlogListComponent
       },
