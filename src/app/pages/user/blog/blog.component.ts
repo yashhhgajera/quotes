@@ -24,4 +24,8 @@ export class BlogComponent implements OnInit {
     })
   }
 
+  previousPage(): void {
+    history.back();
+  }
+
 }
