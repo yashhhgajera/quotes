@@ -22,7 +22,7 @@ export class UserHeaderComponent implements OnInit {
  
   confirm(): void {
     this.modalRef?.hide();
-    this.router.navigate(['../']);
+    this.router.navigate(['./']);
     localStorage.clear();
   }
  

@@ -26,34 +26,18 @@
 		</a>
 	</div>
 </header> -->
-<ng-template #logout>
-	<div class="modal-body text-center">
-		<p class="mt-1">Are you sure?</p>
-		<button (click)="confirm()"
-			type="button"
-			class="btn btn-default">
-			Yes
-		</button>
-		<button (click)="decline()"
-			type="button"
-			class="btn bg-black text-white">
-			No
-		</button>
-	</div>
-</ng-template>
-<div class="d-flex flex-column bg-black sidebar align-items-center justify-content-between py-3"
-	style="width: 5rem;">
+<div class="d-flex flex-sm-column bg-black sidebar align-items-center justify-content-sm-between justify-content-center py-3">
 	<a (click)="navigateMenu('home')"
-		class="d-block link-dark text-decoration-none"
+		class="d-sm-block d-none link-dark text-decoration-none"
 		title="Icon-only">
 		<img src="../../../assets/whitelogo.svg"
 			height="50"
 			width="50"
 			alt="logo">
 	</a>
-	<ul class="nav flex-column text-center">
+	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
-			<a (click)="navigateMenu('home')"
+			<a routerLink="./home" routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Home">
 				<img src="../../../assets/icon_home.svg"
@@ -61,7 +45,7 @@
 			</a>
 		</li>
 		<li>
-			<a (click)="navigateMenu('list')"
+			<a routerLink="./list" routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="List">
 				<img src="../../../assets/icon_list.svg"
@@ -69,7 +53,7 @@
 			</a>
 		</li>
 		<li>
-			<a (click)="navigateMenu('create')"
+			<a routerLink="./create" routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Create">
 				<img src="../../../assets/icon_create.svg"
@@ -77,9 +61,9 @@
 			</a>
 		</li>
 	</ul>
-	<ul class="nav flex-column text-center">
+	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
-			<a (click)="navigateMenu('profile')"
+			<a routerLink="./profile" routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Profile">
 				<img src="../../../assets/icon_account.svg"
@@ -96,3 +80,18 @@
 		</li>
 	</ul>
 </div>
+<ng-template #logout>
+	<div class="modal-body text-center">
+		<p class="mt-1">Are you sure?</p>
+		<button (click)="confirm()"
+			type="button"
+			class="btn btn-default">
+			Yes
+		</button>
+		<button (click)="decline()"
+			type="button"
+			class="btn bg-black text-white">
+			No
+		</button>
+	</div>
+</ng-template>

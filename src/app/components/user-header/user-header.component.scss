@@ -11,4 +11,17 @@ header.sticky {
     top: 0;
     left: 0;
     height: 100%;
+    width: 5rem;
+}
+.nav a:hover{
+    background-color: #343a40;
+}
+@media (orientation:portrait) and (max-width:576px) {
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5rem;
+    }
 }
