@@ -10,7 +10,8 @@ import { BlogService } from 'src/app/services/blog.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BlogComponent } from './blog/blog.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { BlogComponent } from './blog/blog.component';
     CommonModule,
     UserRoutingModule,
     ComponentsModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    MatMenuModule,
+    MatIconModule
   ],
   providers:[AuthService,BlogService]
 })

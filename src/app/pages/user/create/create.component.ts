@@ -25,7 +25,6 @@ export class CreateComponent implements OnInit {
 
   publish(){
     this.blog.createBlog(this.blogData.value).subscribe(res=>{
-      console.log(this.blogData.value)
       this.blogData.reset();
     },err=>{
       console.log(err)

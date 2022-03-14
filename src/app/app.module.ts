@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, AuthGuard,
   {

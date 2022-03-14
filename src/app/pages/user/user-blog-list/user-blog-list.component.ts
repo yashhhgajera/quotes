@@ -15,14 +15,23 @@ export class UserBlogListComponent implements OnInit {
   constructor(private blog:BlogService,private router:Router) { }
 
   ngOnInit(): void {
+    this.userName = this.blog.getuserName();
+    this.showBlog();
+  }
+
+  showBlog(){
     this.blog.getuserBlog(this.blog.getUserId()).subscribe(res=>{
       this.blogList=res;
     })
-    this.userName = this.blog.getuserName();
   }
 
   navigateBlog(id:any){
     this.router.navigate(['./user/blog',id]);
+  }
+
+  deleteBlog(id:any){
+    this.blog.deleteBlog(id).subscribe();
+    this.ngOnInit();
   }
 
 }
