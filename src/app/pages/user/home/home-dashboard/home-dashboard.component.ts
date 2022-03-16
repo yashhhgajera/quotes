@@ -10,9 +10,11 @@ import { BlogService } from 'src/app/services/blog.service';
 export class HomeDashboardComponent implements OnInit {
 
   blogList:any = [];
+  userName: any;
   constructor(private blog:BlogService,private router:Router) { }
 
   ngOnInit(): void {
+    this.userName = this.blog.getuserName();
     this.showBlog();
   }
 
