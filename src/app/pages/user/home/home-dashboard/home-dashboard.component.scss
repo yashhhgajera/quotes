@@ -129,8 +129,9 @@ a{
 }
 
 .name{
-  font-size: 16px;
-  font-weight: bolder;
+  font-size: 12px;
+  font-weight:normal;
+  letter-spacing: 0.06rem;
 }
 
 
@@ -146,5 +147,10 @@ a{
   resize: none
 }
 
+.blog-card{
+  border-radius: 1.5rem;
+}
 
-
+.blogdes{
+  height: 60px;
+}
