@@ -1,20 +1,28 @@
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 px-4 mb-4 border-bottom sticky bg-white">
+<header class="d-flex flex-wrap align-items-center justify-content-between py-2 px-4 mb-4 border-bottom sticky bg-white">
 	<a href="#"
 		class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
 		<img src="../../../assets/blacknamelogo.svg"
+		class="d-sm-flex d-none"
 			alt="logo"
 			width="200">
+		<img src="../../../assets/blacklogo.svg"
+		class="d-flex my-3 d-sm-none"
+			alt="logo"
+			width="50">
 	</a>
 	<div class="col-md-3 text-end">
 		<button (click)="openModalWithComponent('login')"
 			type="button"
+			title="Login"
 			class="btn text-black border-black-2 me-2">
-			Login
+			<img src="../../../assets/icon_login.svg"
+				alt="Login">
 		</button>
 		<button (click)="openModalWithComponent('signup')"
 			type="button"
-			class="btn bg-black text-white">
-			Sign-up
+			title="Register"
+			class="btn bg-black text-white rounded-pill">
+			Get Started
 		</button>
 	</div>
 </header>

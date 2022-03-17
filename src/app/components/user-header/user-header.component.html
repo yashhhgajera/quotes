@@ -1,31 +1,3 @@
-<!-- <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 px-4 mb-4 sticky bg-white">
-	<a href="#"
-		class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-		<img src="../../../assets/blacknamelogo.svg"
-			alt="logo"
-			width="200">
-	</a>
-	<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-		<li>
-			<a (click)="navigateMenu('home')"
-				class="nav-link px-2 link-secondary">
-				Home
-			</a>
-		</li>
-		<li>
-			<a (click)="navigateMenu('create')"
-				class="nav-link px-2 link-secondary">
-				Create
-			</a>
-		</li>
-	</ul>
-	<div class="col-md-3 text-end">
-		<a (click)="openModal(logout)"
-			class="btn bg-black text-white">
-			Log out
-		</a>
-	</div>
-</header> -->
 <div class="d-flex flex-sm-column bg-black sidebar align-items-center justify-content-sm-between justify-content-center py-3">
 	<a (click)="navigateMenu('home')"
 		class="d-sm-block d-none link-dark text-decoration-none"
@@ -37,7 +9,8 @@
 	</a>
 	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
-			<a routerLink="./home" routerLinkActive="bg-dark"
+			<a routerLink="./home"
+				routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Home">
 				<img src="../../../assets/icon_home.svg"
@@ -45,7 +18,8 @@
 			</a>
 		</li>
 		<li>
-			<a routerLink="./list" routerLinkActive="bg-dark"
+			<a routerLink="./list"
+				routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="List">
 				<img src="../../../assets/icon_list.svg"
@@ -53,7 +27,8 @@
 			</a>
 		</li>
 		<li>
-			<a routerLink="./create" routerLinkActive="bg-dark"
+			<a routerLink="./create"
+				routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Create">
 				<img src="../../../assets/icon_create.svg"
@@ -63,7 +38,8 @@
 	</ul>
 	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
-			<a routerLink="./profile" routerLinkActive="bg-dark"
+			<a routerLink="./profile"
+				routerLinkActive="bg-dark"
 				class="nav-link py-3"
 				title="Profile">
 				<img src="../../../assets/icon_account.svg"
