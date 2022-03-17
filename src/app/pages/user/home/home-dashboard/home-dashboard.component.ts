@@ -27,5 +27,9 @@ export class HomeDashboardComponent implements OnInit {
   navigateBlog(id:any){
     this.router.navigate(['./user/blog',id]);
   }
+  
+  truncate(source: any, size: any) {
+    return source.length > size ? source.slice(0, size - 1) + "…" : source;
+  }
 
 }
