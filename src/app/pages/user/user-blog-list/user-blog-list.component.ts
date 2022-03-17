@@ -10,6 +10,7 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class UserBlogListComponent implements OnInit {
 
+  date=new Date();
   blogList:any = [];
   userName:any;
   constructor(private blog:BlogService,private router:Router) { }
