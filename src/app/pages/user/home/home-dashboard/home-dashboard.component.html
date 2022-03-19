@@ -175,14 +175,14 @@
 
 				<div class="bg-white">
 					<div class="d-flex flex-row fs-12">
-						<div class="like p-2 cursor">
-							<img src="../../../../../assets/icon_like.svg"
-								alt="like">
-							<span class=" mx-1"></span>
+						<div class="like">
+							<button (click)="likeCounter()" class="btn"> <img src="../../../../../assets/icon_like.svg"
+								alt="like"> </button>
+							<span class="mr-2">{{likeCount}}</span>
 						</div>
-						<div class="like p-2 cursor">
-							<img src="../../../../../assets/icon_share.svg"
-								alt="share">
+						<div class="like mx-3">
+							<button class="btn"><img src="../../../../../assets/icon_share.svg"
+								alt="share"></button>
 						</div>
 					</div>
 				</div>

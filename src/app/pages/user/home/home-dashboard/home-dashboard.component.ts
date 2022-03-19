@@ -11,6 +11,7 @@ export class HomeDashboardComponent implements OnInit {
 
   blogList:any = [];
   userName: any;
+  likeCount: number = 0;
   constructor(private blog:BlogService,private router:Router) { }
 
   ngOnInit(): void {
@@ -30,6 +31,10 @@ export class HomeDashboardComponent implements OnInit {
   
   truncate(source: any, size: any) {
     return source.length > size ? source.slice(0, size - 1) + "…" : source;
+  }
+
+  likeCounter(){
+    this.likeCount++;
   }
 
 }
