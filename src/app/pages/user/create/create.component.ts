@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { RichTextEditorComponent,FormatModel, FontFamilyModel } from '@syncfusion/ej2-angular-richtexteditor';
 import { BlogService } from 'src/app/services/blog.service';
+import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
+import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
+
 
 @Component({
   selector: 'app-create',
@@ -62,5 +65,24 @@ export class CreateComponent implements OnInit {
       console.log(err)
     })
   }
+
+  @ViewChild('select')
+  public rteSelectObj: CheckBoxComponent | any;
+
+  @ViewChild('inlineRTE')
+  public rteObj: RichTextEditorComponent | any;
+
+  public toolbarSettings: ToolbarModule = {
+      items: ['Bold', 'Italic', 'Underline',
+          'Formats', 'Alignments', '-', 'OrderedList', 'UnorderedList',
+          'CreateLink','Image']
+  };
+  public format: FormatModel = {
+      width: 'auto'
+  };
+  public fontFamily: FontFamilyModel = {
+      width: 'auto'
+  };
+  public inlineMode: object = { enable: true, onSelection: false };
 
 }

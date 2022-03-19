@@ -43,9 +43,12 @@
 		</div>
 		<div class="row">
 			<div class="col-8">
-				<ejs-richtexteditor formControlName="blogDescription"
+        <ejs-richtexteditor id='inlineRTE' #inlineRTE [inlineMode]='inlineMode' [toolbarSettings]='toolbarSettings'
+                [format]='format' [fontFamily]='fontFamily' formControlName="blogDescription"
+                placeholder="Tell your story..."></ejs-richtexteditor>
+				<!-- <ejs-richtexteditor formControlName="blogDescription"
 					placeholder="Tell your story...">
-				</ejs-richtexteditor>
+				</ejs-richtexteditor> -->
 				<!-- <textarea class="form-control border-0 bgtext"
 				rows="20"
 				formControlName="blogDescription"

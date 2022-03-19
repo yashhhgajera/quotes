@@ -6,7 +6,7 @@ import { CreateComponent } from './create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
+import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService } from '@syncfusion/ej2-angular-richtexteditor';
 
 
 @NgModule({
@@ -20,6 +20,6 @@ import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEd
     FormsModule,
     RichTextEditorModule
   ],
-  providers:[BlogService,AuthService,ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
+  providers:[BlogService,AuthService,ToolbarService, LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService]
 })
 export class CreateModule { }
