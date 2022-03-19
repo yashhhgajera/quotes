@@ -6,6 +6,7 @@ import { CreateComponent } from './create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogService } from 'src/app/services/blog.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { RichTextEditorModule, ToolbarService, LinkService, ImageService, HtmlEditorService, TableService } from '@syncfusion/ej2-angular-richtexteditor';
 
 
 @NgModule({
@@ -16,8 +17,9 @@ import { AuthService } from 'src/app/services/auth.service';
     CommonModule,
     CreateRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RichTextEditorModule
   ],
-  providers:[BlogService,AuthService]
+  providers:[BlogService,AuthService,ToolbarService, LinkService, ImageService, HtmlEditorService, TableService]
 })
 export class CreateModule { }

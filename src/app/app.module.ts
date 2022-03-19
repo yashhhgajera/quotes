@@ -9,6 +9,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatMenuModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RichTextEditorModule
+    
   ],
   providers: [AuthService, AuthGuard,
   {
