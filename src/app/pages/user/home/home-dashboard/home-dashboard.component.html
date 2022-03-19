@@ -157,7 +157,7 @@
 						<div class="d-flex flex-column justify-content-start mx-3">
 							<span class="d-block font-weight-bold name">{{blog.userId.fullName | titlecase}}</span>
 							<span class="date text-black-50">
-								Jan 2020
+								{{blog.createdAt | date}}
 							</span>
 						</div>
 					</div>
@@ -165,8 +165,8 @@
 						<div class="mt-4 mx-4">
 							<strong class="fs-4">{{blog.blogTitle}}</strong>
 						</div>
-						<div class="mt-2 mx-4">
-							<p class="fs-6 blogdes overflow-hidden">{{truncate(blog.blogDescription,240)}}</p>
+						<div class="mt-2 mx-4 fs-6 blogdes overflow-hidden" [innerHtml]="truncate(blog.blogDescription,240)">
+							<!-- <p class="fs-6 blogdes overflow-hidden">{{truncate(blog.blogDescription,240)}}</p> -->
 						</div>
 					</a>
 				</div>

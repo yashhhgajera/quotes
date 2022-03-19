@@ -18,9 +18,9 @@ export class BlogComponent implements OnInit {
       this.blogId = params.get('id');
     })
     this.blog.getallBlog().subscribe((res:any)=>{
-      this.blogData = res.data.find((b:any)=>{
+      this.blogData = res.data.filter((b:any)=>{
         return b._id==this.blogId
-      })
+      });
     })
   }
 

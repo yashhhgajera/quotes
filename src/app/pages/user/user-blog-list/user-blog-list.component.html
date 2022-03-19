@@ -51,7 +51,9 @@
 						<strong class="d-inline-block mb-2 fs-5">{{blog.blogTitle}}</strong>
 					</a>
 					<!-- <div class="mb-1 text-muted">Nov 12</div> -->
-					<p class="card-text mb-auto fs-6 text-dark"> {{blog.blogDescription}} </p>
+		<div class="card-text mb-auto fs-6 text-dark" [innerHtml]="blog.blogDescription"></div>
+
+					<!-- <p class="card-text mb-auto fs-6 text-dark"> {{blog.blogDescription}} </p> -->
 					<p class="mt-2 mb-0 d-flex align-items-center justify-content-between w-100">
 						<span class="d-flex align-items-center">
 							<!-- <svg xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +67,7 @@
 							<span class="small text-secondary">
 								{{ blog.userId.fullName | titlecase }}
 							</span> -->
-							{{date | date}}
+							{{blog.createdAt | date}}
 						</span>
 						<span>
 							<button [matMenuTriggerFor]="menu"
