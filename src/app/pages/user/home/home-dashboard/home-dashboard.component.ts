@@ -34,8 +34,10 @@ export class HomeDashboardComponent implements OnInit {
   }
 
   likeCounter(blogId: any){
-    let userId = this.blog.getUserId()
-    this.blog.putLike(blogId, userId).subscribe(res => {
+    let id = {
+      userId: this.blog.getUserId()
+    }
+    this.blog.putLike(blogId, id).subscribe(res => {
       this.showBlog();
     }, err => console.log("Error"));
 
