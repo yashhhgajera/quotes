@@ -32,4 +32,7 @@ export class BlogService {
   getuserName(){
     return localStorage.getItem('userName');
   }
+  putLike(blogId: any, userId:any){
+    return this.http.put(this.blogAPI+`/${blogId}/like`, userId);
+  }
 }

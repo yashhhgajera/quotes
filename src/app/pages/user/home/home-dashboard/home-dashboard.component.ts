@@ -33,8 +33,12 @@ export class HomeDashboardComponent implements OnInit {
     return source.length > size ? source.slice(0, size - 1) + "…" : source;
   }
 
-  likeCounter(){
-    this.likeCount++;
+  likeCounter(blogId: any){
+    let userId = this.blog.getUserId()
+    this.blog.putLike(blogId, userId).subscribe(res => {
+      this.showBlog();
+    }, err => console.log("Error"));
+
   }
 
 }

@@ -176,9 +176,9 @@
 				<div class="bg-white">
 					<div class="d-flex flex-row fs-12">
 						<div class="like">
-							<button (click)="likeCounter()" class="btn"> <img src="../../../../../assets/icon_like.svg"
+							<button (click)="likeCounter(blog._id)" class="btn"> <img src="../../../../../assets/icon_like.svg"
 								alt="like"> </button>
-							<span class="mr-2">{{likeCount}}</span>
+							<span class="mr-2">{{blog.likes.length}}</span>
 						</div>
 						<div class="like mx-3">
 							<button class="btn"><img src="../../../../../assets/icon_share.svg"
