@@ -6,11 +6,13 @@ import { GuestHeaderComponent } from './guest-header/guest-header.component';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AuthModule } from '../auth/auth.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     FooterComponent,
     UserHeaderComponent,
     GuestHeaderComponent,
+    DashboardComponent,
     
   ],
   imports: [
@@ -22,7 +24,8 @@ import { AuthModule } from '../auth/auth.module';
   exports: [
     FooterComponent,
     UserHeaderComponent,
-    GuestHeaderComponent
+    GuestHeaderComponent,
+    DashboardComponent
   ]
 })
 export class ComponentsModule { }

@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { BlogComponent } from './blog/blog.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -18,7 +17,6 @@ import {MatIconModule} from '@angular/material/icon';
     UserComponent,
     UserBlogListComponent,
     ProfileComponent,
-    BlogComponent
   ],
   imports: [
     CommonModule,

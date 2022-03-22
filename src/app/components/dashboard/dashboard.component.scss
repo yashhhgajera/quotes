@@ -1,0 +1,145 @@
+.b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+      inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+  }
+  
+  .bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+  }
+  
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 0.75rem;
+  }
+  
+  .icon-link {
+    display: inline-flex;
+    align-items: center;
+  }
+  .icon-link > .bi {
+    margin-top: 0.125rem;
+    margin-left: 0.125rem;
+    transition: transform 0.25s ease-in-out;
+    fill: currentColor;
+  }
+  .icon-link:hover > .bi {
+    transform: translate(0.25rem);
+  }
+  
+  .icon-square {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  .rounded-4 {
+    border-radius: 0.5rem;
+  }
+  .rounded-5 {
+    border-radius: 1rem;
+  }
+  
+  .text-shadow-1 {
+    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+  }
+  .text-shadow-2 {
+    text-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+  }
+  .text-shadow-3 {
+    text-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  }
+  
+  .card-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .card{
+      position: unset !important;
+  }
+  .card:hover{
+      // box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+      box-shadow: 10px 10px 5px rgb(0 0 0 / 18%) !important;
+  
+  }
+  .card .card-text{
+    height: 100px;
+    overflow:hidden;
+  }
+  a{
+    cursor: pointer;
+  }
+  .date {
+    font-size: 11px
+  }
+  
+  
+  .fs-12 {
+    font-size: 12px
+  }
+  
+  .shadow-none {
+    box-shadow: none
+  }
+  
+  .name{
+    font-size: 12px;
+    font-weight:normal;
+    letter-spacing: 0.06rem;
+  }
+  
+  
+  .cursor:hover {
+    color: blue
+  }
+  
+  .cursor {
+    cursor: pointer
+  }
+  
+  .textarea {
+    resize: none
+  }
+  
+  .blog-card{
+    border-radius: 1.5rem;
+    box-shadow:  1px 1px 20px -10px rgb(0 0 0 / 18%);
+    &:hover{
+      transform: scale(1.01);
+    }
+  }
+  
+  .blogdes{
+    height: 60px;
+  }
+  

@@ -6,13 +6,12 @@ import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-
 @Component({
-  selector: 'app-home-dashboard',
-  templateUrl: './home-dashboard.component.html',
-  styleUrls: ['./home-dashboard.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class HomeDashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   blogList:any = [];
   userName: any;
@@ -60,3 +59,4 @@ export class HomeDashboardComponent implements OnInit {
   }
 
 }
+

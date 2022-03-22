@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogComponent } from './blog/blog.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserBlogListComponent } from './user-blog-list/user-blog-list.component';
 import { UserComponent } from './user.component';
@@ -29,10 +28,6 @@ const routes: Routes = [
       {
         path:'profile',
         component:ProfileComponent
-      },
-      {
-        path:'blog/:id',
-        component:BlogComponent
       },
       {
         path:'',
