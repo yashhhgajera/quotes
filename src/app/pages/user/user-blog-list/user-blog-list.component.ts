@@ -27,7 +27,7 @@ export class UserBlogListComponent implements OnInit {
   }
 
   navigateBlog(id:any){
-    this.router.navigate(['./user/blog',id]);
+    this.router.navigate(['./blog',id]);
   }
 
   deleteBlog(id:any){
