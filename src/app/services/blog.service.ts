@@ -15,7 +15,7 @@ export class BlogService {
     return this.http.post<any>(this.blogAPI,data);
   }
   updateBlog(data:any,id:any){
-    return this.http.put(this.blogAPI+`/${id}`,data);
+    return this.http.put<any>(this.blogAPI+`/${id}`,data);
   }
   deleteBlog(id:any){
     return this.http.delete(this.blogAPI+`/${id}`);
