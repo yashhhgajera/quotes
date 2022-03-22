@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 
 
 @NgModule({
@@ -23,7 +26,12 @@ import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
     MatMenuModule,
     MatIconModule,
     BrowserAnimationsModule,
-    RichTextEditorModule
+    RichTextEditorModule,
+    ShareButtonsModule.withConfig({
+      debug: true,
+    }),
+    ShareIconsModule,
+    ShareButtonsPopupModule
     
   ],
   providers: [AuthService, AuthGuard,

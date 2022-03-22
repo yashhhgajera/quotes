@@ -7,19 +7,27 @@ import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AuthModule } from '../auth/auth.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
+
 @NgModule({
   declarations: [
     FooterComponent,
     UserHeaderComponent,
     GuestHeaderComponent,
     DashboardComponent,
-    
   ],
   imports: [
     CommonModule,
     RouterModule,
     ModalModule.forRoot(),
-    AuthModule
+    AuthModule,
+    ShareButtonsModule.withConfig({
+      debug: true,
+    }),
+    ShareIconsModule,
+    ShareButtonsPopupModule
   ],
   exports: [
     FooterComponent,

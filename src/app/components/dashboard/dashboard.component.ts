@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   likeCount: number = 0;
   bsModalRef?: BsModalRef;
   modalRef?: BsModalRef;
+  blogURL = 'http://localhost:4200/blog/';
 
   constructor(private modalService: BsModalService,private blog:BlogService,private router:Router,private auth:AuthService) { }
 
