@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -9,14 +10,18 @@ import { BlogService } from 'src/app/services/blog.service';
 export class ProfileComponent implements OnInit {
 
   userName:any;
+  userEmail:any;
   blogsCount:any;
-  constructor(private blog:BlogService) { }
+  constructor(private blog:BlogService,private auth:AuthService) { }
 
   ngOnInit(): void {
     this.blog.getuserBlog(this.blog.getUserId()).subscribe((res:any)=>{
       this.blogsCount = res.data.length;
     })
-    this.userName=this.blog.getuserName();
+    this.auth.getUser().subscribe((res:any)=>{
+      this.userName=res.data.fullName;
+      this.userEmail=res.data.email;
+    })
   }
 
 }

@@ -1,7 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../node_modules/ngx-sharebuttons/themes/material.scss';
-@import '../node_modules/ngx-sharebuttons/themes/default.scss';
-@import '../node_modules/ngx-sharebuttons/themes/custom.scss';
+
+@import "../node_modules/ngx-sharebuttons/themes/variables.scss";
+
+$sb-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+$sb-text-size: 0.8em;
+
+.sb-custom-dark, .sb-custom-light {
+  .sb-wrapper {
+    --sb-color: #{$sb-accent};
+    --sb-background: transparent;
+    --sb-min-width: fit-content;
+    --sb-height: fit-content;
+    --sb-icon-size: 1.4em;
+
+    &:active {
+      .sb-icon {
+      }
+    }
+
+    .sb-icon {
+      background-color: var(--button-color);
+      width: 2.5em;
+      min-height: 2.5em;
+      border-radius: 50%;
+      transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .sb-text {
+      color: var(--button-color);
+      font-size: $sb-text-size;
+      margin-top: 5px;
+      border-radius: 1em;
+      width: 100%;
+      height: 1.8em;
+      line-height: 1.8em;
+      padding: 0;
+      transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .sb-content {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+
+.sb-custom-dark .sb-wrapper {
+
+  .sb-icon {
+    background-color: var(--button-color);
+  }
+
+  .sb-text {
+    color: var(--button-color);
+  }
+}
+
+.sb-custom-light .sb-wrapper {
+
+  .sb-icon, .sb-text {
+    color: var(--button-color);
+  }
+
+  .sb-icon {
+    background: radial-gradient(ellipse farthest-corner at center, white 30%, darken(white, 5%) 100%);
+  }
+}
 
 @import '../node_modules/@syncfusion/ej2-base/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-icons/styles/material.css';
