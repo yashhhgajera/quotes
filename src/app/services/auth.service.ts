@@ -16,10 +16,6 @@ export class AuthService {
   getUserRole(){
     return this.http.get(this.userRoleAPI);
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> e850075ba7b88fd56ecd2e8a51a96a209842fc27
   getUser(){
     return this.http.get(this.userAPI);
   }
