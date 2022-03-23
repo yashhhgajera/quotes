@@ -16,7 +16,7 @@
     letter-spacing: 0.03em;
 }
 .bgtext{
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 200;
     margin-left: 148px;
@@ -60,4 +60,18 @@ textarea::placeholder{
 
 input, textarea{
     background: none;
+}
+
+.e-richtexteditor .e-rte-content{
+    background: none;
+    border-radius: 5px;
+}
+
+// .e-richtexteditor .e-source-content
+.e-richtexteditor:not(.e-rte-toolbar-enabled){
+    border: none;
+}
+
+.e-richtexteditor .e-rte-content:focus-within{
+    background: #fff; 
 }
