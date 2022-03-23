@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+=======
+
+>>>>>>> e850075ba7b88fd56ecd2e8a51a96a209842fc27
 @import "../node_modules/ngx-sharebuttons/themes/variables.scss";
 
 $sb-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -12,7 +16,14 @@ $sb-text-size: 0.8em;
     --sb-height: fit-content;
     --sb-icon-size: 1.4em;
 
+<<<<<<< HEAD
 
+=======
+    &:active {
+      .sb-icon {
+      }
+    }
+>>>>>>> e850075ba7b88fd56ecd2e8a51a96a209842fc27
 
     .sb-icon {
       background-color: var(--button-color);
