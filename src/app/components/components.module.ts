@@ -10,6 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
       debug: true,
     }),
     ShareIconsModule,
-    ShareButtonsPopupModule
+    ShareButtonsPopupModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [
     FooterComponent,

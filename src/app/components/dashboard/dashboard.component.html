@@ -30,12 +30,22 @@
                             <span class="mr-2">{{blog.likes.length}}</span>
                         </div>
                         <div class="mx-3">
-                            <share-popup-button [theme]="'material-dark'"
-                                [include]="['facebook','twitter','linkedin','pinterest','reddit','tumblr','mix','viber','vk','telegram','messenger','whatsapp','xing','line','sms','email','print','copy']"
-                                [show]="5"
-                                [url]="blogURL+blog._id"
-                                [autoSetMeta]="false">Share
-                            </share-popup-button>
+
+                                <button [matMenuTriggerFor]="menu"
+                                    class="btn">
+                                    <img src="../../../assets/icon_share.svg" alt="share">
+                                </button>
+                                <mat-menu #menu="matMenu"
+                                    class="p-1">
+                                    <share-buttons theme="custom-light"
+                                        [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']"
+                                        [showIcon]="true"
+                                        [show]="6"
+                                        [image]="'../../../assets/icon_share.svg'"
+                                        [url]="blogURL+blog._id">
+                                    </share-buttons>
+                                </mat-menu>
+
                     
                             <!--blogURL+blog._id <button class="btn"><img src="../../../assets/icon_share.svg" alt="share"></button> -->
                         </div>
