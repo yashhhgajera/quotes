@@ -12,6 +12,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
     UserHeaderComponent,
     GuestHeaderComponent,
     DashboardComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import {MatIconModule} from '@angular/material/icon';
     FooterComponent,
     UserHeaderComponent,
     GuestHeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    CarouselComponent
   ]
 })
 export class ComponentsModule { }

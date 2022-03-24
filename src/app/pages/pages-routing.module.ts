@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../admin.guard';
 import { AuthGuard } from '../auth.guard';
 import { BlogComponent } from './blog/blog.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
     path:'blog/:id',
     component:BlogComponent
   },
+  {
+    path:'**',
+    component:PageNotFoundComponent
+  }
 ];
 
 @NgModule({
