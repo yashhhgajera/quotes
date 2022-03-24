@@ -55,23 +55,35 @@ export class ResetPasswordComponent implements OnInit {
     this.modalService.hide(modalId);
   }
 
-  otp(){
-    let req = {
-      "email":this.resetPassword.value.email
+  otp(template:any){
+    if(this.resetPassword.get('email')?.valid){
+      this.isValid = true;
+      let req = {
+        "email":this.resetPassword.value.email
+      }
+      this.auth.getOtp(req).subscribe((res:any)=>{
+        console.log(res.data.user.otp);
+        this.bsModalRef?.hide();
+      });
+      this.openModal(template);
     }
-    this.auth.getOtp(req).subscribe((res:any)=>{
-      console.log(res.data.user.otp);
-      this.bsModalRef?.hide();
-    })
+    else{
+      this.isValid = false
+    }
     
   }
 
   
   setPassword(){
-    this.bsModalRef?.hide()
-    this.auth.resetPassword(this.resetPassword.value).subscribe(()=>{
-      this.bsModalRef = this.modalService.show(LoginComponent);
-      this.closeModal(1);
-    })
+    if(this.resetPassword.valid){
+      this.isValid = true;
+      this.auth.resetPassword(this.resetPassword.value).subscribe(()=>{
+        this.bsModalRef = this.modalService.show(LoginComponent);
+        this.closeModal(1);
+      })
+    }
+    else{
+      this.isValid = false
+    }
   }
 }
