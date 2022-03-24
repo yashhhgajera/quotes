@@ -7,7 +7,7 @@
                     <div class="d-flex flex-row user-info align-items-center">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <div class="d-flex flex-column justify-content-start mx-3">
-                            <span class="d-block font-weight-bold name">{{blog.userId.fullName | titlecase}}</span>
+                            <a (click)="navigateUser(blog.userId._id)"><span class="d-block font-weight-bold name">{{blog.userId.fullName | titlecase}}</span></a>
                             <span class="date text-black-50">
                                 {{blog.createdAt | date}}
                             </span>

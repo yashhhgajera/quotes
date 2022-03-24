@@ -9,8 +9,7 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userName:any;
-  userEmail:any;
+  user:any;
   blogsCount:any;
   constructor(private blog:BlogService,private auth:AuthService) { }
 
@@ -19,8 +18,7 @@ export class ProfileComponent implements OnInit {
       this.blogsCount = res.data.length;
     })
     this.auth.getUser().subscribe((res:any)=>{
-      this.userName=res.data.fullName;
-      this.userEmail=res.data.email;
+      this.user=res.data;
     })
   }
 

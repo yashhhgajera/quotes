@@ -11,12 +11,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountsService } from 'src/app/services/accounts.service';
 
 @NgModule({
   declarations: [
     UserComponent,
     UserBlogListComponent,
     ProfileComponent,
+    AccountsComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +29,6 @@ import {MatIconModule} from '@angular/material/icon';
     MatMenuModule,
     MatIconModule
   ],
-  providers:[AuthService,BlogService]
+  providers:[AuthService,BlogService,AccountsService]
 })
 export class UserModule { }

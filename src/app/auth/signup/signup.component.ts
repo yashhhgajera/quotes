@@ -40,11 +40,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.getUserRole().subscribe((res:any)=>{
-      let userRole = res.data.listRole.find((role:any)=>{
+      let userRole = res.data.listRole.filter((role:any)=>{
         return role.userRoleName==='user';
       });
       this.signupForm.patchValue({
-        userType:userRole._id
+        userType:userRole[0]._id
       }) 
     })
   }

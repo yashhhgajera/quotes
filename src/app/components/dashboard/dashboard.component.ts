@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   userName: any;
   likeCount: number = 0;
   bsModalRef?: BsModalRef;
-  modalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
 
   constructor(private modalService: BsModalService,private blog:BlogService,private router:Router,private auth:AuthService) { }
@@ -56,8 +55,20 @@ export class DashboardComponent implements OnInit {
     }else{
       this.openModalWithComponent('signup');
     }
-
   }
+
+  navigateUser(id:any){
+    if(this.auth.userLoggedin()){
+      if(id===this.blog.getUserId()){
+        this.router.navigate(['./user/profile']);
+      }else{
+        this.router.navigate(['./user/account',id]);
+      }
+    }else{
+      this.openModalWithComponent('signup');
+    }
+  }
+
 
 }
 
