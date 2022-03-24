@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthService } from 'src/app/services/auth.service';
+import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 import { SignupComponent } from '../signup/signup.component';
 
 @Component({
@@ -48,8 +49,6 @@ export class LoginComponent implements OnInit {
       this.bsModalRef?.hide();
       this.auth.loginUser(this.loginForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
-        localStorage.setItem('userId',res.data.userdata.id);
-        localStorage.setItem('userName',res.data.userdata.fullName);
         localStorage.setItem('userRoleName',res.data.userdata.userType.userRoleName);
         if(res.data.userdata.userType){
           let role = res.data.userdata.userType.userRoleName
@@ -70,6 +69,10 @@ export class LoginComponent implements OnInit {
   }
   openSignup() {
     this.bsModalRef = this.modalService.show(SignupComponent)
+  }
+  
+  resetPassword() {
+    this.bsModalRef = this.modalService.show(ResetPasswordComponent)
   }
 
 }

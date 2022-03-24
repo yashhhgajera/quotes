@@ -55,8 +55,6 @@ export class SignupComponent implements OnInit {
       this.bsModalRef?.hide();
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
-        localStorage.setItem('userId',res.data.findUser._id);
-        localStorage.setItem('userName',res.data.findUser.fullName);
         localStorage.setItem('userRoleName',res.data.findUser.userType.userRoleName);
         if(res.data.findUser.userType){
           let role = res.data.findUser.userType.userRoleName

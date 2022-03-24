@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private registerAPI = "http://localhost:4040/api/users/signup";
   private loginAPI = "http://localhost:4040/api/auth/login";
   private userRoleAPI = "http://localhost:4040/api/userRole";
-  private userAPI = "http://localhost:4040/api/users/auth";
+  private userAPI = "http://localhost:4040/api/users/";
+  
 
   constructor(private http:HttpClient) { }
 
@@ -17,10 +17,10 @@ export class AuthService {
     return this.http.get(this.userRoleAPI);
   }
   getUser(){
-    return this.http.get(this.userAPI);
+    return this.http.get(`${this.userAPI}auth`);
   }
   createUser(data:any){
-    return this.http.post<any>(this.registerAPI,data);
+    return this.http.post<any>(`${this.userAPI}signup`,data);
   }
   loginUser(data:any){
     return this.http.post<any>(this.loginAPI,data);
@@ -33,5 +33,11 @@ export class AuthService {
   }
   getToken(){
     return localStorage.getItem('token');
+  }
+  getOtp(email: any){
+    return this.http.post<any>(`${this.userAPI}sendOtp`,email);
+  }
+  resetPassword(data: any){
+    return this.http.post<any>(`${this.userAPI}forgatePassword`, data);
   }
 }
