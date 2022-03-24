@@ -12,17 +12,19 @@ export class UserBlogListComponent implements OnInit {
 
   date=new Date();
   blogList:any = [];
-  userName:any;
-  constructor(private blog:BlogService,private router:Router) { }
+  user:any='';
+  constructor(private blog:BlogService,private router:Router,private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.userName = this.blog.getuserName();
     this.showBlog();
   }
 
   showBlog(){
-    this.blog.getuserBlog(this.blog.getUserId()).subscribe(res=>{
-      this.blogList=res;
+    this.auth.getUser().subscribe((res:any)=>{
+      this.user = res.data
+      this.blog.getuserBlog(this.user._id).subscribe(res=>{
+        this.blogList=res;
+      })
     })
   }
 
@@ -31,7 +33,7 @@ export class UserBlogListComponent implements OnInit {
   }
 
   deleteBlog(id:any){
-    this.blog.deleteBlog(id).subscribe(res=>{
+    this.blog.deleteBlog(id).subscribe(()=>{
       this.showBlog();
     });
   }

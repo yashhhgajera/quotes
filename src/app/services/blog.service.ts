@@ -26,12 +26,6 @@ export class BlogService {
   getuserBlog(id:any){
     return this.http.get(this.blogAPI+`/${id}`);
   }
-  getUserId(){
-    return localStorage.getItem('userId');
-  }
-  getuserName(){
-    return localStorage.getItem('userName');
-  }
   putLike(blogId: any, userId:any){
     return this.http.put(this.blogAPI+`/${blogId}/like`, userId);
   }

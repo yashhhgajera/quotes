@@ -9,16 +9,16 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user:any;
+  user:any='';
   blogsCount:any;
   constructor(private blog:BlogService,private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.blog.getuserBlog(this.blog.getUserId()).subscribe((res:any)=>{
-      this.blogsCount = res.data.length;
-    })
     this.auth.getUser().subscribe((res:any)=>{
       this.user=res.data;
+      this.blog.getuserBlog(this.user._id).subscribe((res:any)=>{
+        this.blogsCount = res.data.length;
+      })
     })
   }
 

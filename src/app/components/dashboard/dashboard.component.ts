@@ -14,7 +14,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class DashboardComponent implements OnInit {
 
   blogList:any = [];
-  userName: any;
+  user: any;
   likeCount: number = 0;
   bsModalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
@@ -22,7 +22,9 @@ export class DashboardComponent implements OnInit {
   constructor(private modalService: BsModalService,private blog:BlogService,private router:Router,private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.userName = this.blog.getuserName();
+    this.auth.getUser().subscribe((res:any)=>{
+      this.user=res.data;
+    });
     this.showBlog();
   }
 
@@ -46,12 +48,15 @@ export class DashboardComponent implements OnInit {
 
   likeCounter(blogId: any){
     if(this.auth.userLoggedin()){
-      let id = {
-        userId: this.blog.getUserId()
-      }
-      this.blog.putLike(blogId, id).subscribe(res => {
-        this.showBlog();
-      }, err => console.log("Error"));
+      this.auth.getUser().subscribe((res:any)=>{
+        this.user=res.data;
+        let id = {
+          userId: this.user._id
+        }
+        this.blog.putLike(blogId, id).subscribe(res => {
+          this.showBlog();
+        }, err => console.log("Error"));
+      });
     }else{
       this.openModalWithComponent('signup');
     }
@@ -59,11 +64,14 @@ export class DashboardComponent implements OnInit {
 
   navigateUser(id:any){
     if(this.auth.userLoggedin()){
-      if(id===this.blog.getUserId()){
-        this.router.navigate(['./user/profile']);
-      }else{
-        this.router.navigate(['./user/account',id]);
-      }
+      this.auth.getUser().subscribe((res:any)=>{
+        this.user=res.data;
+        if(id===this.user._id){
+          this.router.navigate(['./user/profile']);
+        }else{
+          this.router.navigate(['./user/account',id]);
+        }
+      });
     }else{
       this.openModalWithComponent('signup');
     }

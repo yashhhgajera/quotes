@@ -13,6 +13,7 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class BlogComponent implements OnInit {
 
+  user:any='';
   blogId:any;
   blogData:any = '';
   bsModalRef?: BsModalRef;
@@ -40,11 +41,14 @@ export class BlogComponent implements OnInit {
 
   navigateUser(id:any){
     if(this.auth.userLoggedin()){
-      if(id===this.blog.getUserId()){
-        this.router.navigate(['./user/profile']);
-      }else{
-        this.router.navigate(['./user/account',id]);
-      }
+      this.auth.getUser().subscribe((res:any)=>{
+        this.user=res.data;
+        if(id===this.user._id){
+          this.router.navigate(['./user/profile']);
+        }else{
+          this.router.navigate(['./user/account',id]);
+        }
+      });
     }else{
       this.openModalWithComponent('signup');
     }

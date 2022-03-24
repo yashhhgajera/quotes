@@ -15,7 +15,7 @@
 					</svg>
 				</div>
 				<div class="font mx-3">
-					Draft in {{ userName | titlecase }}
+					Draft in {{ user.fullName | titlecase }}
 				</div>
 			</div>
 			<div>
@@ -34,15 +34,19 @@
 			</div>
 		</div>
 		<div class="row mt-5">
-			<div class="col-8">
+			<div class="col-8 mx-auto">
 				<input type="text"
 					formControlName="blogTitle"
 					class="form-control border-0 bgtitle"
 					placeholder="Title...">
+					<div *ngIf="blogData.get('blogTitle')?.invalid && !isValid"
+								class="text-danger small">
+					<div *ngIf="blogData.get('blogTitle')?.errors?.['required']">Title is required.</div>
+					</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-8">
+			<div class="col-8 mx-auto">
         <ejs-richtexteditor class="bgtext" id='inlineRTE' #inlineRTE [inlineMode]='inlineMode' [toolbarSettings]='toolbarSettings'
                 [format]='format' [fontFamily]='fontFamily' formControlName="blogDescription"
                 placeholder="Tell your story..."></ejs-richtexteditor>
@@ -54,6 +58,10 @@
 				formControlName="blogDescription"
 				placeholder="Tell your story..."></textarea> -->
 				<!-- <div id="textarea" placeholder="Type..." contenteditable>{{textdata}}</div> -->
+				<div *ngIf="blogData.get('blogTitle')?.invalid && !isValid"
+							class="text-danger small">
+				<div *ngIf="blogData.get('blogTitle')?.errors?.['required']">Description is required.</div>
+				</div>
 			</div>
 		</div>
 	</form>

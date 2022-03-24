@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { RichTextEditorComponent,FormatModel, FontFamilyModel } from '@syncfusion/ej2-angular-richtexteditor';
 import { BlogService } from 'src/app/services/blog.service';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -14,18 +15,24 @@ import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
 })
 export class CreateComponent implements OnInit {
 
+  user:any = '';
   blogData = this.fb.group({
-    "userId":[this.blog.getUserId()],
-    "blogTitle": [''],
-    "blogDescription": [''],
+    "userId":[''],
+    "blogTitle": ['',Validators.required],
+    "blogDescription": ['',Validators.required],
   });
+  isValid=true;
   blogId:any;
-  userName:any;
 
-  constructor(private fb: FormBuilder,private blog:BlogService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private fb: FormBuilder,private blog:BlogService,private route:ActivatedRoute,private router:Router,private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.userName=this.blog.getuserName();
+    this.auth.getUser().subscribe((res:any)=>{
+      this.user = res.data;
+      this.blogData.patchValue({
+        "userId": [this.user._id]
+      });
+    })
     this.route.paramMap.subscribe((params:ParamMap)=>{
       this.blogId = params.get('id');
     })
@@ -50,20 +57,30 @@ export class CreateComponent implements OnInit {
   }
 
   publish(){
-    this.blog.createBlog(this.blogData.value).subscribe(res=>{
-      this.resetBlog();
-    },err=>{
-      console.log(err)
-    })
+    if(this.blogData.valid){
+      this.isValid=true;
+      this.blog.createBlog(this.blogData.value).subscribe(res=>{
+        this.resetBlog();
+      },err=>{
+        console.log(err)
+      })
+    }else{
+      this.isValid=false;
+    }
   }
 
   update(){
-    this.blog.updateBlog(this.blogData.value,this.blogId).subscribe(res=>{
-      this.resetBlog();
-      this.router.navigate(['./user/list']);
-    },err=>{
-      console.log(err)
-    })
+    if(this.blogData.valid){
+      this.isValid=true;
+      this.blog.updateBlog(this.blogData.value,this.blogId).subscribe(res=>{
+        this.resetBlog();
+        this.router.navigate(['./user/list']);
+      },err=>{
+        console.log(err)
+      })
+    }else{
+      this.isValid=false;
+    }
   }
 
   @ViewChild('select')
