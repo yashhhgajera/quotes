@@ -12,9 +12,8 @@ import { SignupComponent } from 'src/app/auth/signup/signup.component';
 export class GuestHeaderComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
-  modalRef?: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router) { }
+  constructor(private modalService: BsModalService) { }
 
   openModalWithComponent(type: string) {
     type == 'login' ? this.bsModalRef = this.modalService.show(LoginComponent) : this.bsModalRef = this.modalService.show(SignupComponent)

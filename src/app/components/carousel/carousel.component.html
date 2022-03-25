@@ -1,15 +1,20 @@
-<carousel [interval]="myInterval" [(activeSlide)]="activeSlideIndex">
-  <slide *ngFor="let slide of slides; let index=index" style="max-height: calc(100vh - 80px);">
-    <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
- 
-    <!-- <div class="carousel-caption">
-      <h4>Slide {{index}}</h4>
-      <p>{{slide.text}}</p>
-    </div> -->
-  </slide>
-</carousel>
-<br/>
-<!-- <div>
-  <span>Interval, in milliseconds (Enter a negative number or 0 to stop the interval.): </span>
-  <input type="number" class="form-control" [(ngModel)]="myInterval">
-</div> -->
+<section>
+  <div class="bg-holder d-flex align-items-center"
+    style="background-image:url('../../../assets/illustration/6.png');background-size:cover;background-repeat:
+    no-repeat;">
+    <div class="container">
+      <div class="row align-items-center h-100 justify-content-center
+        justify-content-lg-start">
+        <div class="col-md-9 col-xxl-5 text-md-start text-center py-5">
+          <p class="display-1">Stay curious.</p>
+          <p class="display-6">Discover stories, thinking, and expertise from
+            writers on any topic.</p>
+          <div class="d-flex justify-content-center
+            justify-content-md-start mt-5"><a class="btn text-white btn-sm
+              me-1" (click)="openModalWithComponent('signup')" href="#!" role="button" style="background-color: #212240
+              !important;">Sign up</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

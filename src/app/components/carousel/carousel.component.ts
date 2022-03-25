@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LoginComponent } from 'src/app/auth/login/login.component';
+import { SignupComponent } from 'src/app/auth/signup/signup.component';
 
 @Component({
   selector: 'app-carousel',
@@ -7,17 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  constructor() { }
+  bsModalRef?: BsModalRef;
+
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
   }
 
-  myInterval = 3000;
-  activeSlideIndex = 0;
-  slides: {image: string; text?: string}[] = [
-    {image: '../../../assets/home1.jpg'},
-    {image: '../../../assets/home2.jpg'},
-    {image: '../../../assets/home3.jpg'}
-  ];
+  openModalWithComponent(type: string) {
+    type == 'login' ? this.bsModalRef = this.modalService.show(LoginComponent) : this.bsModalRef = this.modalService.show(SignupComponent)
+  }
 
 }
