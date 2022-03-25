@@ -36,25 +36,25 @@
     width: 100px;
     align-items: center;
 }
-textarea{
-    resize: auto;
-    overflow: hidden;
-    text-align: justify;
-}
-textarea::placeholder{
-    color:black;
-}
+// textarea{
+//     resize: auto;
+//     overflow: hidden;
+//     text-align: justify;
+// }
+// textarea::placeholder{
+//     color:black;
+// }
 
 // @media screen and (max-width: 600px) {
 //     .bgtitle, .bgtext {
 //         margin-left: 40px;
 //     }
 // }
-@media screen and (max-width: 987px) {
-    .bgtitle, .bgtext {
-        margin-left: 20px;
-    }
-}
+// @media(max-width: 576px) {
+//     .bgtitle, .bgtext {
+//         width: 100vw;
+//     }
+// }
 
 input, textarea{
     background: none;

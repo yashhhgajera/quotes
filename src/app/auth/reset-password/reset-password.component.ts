@@ -64,8 +64,8 @@ export class ResetPasswordComponent implements OnInit {
       this.auth.getOtp(req).subscribe((res:any)=>{
         console.log(res.data.user.otp);
         this.bsModalRef?.hide();
+        this.openModal(template);
       });
-      this.openModal(template);
     }
     else{
       this.isValid = false
