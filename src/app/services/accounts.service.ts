@@ -21,4 +21,10 @@ export class AccountsService {
   unfollow(accountId:any,userId:any){
     return this.http.put(`${this.accountsAPI+accountId}/unfollow`,userId);
   }
+  updateProfile(userId:any, data: any){
+    return this.http.put(`${this.accountsAPI + userId}`, data);
+  }
+  updateImage(userId:any, data: any){
+    return this.http.put(`${this.accountsAPI + "profileUpload/" + userId}`, data);
+  }
 }
