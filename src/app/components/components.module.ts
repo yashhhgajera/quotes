@@ -13,6 +13,7 @@ import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     ShareIconsModule,
     ShareButtonsPopupModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    CarouselModule.forRoot()
   ],
   exports: [
     FooterComponent,

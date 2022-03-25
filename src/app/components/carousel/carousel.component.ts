@@ -12,4 +12,12 @@ export class CarouselComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  myInterval = 3000;
+  activeSlideIndex = 0;
+  slides: {image: string; text?: string}[] = [
+    {image: '../../../assets/home1.jpg'},
+    {image: '../../../assets/home2.jpg'},
+    {image: '../../../assets/home3.jpg'}
+  ];
+
 }
