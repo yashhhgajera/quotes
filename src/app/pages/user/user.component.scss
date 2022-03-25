@@ -12,7 +12,10 @@
 .content{
     width: calc(100vw - 80px);
     overflow: auto;
-    height: auto;
+    min-height: 100vh;
+    background-image: url('../../../assets/illustration/3.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .main-container{
