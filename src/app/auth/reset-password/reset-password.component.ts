@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   modalRef?: BsModalRef | null;
   modalRef2?: BsModalRef;
   isValid: boolean = true;
+  showPassword: boolean = false;
   resetPassword = this.fb.group({
     email:['',
       [
@@ -35,6 +36,10 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private auth:AuthService, private modalService: BsModalService, public bsModalRef: BsModalRef, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  passwordVisibility(){
+    this.showPassword = !this.showPassword;
   }
 
   openModal(template: TemplateRef<any>) {

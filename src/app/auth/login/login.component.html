@@ -47,11 +47,16 @@
 				</div>
 			</div>
 			<div class="mb-3">
-				<input type="password"
+				<input [type]="showPassword ? 'text' : 'password'"
 					formControlName="password"
 					class="form-control"
 					placeholder="Password"
+					id="password-field"
 					required>
+					<span toggle="#password-field" class="material-icons" (click)="passwordVisibility()">
+						{{ showPassword? 'visibility' : 'visibility_off' }}
+					</span>
+						
 				<div *ngIf="loginForm.get('password')?.invalid && !isValid"
 					class="text-danger small">
 					<div *ngIf="loginForm.get('password')?.errors?.['required']">

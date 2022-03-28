@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   });
 
   isValid = true;
+  showPassword: boolean = false;
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -38,9 +39,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm.setValue({
-      'email':'yash@gmail.com',
+      'email':'nikunj@gmail.com',
       'password':'P@$$w0rd'
     })
+  }
+  passwordVisibility(){
+    this.showPassword = !this.showPassword;
   }
 
   login() {

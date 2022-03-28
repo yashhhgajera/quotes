@@ -30,6 +30,8 @@ export class SignupComponent implements OnInit {
     userType:['']
   });;
   isValid=true;
+  showPassword: boolean = false;
+
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -47,6 +49,9 @@ export class SignupComponent implements OnInit {
         userType:userRole[0]._id
       }) 
     })
+  }
+  passwordVisibility(){
+    this.showPassword = !this.showPassword;
   }
 
   signup() {
