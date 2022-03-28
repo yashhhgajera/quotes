@@ -24,7 +24,7 @@ export class AccountsService {
   updateProfile(userId:any, data: any){
     return this.http.put(`${this.accountsAPI + userId}`, data);
   }
-  updateImage(userId:any, data: any){
+  updateImage(userId:any, data: FormData){
     return this.http.put(`${this.accountsAPI + "profileUpload/" + userId}`, data);
   }
 }

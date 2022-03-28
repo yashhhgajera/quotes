@@ -12,7 +12,7 @@ import { BlogService } from 'src/app/services/blog.service';
 export class AccountsComponent implements OnInit {
 
   accountData: any = {followers:[],followings:[]};
-  user: any;
+  user: any = {};
   blogsCount: any;
 
   constructor(private account: AccountsService, private route: ActivatedRoute, private blog: BlogService, private auth: AuthService) { }
@@ -37,6 +37,10 @@ export class AccountsComponent implements OnInit {
     this.blog.getuserBlog(accId).subscribe((res: any) => {
       this.blogsCount = res.data.length;
     })
+  }
+
+  isFollowed() {
+    return !!this.accountData && this.accountData.followers.indexOf(this.user._id) > -1;
   }
 
   follow(accountId: any) {
