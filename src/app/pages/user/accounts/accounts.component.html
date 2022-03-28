@@ -1,15 +1,15 @@
 <div class="container mt-5 d-flex justify-content-center">
     <div class="card p-3">
-        <div *ngFor="let user of userAccount" class="d-flex align-items-center">
+        <div class="d-flex align-items-center">
             <div class="image me-3"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155"> </div>
             <div class="w-100">
-                <h4 class="mb-0 mt-0">{{user.fullName | titlecase}}</h4> <span class="small">{{user.email}}</span>
+                <h4 class="mb-0 mt-0">{{accountData.fullName | titlecase}}</h4> <span class="small">{{accountData.email}}</span>
                 <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                     <div class="d-flex flex-column"> <span class="articles">Blogs</span> <span class="number1">{{blogsCount}}</span> </div>
-                    <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">{{user.followers.length}}</span> </div>
-                    <div class="d-flex flex-column"> <span class="rating">Following</span> <span class="number3">{{user.followings.length}}</span> </div>
+                    <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">{{!accountData.followers.length ? '0' : accountData.followers.length}}</span> </div>
+                    <div class="d-flex flex-column"> <span class="rating">Following</span> <span class="number3">{{!accountData.followings.length ? '0' : accountData.followings.length}}</span> </div>
                 </div>
-                <div class="button mt-2 d-flex flex-row align-items-center"> <button (click)="follow(user._id)" class="btn btn-sm btn-primary me-2 w-100">Follow</button> <button (click)="unfollow(user._id)" class="btn btn-sm btn-secondary w-100">Unfollow</button> </div>
+                <div class="button mt-2 d-flex flex-row align-items-center"> <button (click)="follow(accountData._id)" class="btn btn-sm btn-primary me-2 w-100">Follow</button> <button (click)="unfollow(accountData._id)" class="btn btn-sm btn-secondary w-100">Unfollow</button> </div>
             </div>
         </div>
     </div>

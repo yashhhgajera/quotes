@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   config = {
     animated: true
   };
-  user:any='';
+  user:any={followers:[],followings:[]};
   blogsCount:any;
 
   profileData = this.fb.group({

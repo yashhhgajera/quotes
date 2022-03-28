@@ -72,7 +72,11 @@ export class CreateComponent implements OnInit {
   update(){
     if(this.blogData.valid){
       this.isValid=true;
-      this.blog.updateBlog(this.blogData.value,this.blogId).subscribe(res=>{
+      let updatedData = {
+        "blogTitle":String(this.blogData.value.blogTitle),
+        "blogDescription":String(this.blogData.value.blogDescription)
+      }
+      this.blog.updateBlog(updatedData,this.blogId).subscribe(res=>{
         this.resetBlog();
         this.router.navigate(['./user/list']);
       },err=>{

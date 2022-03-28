@@ -10,58 +10,53 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./accounts.component.scss']
 })
 export class AccountsComponent implements OnInit {
-  
-  userAccount:any;
-  user:any='';
-  blogsCount:any=0;
-  
-  constructor(private account:AccountsService,private route:ActivatedRoute,private blog:BlogService,private auth:AuthService) { }
+
+  accountData: any = {followers:[],followings:[]};
+  user: any;
+  blogsCount: any;
+
+  constructor(private account: AccountsService, private route: ActivatedRoute, private blog: BlogService, private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.auth.getUser().subscribe((res: any) => {
+      this.user = res.data;
+    });
     this.showAccount();
   }
 
-  showAccount(){
-    this.auth.getUser().subscribe((res:any)=>{
-      this.user=res.data;
-      this.route.paramMap.subscribe((params:ParamMap)=>{
-        this.user._id = params.get('id');
-      })
-      this.account.getAccounts().subscribe((res:any)=>{
-        this.userAccount = res.data.filter((u:any)=>{
-          return u._id==this.user._id
-        });
+  showAccount() {
+    let accId: any;
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      accId = params.get('id');
+    })
+    this.account.getAccounts().subscribe((res: any) => {
+      this.accountData = res.data.find((u: any) => {
+        return u._id == accId
       });
-      this.blog.getuserBlog(this.user._id).subscribe((res:any)=>{
-        this.blogsCount = res.data.length;
-      })
+    });
+    this.blog.getuserBlog(accId).subscribe((res: any) => {
+      this.blogsCount = res.data.length;
     })
   }
 
-  follow(accountId: any){
-    this.auth.getUser().subscribe((res:any)=>{
-      this.user=res.data;
-      let id = {
-        userId: this.user._id
-      } 
-      this.account.follow(accountId,id).subscribe((res:any)=>{
-        this.showAccount();
-      },err=>{
-        console.log(err)
-      })
-    });
+  follow(accountId: any) {
+    let id = {
+      userId: this.user._id
+    }
+    this.account.follow(accountId, id).subscribe((res: any) => {
+      this.showAccount();
+    }, err => {
+      console.log(err)
+    })
   }
-  unfollow(accountId: any){
-    this.auth.getUser().subscribe((res:any)=>{
-      this.user=res.data;
-      let id = {
-        userId: this.user._id
-      } 
-      this.account.unfollow(accountId,id).subscribe((res:any)=>{
-        this.showAccount();
-      },err=>{
-        console.log(err)
-      })
-    });
+  unfollow(accountId: any) {
+    let id = {
+      userId: this.user._id
+    }
+    this.account.unfollow(accountId, id).subscribe((res: any) => {
+      this.showAccount();
+    }, err => {
+      console.log(err)
+    })
   }
 }

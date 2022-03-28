@@ -1,6 +1,6 @@
 <div class="container py-5">
     <div class="d-flex justify-content-center row">
-        <div *ngFor="let blog of blogList.data" class="col-md-8">
+        <div *ngFor="let blog of blogList" class="col-md-8">
             <div class="blog-card d-flex overflow-hidden p-4
 			 flex-column comment-section my-2"
              style="background-color: #f5f5ff !important;">
@@ -19,16 +19,18 @@
                             <strong class="fs-4">{{blog.blogTitle}}</strong>
                         </div>
                         <div class="mt-2 mx-4 fs-6 blogdes overflow-hidden"
-                            [innerHtml]="truncate(blog.blogDescription,240)">
+                            [innerHtml]="blog.blogDescription">
                         </div>
                     </a>
                 </div>
                 <div>
                     <div class="d-flex flex-row fs-12">
                         <div class="">
-                            <button (click)="likeCounter(blog._id)" class="btn"> <img
-                                    src="../../../assets/icon_like.svg" alt="like"> </button>
-                            <span class="mr-2">{{blog.likes.length}}</span>
+                            <button (click)="likeCounter(blog._id)" class="btn">
+                                <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blog._id)" alt="like">
+                                <img src="../../../assets/icon_liked.svg" *ngIf="isLiked(blog._id)" alt="unlike">
+                            </button>
+                            <span class="mr-2">{{!blog.likes.length ? '0' : blog.likes.length}}</span>
                         </div>
                         <div class="mx-3">
 

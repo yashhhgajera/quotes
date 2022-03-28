@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // this.loginForm.setValue({
-    //   'email':['yashgajera6202@gmail.com'],
-    //   'password':['P@$$w0rd']
-    // })
+    this.loginForm.setValue({
+      'email':'yash@gmail.com',
+      'password':'P@$$w0rd'
+    })
   }
 
   login() {

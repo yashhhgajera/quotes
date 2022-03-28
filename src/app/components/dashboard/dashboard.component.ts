@@ -13,31 +13,31 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class DashboardComponent implements OnInit {
 
-  blogList:any = [];
+  blogList: any = [];
   user: any;
   likeCount: number = 0;
   bsModalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
 
-  constructor(private modalService: BsModalService,private blog:BlogService,private router:Router,private auth:AuthService) { }
+  constructor(private modalService: BsModalService, private blog: BlogService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.getUser().subscribe((res:any)=>{
-      this.user=res.data;
+    this.auth.getUser().subscribe((res: any) => {
+      this.user = res.data;
     });
     this.showBlog();
   }
 
-  showBlog(){
-    this.blog.getallBlog().subscribe((res:any)=>{
-      this.blogList=res;
+  showBlog() {
+    this.blog.getallBlog().subscribe((res: any) => {
+      this.blogList = res.data;
     })
   }
 
-  navigateBlog(id:any){
-      this.router.navigate(['./blog',id]);
+  navigateBlog(id: any) {
+    this.router.navigate(['./blog', id]);
   }
-  
+
   truncate(source: any, size: any) {
     return source.length > size ? source.slice(0, size - 1) + "…" : source;
   }
@@ -46,37 +46,39 @@ export class DashboardComponent implements OnInit {
     type == 'login' ? this.bsModalRef = this.modalService.show(LoginComponent) : this.bsModalRef = this.modalService.show(SignupComponent)
   }
 
-  likeCounter(blogId: any){
-    if(this.auth.userLoggedin()){
-      this.auth.getUser().subscribe((res:any)=>{
-        this.user=res.data;
-        let id = {
-          userId: this.user._id
-        }
-        this.blog.putLike(blogId, id).subscribe(res => {
-          this.showBlog();
-        }, err => console.log("Error"));
-      });
-    }else{
+  isLiked(blogId: any) {
+    let blogData = this.blogList && this.blogList.find((blog: any) => blog._id == blogId);
+    return !!blogData && blogData.likes.indexOf(this.user._id) > -1;
+  }
+
+  likeCounter(blogId: any) {
+    if (this.auth.userLoggedin()) {
+      let id = {
+        userId: this.user._id
+      }
+      this.blog.putLike(blogId, id).subscribe(res => {
+        this.showBlog();
+        // let blogIndex = this.blogList.indexOf(this.blogList.find((i:any) => {
+        //   return i._id === blogId
+        // }));
+        // this.blogList[blogIndex].likes.push(id);
+      }, err => console.log("Error",err));
+    } else {
       this.openModalWithComponent('signup');
     }
   }
 
-  navigateUser(id:any){
-    if(this.auth.userLoggedin()){
-      this.auth.getUser().subscribe((res:any)=>{
-        this.user=res.data;
-        if(id===this.user._id){
-          this.router.navigate(['./user/profile']);
-        }else{
-          this.router.navigate(['./user/account',id]);
-        }
-      });
-    }else{
+  navigateUser(id: any) {
+    if (this.auth.userLoggedin()) {
+      if (id === this.user._id) {
+        this.router.navigate(['./user/profile']);
+      } else {
+        this.router.navigate(['./user/account', id]);
+      }
+    } else {
       this.openModalWithComponent('signup');
     }
   }
-
-
+  
 }
 

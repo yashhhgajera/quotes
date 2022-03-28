@@ -9,6 +9,7 @@ export class AuthService {
   private loginAPI = "http://localhost:4040/api/auth/login";
   private userRoleAPI = "http://localhost:4040/api/userRole";
   private userAPI = "http://localhost:4040/api/users/";
+
   
 
   constructor(private http:HttpClient) { }
