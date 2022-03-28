@@ -6,6 +6,7 @@
              style="background-color: #f5f5ff !important;">
                 <div class="p-2">
                     <div class="d-flex flex-row user-info align-items-center">
+                        <!-- <img *ngIf="" src="http://localhost:4040/{{user.profilePicUrl}}" alt="Profile Pic"> -->
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <div class="d-flex flex-column justify-content-start mx-3">
                             <a (click)="navigateUser(blog.userId._id)"><span class="d-block font-weight-bold name">{{blog.userId.fullName | titlecase}}</span></a>
@@ -30,7 +31,7 @@
                                 <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blog._id)" alt="like">
                                 <img src="../../../assets/icon_liked.svg" *ngIf="isLiked(blog._id)" alt="unlike">
                             </button>
-                            <span class="mr-2">{{!blog.likes.length ? '0' : blog.likes.length}}</span>
+                            <span class="mr-2">{{blog.likes.length}}</span>
                         </div>
                         <div class="mx-3">
 
