@@ -1,193 +1,59 @@
 <table class="table table-responsive-sm table-hover table-outline mb-0">
     <thead class="thead-light">
-        <tr>
-            <th class="text-center"><i class="icon-people"></i></th>
-            <th>User</th>
-            <th class="text-center">Country</th>
-            <th>Usage</th>
-            <th class="text-center">Payment Method</th>
-            <th>Activity</th>
+   
+    <tr style="background-color: #e4e7ea; border-color: #c8ced3;" >
+            <th class="text-center text-secondary"><span class="material-icons">people</span></th>
+            <th class="text-secondary">User</th>
+            <th class="text-secondary">Email</th>
+            <th class="text-secondary">Role</th>
+            <th class="text-secondary">Activity</th>
+            <th class="text-center text-secondary">Operation</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let user of userData">
         <tr>
             <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/1.jpg" alt="admin@bootstrapmaster.com"
+                <div class="avatar"><img src="http://localhost:4040/{{user.profilePicUrl}}" alt="UserProfileImage"
                         class="img-avatar"><span class="avatar-status badge-success"></span></div>
             </td>
             <td>
-                <div>Yiorgos
-                    Avraamu</div>
+                <div><strong>{{ user.fullName }}</strong></div>
                 <div class="small text-muted"><span>New</span>
-                    | Registered: Jan 1, 2015 </div>
+                    | Registered: {{ user.createdAt | date }} </div>
             </td>
-            <td class="text-center"><i title="us" id="us" class="flag-icon
-                    flag-icon-us h4 mb-0"></i></td>
+            <!-- <td class="text-center"><i title="us" id="us" class="flag-icon
+                    flag-icon-us h4 mb-0"></i></td> -->
             <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>50%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
+                    <div class="float-left">{{ user.email }}</div>
+                    <!-- <div class="float-right"><small class="text-muted">Jun 11,
+                            2015 - Jul 10, 2015</small></div> -->
+                <!-- <div class="progress progress-xs">
                     <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
                         class="progress-bar bg-success" style="width: 50%;"></div>
-                </div>
+                </div> -->
             </td>
-            <td class="text-center"><i class="fa fa-cc-mastercard" style="font-size: 24px;"></i></td>
+            <!-- <td class="text-center">{{ user.password }}</td> --> 
+            <td class="">{{ user.userType === "62270ac97eda873c78dba509"? 'User' : 'Admin' }}</td>
             <td>
-                <div class="small
-                    text-muted">Last login</div><strong>10 sec ago</strong>
+                <div class="small text-muted">Last login</div>{{ user.updatedAt }}
             </td>
+            <td class="text-center"><i class="fa fa-trash trashicon" (click)="openModal(logout)"></i></td>
         </tr>
-        <tr>
-            <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/2.jpg" alt="admin@bootstrapmaster.com"
-                        class="img-avatar"><span class="avatar-status badge-danger"></span></div>
-            </td>
-            <td>
-                <div>Avram
-                    Tarasios</div>
-                <div class="small text-muted"><span>Recurring</span>
-                    | Registered: Jan 1, 2015 </div>
-            </td>
-            <td class="text-center"><i title="br" id="br" class="flag-icon
-                    flag-icon-br h4 mb-0"></i></td>
-            <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>10%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
-                    <div role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
-                        class="progress-bar bg-info" style="width: 10%;"></div>
-                </div>
-            </td>
-            <td class="text-center"><i class="fa fa-cc-visa" style="font-size:
-                    24px;"></i></td>
-            <td>
-                <div class="small text-muted">Last login</div><strong>5
-                    minutes ago</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/3.jpg" alt="admin@bootstrapmaster.com"
-                        class="img-avatar"><span class="avatar-status badge-warning"></span></div>
-            </td>
-            <td>
-                <div>Quintin
-                    Ed</div>
-                <div class="small text-muted"><span>New</span> |
-                    Registered: Jan 1, 2015 </div>
-            </td>
-            <td class="text-center"><i title="in" id="in" class="flag-icon flag-icon-in h4 mb-0"></i></td>
-            <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>74%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
-                    <div role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"
-                        class="progress-bar bg-warning" style="width: 74%;"></div>
-                </div>
-            </td>
-            <td class="text-center"><i class="fa fa-cc-stripe" style="font-size:
-                    24px;"></i></td>
-            <td>
-                <div class="small text-muted">Last login</div><strong>1
-                    hour ago</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/4.jpg" alt="admin@bootstrapmaster.com"
-                        class="img-avatar"><span class="avatar-status badge-secondary"></span></div>
-            </td>
-            <td>
-                <div>Enéas
-                    Kwadwo</div>
-                <div class="small text-muted"><span>New</span> |
-                    Registered: Jan 1, 2015 </div>
-            </td>
-            <td class="text-center"><i title="fr" id="fr" class="flag-icon flag-icon-fr h4 mb-0"></i></td>
-            <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>98%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
-                    <div role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"
-                        class="progress-bar bg-danger" style="width: 98%;"></div>
-                </div>
-            </td>
-            <td class="text-center"><i class="fa fa-paypal" style="font-size:
-                    24px;"></i></td>
-            <td>
-                <div class="small text-muted">Last login</div><strong>Last
-                    month</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/5.jpg" alt="admin@bootstrapmaster.com"
-                        class="img-avatar"><span class="avatar-status badge-success"></span></div>
-            </td>
-            <td>
-                <div>Agapetus
-                    Tadeáš</div>
-                <div class="small text-muted"><span>New</span> |
-                    Registered: Jan 1, 2015 </div>
-            </td>
-            <td class="text-center"><i title="es" id="es" class="flag-icon flag-icon-es h4 mb-0"></i></td>
-            <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>22%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
-                    <div role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100"
-                        class="progress-bar bg-info" style="width: 22%;"></div>
-                </div>
-            </td>
-            <td class="text-center"><i class="fa fa-google-wallet" style="font-size: 24px;"></i></td>
-            <td>
-                <div class="small
-                    text-muted">Last login</div><strong>Last week</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">
-                <div class="avatar"><img src="assets/img/avatars/6.jpg" alt="admin@bootstrapmaster.com"
-                        class="img-avatar"><span class="avatar-status badge-danger"></span></div>
-            </td>
-            <td>
-                <div>Friderik
-                    Dávid</div>
-                <div class="small text-muted"><span>New</span> |
-                    Registered: Jan 1, 2015 </div>
-            </td>
-            <td class="text-center"><i title="pl" id="pl" class="flag-icon flag-icon-pl h4 mb-0"></i></td>
-            <td>
-                <div class="clearfix">
-                    <div class="float-left"><strong>43%</strong></div>
-                    <div class="float-right"><small class="text-muted">Jun 11,
-                            2015 - Jul 10, 2015</small></div>
-                </div>
-                <div class="progress progress-xs">
-                    <div role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"
-                        class="progress-bar bg-success" style="width: 43%;"></div>
-                </div>
-            </td>
-            <td class="text-center"><i class="fa fa-cc-amex" style="font-size:
-                    24px;"></i></td>
-            <td>
-                <div class="small text-muted">Last login</div><strong>Yesterday</strong>
-            </td>
-        </tr>
+        <ng-template #logout>
+            <div class="modal-body text-center">
+                <p class="mt-1">Are you sure?</p>
+                <button (click)="removeUSer(user._id)"
+                    type="button"
+                    class="btn btn-default">
+                    Yes
+                </button>
+                <button (click)="decline()"
+                    type="button"
+                    class="btn bg-black text-white">
+                    No
+                </button>
+            </div>
+        </ng-template>
     </tbody>
 </table>
+

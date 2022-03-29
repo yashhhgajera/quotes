@@ -13,6 +13,9 @@ export class AccountsService {
   getAccounts(){
     return this.http.get(this.accountsAPI);
   }
+  deleteUser(userId:any){
+    return this.http.delete(`${this.accountsAPI+userId}`)
+  }
 
   follow(accountId:any,userId:any){
     return this.http.put(`${this.accountsAPI+accountId}/follow`,userId);
