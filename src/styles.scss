@@ -76,8 +76,9 @@ $sb-text-size: 0.8em;
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
-body{
-    background-color: #fff;
+
+*{
+  font-family: 'Cabin', sans-serif;
 }
 
 .btn {

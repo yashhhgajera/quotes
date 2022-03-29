@@ -11,9 +11,10 @@
 }
 .content{
     width: calc(100vw - 80px);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x:hidden;
     min-height: 100vh;
-    background-image: url('../../../assets/illustration/3.png');
+    // background-image: url('../../../assets/illustration/3.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
