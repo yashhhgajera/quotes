@@ -32,14 +32,22 @@
     margin-top: 2px
 }
 
+
 .profile {
+    cursor: pointer;
     position: absolute;
     top: -50px;
     left: 38%;
     height: 90px;
     width: 90px;
     border: 3px solid #fff;
-    border-radius: 50%
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:hover{
+        background-image: url(../../../../assets/icon_edit.svg) !important;
+        background-color: #f5f2fc;
+    }  
 }
 
 .follow {
