@@ -50,22 +50,23 @@ export class ProfileComponent implements OnInit {
 
 
   editProfile(userId: any) {
-    console.log(userId);
-    this.account.updateProfile(userId, this.profileData.value).subscribe(res => {
-      this.showUserData();
+    this.account.updateProfile(userId, this.profileData.value).subscribe((res:any) => {
+      // this.user.fullName = this.profileData.value.fullName;
+      // this.user.email = this.profileData.value.email;
+      this.user = res.data;
       this.modalRef?.hide()
     })
   }
 
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
   }
 
   updateImage(userId: any) {
     const imageData = new FormData();
     imageData.append('image', this.selectedFile, this.selectedFile?.name)
     this.account.updateImage(userId, imageData).subscribe(res => {
+      // this.user.profilePicUrl = this.selectedFile?.name;
       this.showUserData();
       console.log("Image Updated successfully");
     })

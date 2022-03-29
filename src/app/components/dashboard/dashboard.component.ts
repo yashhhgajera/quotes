@@ -57,14 +57,20 @@ export class DashboardComponent implements OnInit {
         userId: this.user._id
       }
       this.blog.putLike(blogId, id).subscribe(res => {
-        this.showBlog();
-        // let blogIndex = this.blogList.indexOf(this.blogList.find((i:any) => {
-        //   return i._id === blogId
-        // }));
-        // this.blogList[blogIndex].likes.push(id);
+        this.toggleLike(blogId, id.userId);
       }, err => console.log("Error",err));
     } else {
       this.openModalWithComponent('signup');
+    }
+  }
+
+  toggleLike(blogId: string, userId: string) {
+    let blogIndex = this.blogList.findIndex((i:any) => i._id === blogId);
+    if (this.blogList[blogIndex].likes.indexOf(userId) > -1) {
+      let userIndex = this.blogList[blogIndex].likes.findIndex((i:any) => i === userId);
+      this.blogList[blogIndex].likes.splice(userIndex, 1);
+    } else {
+      this.blogList[blogIndex].likes.push(userId);
     }
   }
 

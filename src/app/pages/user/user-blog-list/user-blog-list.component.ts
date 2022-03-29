@@ -34,9 +34,11 @@ export class UserBlogListComponent implements OnInit {
 
   deleteBlog(id:any){
     this.blog.deleteBlog(id).subscribe(()=>{
-      this.showBlog();
+      let blogIndex = this.blogList.data.findIndex((i:any) => i._id === id);
+      this.blogList.data.splice(blogIndex, 1);
     });
   }
+
   editBlog(id:any){
     this.router.navigate(['./user/edit',id]);
   }

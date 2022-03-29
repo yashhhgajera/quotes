@@ -35,6 +35,18 @@
 		</div>
 		<div class="row mt-5">
 			<div class="col-md-10 mx-auto">
+				<label for="coverimg" class="btn btn-primary mb-2" [class.btn-success]="selectedFile">Add cover image</label>
+				<input type="file" (change)="onFileSelected($event)"
+					formControlName="image"
+					class="form-control" [class.d-none]="!selectedFile" id="coverimg">
+					<div *ngIf="blogData.get('image')?.invalid && !isValid"
+								class="text-danger small">
+					<div *ngIf="blogData.get('image')?.errors?.['required']">Cover is required.</div>
+					</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 mx-auto">
 				<input type="text"
 					formControlName="blogTitle"
 					class="form-control border-0 bgtitle"
