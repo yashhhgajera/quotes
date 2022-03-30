@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +15,7 @@ export class UserBlogComponent implements OnInit {
   blogList: any = [];
   user: any;
   likeCount: number = 0;
-  bsModalRef?: BsModalRef;
+  modalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
 
   constructor(private modalService: BsModalService, private blog: BlogService, private router: Router, private auth: AuthService) { }
@@ -48,5 +48,24 @@ export class UserBlogComponent implements OnInit {
   //     this.openModalWithComponent('signup');
   //   }
   // }
+  }
+  
+  deleteBlog(blogId: any){
+    this.modalRef?.hide();
+    this.blog.deleteBlog(blogId).subscribe(() => { 
+      let blogIndex = this.blogList.findIndex((i:any) => i._id === blogId);
+      this.blogList.splice(blogIndex, 1);
+    })
+  }
 
-}}
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  decline(): void {
+    this.modalRef?.hide();
+  }
+
+
+
+}

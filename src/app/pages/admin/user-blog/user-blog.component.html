@@ -1,17 +1,42 @@
-<div class="d-flex justify-content-center row">
-    <div *ngFor="let blog of blogList" class="p-0 half-post-entry d-block d-lg-flex mb-3 col-md-8">
-        <div class="contents">
-            <h2><a (click)="navigateBlog(blog._id)">{{blog.blogTitle}}</a></h2>
-            <p [innerHtml]="blog.blogDescription" class="mb-3"></p>
-            <div class="post-meta">
-                <span class="d-block"><a (click)="navigateUser(blog.userId._id)">{{blog.userId.fullName |
-                        titlecase}}</a></span>
-                <span class="date-read small">{{blog.createdAt | date}}</span>
-                
-            </div>
-        </div>
-        <div class="img-bg"
-            style="background-image:url(http://localhost:4040/{{blog.path}});background-size: cover;background-repeat: no-repeat;">
-        </div>
-    </div>
+<div class="container py-3">
+	<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">	
+		<div *ngFor="let blog of blogList"
+			class="col">
+			<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+				<div class="card-body overflow-hidden d-flex flex-column align-items-start">
+					<a (click)="navigateBlog(blog._id)">
+						<strong class="d-inline-block mb-2 fs-5">{{blog.blogTitle}}</strong>
+					</a>
+		            <div class="card-text mb-auto fs-6 text-dark" [innerHtml]="blog.blogDescription"></div>
+
+					<div class="mt-2 mb-0 d-flex align-items-center justify-content-between w-100">	
+						<div class="text-secondary">
+							{{ blog.userId.fullName | titlecase }}
+                            <p class="material-icons m-0 p-0 fs-6">fiber_manual_record</p>
+                            {{blog.createdAt | date}}
+                        </div>
+                        <div>
+                            <i class="fa fa-trash trashicon" (click)="openModal(logout)" ></i>
+                        </div>
+					</div>	
+				</div>
+			</div>
+
+            <ng-template #logout>
+                <div class="modal-body text-center">
+                    <p class="mt-1">Are you sure?</p>
+                    <button (click)="deleteBlog(blog._id)"
+                        type="button"
+                        class="btn btn-default">
+                        Yes
+                    </button>
+                    <button (click)="decline()"
+                        type="button"
+                        class="btn bg-black text-white">
+                        No
+                    </button>
+                </div>
+            </ng-template>
+		</div>
+	</div>
 </div>
