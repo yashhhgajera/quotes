@@ -74,7 +74,7 @@
 </div> -->
 
 <div class="d-flex justify-content-center row">
-    <div *ngFor="let blog of blogList" class="p-0 half-post-entry d-block d-lg-flex mb-3 col-md-8">
+    <div *ngFor="let blog of blogList" class="p-0 half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
         <div class="contents">
             <h2><a (click)="navigateBlog(blog._id)">{{blog.blogTitle}}</a></h2>
             <p [innerHtml]="blog.blogDescription" class="mb-3"></p>

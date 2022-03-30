@@ -1,25 +1,23 @@
-
-@media (orientation:portrait) and (max-width:576px) {
-    .content{
+@media (orientation: portrait) and (max-width: 576px) {
+    .content {
         width: 100vw !important;
-        height: calc(100vh - 80px);
+        min-height: calc(100vh - 80px);
     }
-    .main-container{
+    .main-container {
         display: flex;
         flex-direction: column;
     }
 }
-.content{
+.content {
     width: calc(100vw - 80px);
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
     min-height: 100vh;
-    // background-image: url('../../../assets/illustration/3.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.main-container{
+.main-container {
     width: 100vw !important;
     overflow: hidden;
     height: 100vh;

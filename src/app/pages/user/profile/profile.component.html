@@ -1,10 +1,9 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card h-auto">
         <div class="user text-center">
-            <a (click)="openModal(profilepic)" class="profile" style="background-image: url(http://localhost:4040/{{user.profilePicUrl}});">
+            <a (click)="openModal(profilepic)" class="profile" [style.background-image]="user.profilePicUrl ? 'url(http://localhost:4040/'+user.profilePicUrl+')' : 'url(assets/avatar.svg)'">
                 <div class="middle-profilepic d-none">
-                    <div class="text-profilepic"><i class="fas fa-camera"></i></div>
-                    <div class="text-profilepic">Change it</div>
+                    <div class="text-profilepic"><i class="fa fa-camera"></i></div>
                 </div>
             </a>
         </div>

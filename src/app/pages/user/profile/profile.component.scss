@@ -1,5 +1,5 @@
 .container {
-    height: 100vh
+    height: 100vh;
 }
 
 .card {
@@ -9,29 +9,28 @@
     padding: 8px;
     background-color: #fff;
     position: relative;
-    height: 370px
+    height: 370px;
 }
 
 .upper {
-    height: 100px
+    height: 100px;
 }
 
 .upper img {
     width: 100%;
     border-top-left-radius: 10px;
-    border-top-right-radius: 10px
+    border-top-right-radius: 10px;
 }
 
 .user {
-    position: relative
+    position: relative;
 }
 
 .profile img {
     height: 80px;
     width: 80px;
-    margin-top: 2px
+    margin-top: 2px;
 }
-
 
 .profile {
     cursor: pointer;
@@ -44,31 +43,33 @@
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    &:hover{
-        opacity: 0.3;
-        .middle-profilepic{
-            display: block !important; 
-            transition: .5s ease;
+    &:hover {
+        .middle-profilepic {
+            background-color: rgb(33, 34, 64,0.3);
+            border-radius: 50%;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s ease;
             opacity: 1;
             z-index: 2;
-            position: absolute;
-            text-align: center;
+            height: 100%;
         }
         .text-profilepic {
             color: #fff;
             font-size: 16px;
-          }
-        // background-image: url(../../../../assets/icon_edit.svg) !important;
-        // background-color: #f5f2fc;
-    }  
+        }
+
+    }
 }
 
 .follow {
     padding-left: 20px;
     padding-right: 20px;
-    height: 35px
+    height: 35px;
 }
 
 .stats span {
-    font-size: 29px
+    font-size: 29px;
 }

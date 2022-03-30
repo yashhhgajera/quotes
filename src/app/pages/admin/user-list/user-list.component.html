@@ -19,9 +19,8 @@
                 </div>
             </td>
             <td>
-                <div><strong>{{ user.fullName }}</strong></div>
-                <div class="small text-muted"><span>New</span>
-                    | Registered: {{ user.createdAt | date }} </div>
+                <div><strong>{{ user.fullName | titlecase}}</strong></div>
+                <div class="small text-muted">Registered: {{ user.createdAt | date }} </div>
             </td>
             <!-- <td class="text-center"><i title="us" id="us" class="flag-icon
                     flag-icon-us h4 mb-0"></i></td> -->
@@ -35,7 +34,7 @@
                 </div> -->
             </td>
             <!-- <td class="text-center">{{ user.password }}</td> --> 
-            <td class="">{{ user.userType === "62270ac97eda873c78dba509"? 'User' : 'Admin' }}</td>
+            <td class="">{{ user.userType === roles.admin._id ? 'Admin' : user.userType === roles.user._id ? 'User' : 'No role provided' }}</td>
             <td>
                 <div class="small text-muted">Last login</div>{{ user.updatedAt }}
             </td>

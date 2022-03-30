@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,8 +11,12 @@ import { AccountsService } from 'src/app/services/accounts.service';
 export class UserListComponent implements OnInit {
 
   userData: any;
+  roles:any ={
+    admin:'',
+    user:''
+  }
   modalRef?: BsModalRef;
-  constructor(private account: AccountsService, private modalService: BsModalService) { }
+  constructor(private account: AccountsService,private auth:AuthService,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.showUserList()
@@ -20,7 +25,12 @@ export class UserListComponent implements OnInit {
   showUserList(){
     this.account.getAccounts().subscribe((res: any) => {
       this.userData = res.data;
+      this.auth.getUserRole().subscribe((res:any)=>{
+        this.roles.admin = res.data.listRole.find((role:any)=>role.userRoleName==='admin');
+        this.roles.user = res.data.listRole.find((role:any)=>role.userRoleName==='user');
+      })
     });
+ 
   }
   removeUSer(userId: any){
     this.modalRef?.hide();
