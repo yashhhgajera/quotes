@@ -1,32 +1,55 @@
 <div class="blog">
-	<div class="d-flex container justify-content-start w-100 mt-3">
-		<button (click)="previousPage()"
-			class="btn btn-sm btn-warning my-4">
-			<strong>Go Back</strong>
-		</button>
+	<div class="row justify-content-center">
+		<div class="d-flex col-md-6 px-4 justify-content-start mt-3">
+			<button (click)="previousPage()" class="btn btn-sm btn-warning my-4">
+				<strong>Go Back</strong>
+			</button>
+		</div>
 	</div>
-	<div class="container d-flex flex-column justify-content-center">
-		<div *ngFor="let blog of blogData">
-			<h1>
-				<strong>{{blog.blogTitle}}</strong>
-			</h1>
-			<div [innerHtml]="blog.blogDescription"></div>
-			<p class="mt-2 mb-3">
-				<a (click)="navigateUser(blog.userId._id)"
-					style="cursor: pointer;">
-					<svg xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						fill="currentColor"
-						class="bi bi-person"
-						viewBox="0 0 16 16">
-						<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-					</svg>
-					<strong>
-						{{ blog.userId.fullName | titlecase }}
-					</strong>
-				</a>
-			</p>
+	<div class="row justify-content-center">
+		<div class="col-md-6 px-4">
+			<div class="d-flex flex-column justify-content-center">
+				<h1>
+					<strong>{{blogData.blogTitle}}</strong>
+				</h1>
+				<div class="d-flex justify-content-center mb-3">
+					<img src="http://localhost:4040/{{blogData.path}}" class="img-fluid" alt="">
+				</div>
+				<div [innerHtml]="blogData.blogDescription"></div>
+				<div class="d-flex flex-row my-2 options">
+                    <div class="me-3">
+                        <a (click)="likeCounter(blogData._id)" class="me-2">
+                            <img src="../../../assets/icon_like.svg" *ngIf="!isLiked()" width="20" alt="like">
+                            <img src="../../../assets/icon_liked.svg" *ngIf="isLiked()" width="20" alt="unlike">
+                        </a>
+                        <span>{{blogData.likes.length}}</span>
+                    </div>
+                    <div>
+                        <a [matMenuTriggerFor]="menu">
+                            <img src="../../../assets/icon_share.svg" width="20" alt="share">
+                        </a>
+                        <mat-menu #menu="matMenu" class="p-1">
+                            <share-buttons theme="custom-dark"
+                                [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']"
+                                [showIcon]="true" [show]="6">
+                            </share-buttons>
+                        </mat-menu>
+                    </div>
+                </div>
+				<p class="mt-2 mb-3">
+					<a (click)="navigateUser(blogData.userId._id)" style="cursor: pointer;">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-person" viewBox="0 0 16 16">
+							<path
+								d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
+							</path>
+						</svg>
+						<strong>
+							{{ blogData.userId.fullName | titlecase }}
+						</strong>
+					</a>
+				</p>
+			</div>
 		</div>
 	</div>
 </div>

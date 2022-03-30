@@ -15,17 +15,22 @@ export class BlogComponent implements OnInit {
 
   user:any='';
   blogId:any;
-  blogData:any = '';
+  blogData:any = { likes:[],userId:{fullName:'',_id:''}};
   bsModalRef?: BsModalRef;
 
   constructor(private route:ActivatedRoute, private blog:BlogService,private auth:AuthService,private router:Router,private modalService:BsModalService) { }
 
   ngOnInit(): void {
+    if (this.auth.userLoggedin()){
+      this.auth.getUser().subscribe((res: any) => {
+        this.user = res.data;
+      });
+    }
     this.route.paramMap.subscribe((params:ParamMap)=>{
       this.blogId = params.get('id');
     })
     this.blog.getallBlog().subscribe((res:any)=>{
-      this.blogData = res.data.filter((b:any)=>{
+      this.blogData = res.data.find((b:any)=>{
         return b._id==this.blogId
       });
     })
@@ -37,6 +42,32 @@ export class BlogComponent implements OnInit {
 
   openModalWithComponent(type: string) {
     type == 'login' ? this.bsModalRef = this.modalService.show(LoginComponent) : this.bsModalRef = this.modalService.show(SignupComponent)
+  }
+
+  likeCounter(blogId: any) {
+    if (this.auth.userLoggedin()) {
+      let id = {
+        userId: this.user._id
+      }
+      this.blog.putLike(blogId, id).subscribe(res => {
+        this.toggleLike(blogId, id.userId);
+      }, err => console.log("Error",err));
+    } else {
+      this.openModalWithComponent('signup');
+    }
+  }
+
+  toggleLike(blogId: string, userId: string) {
+    if (this.blogData.likes.indexOf(userId) > -1) {
+      let userIndex = this.blogData.likes.findIndex((i:any) => i === userId);
+      this.blogData.likes.splice(userIndex, 1);
+    } else {
+      this.blogData.likes.push(userId);
+    }
+  }
+
+  isLiked() {
+    return !!this.blogData && this.blogData.likes.indexOf(this.user._id) > -1;
   }
 
   navigateUser(id:any){

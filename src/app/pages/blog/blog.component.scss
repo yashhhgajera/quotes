@@ -1,6 +1,7 @@
 .blog{
-    background-image: url('../../../assets/illustration/3.png');
-    background-size: cover;
-    background-repeat: no-repeat;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+.options div a{
+    cursor: pointer;
 }
