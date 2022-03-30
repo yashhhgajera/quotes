@@ -1,0 +1,51 @@
+.half-post-entry {
+    background-color: #f5f2fc;
+  }
+  
+  .half-post-entry .img-bg {
+    width: 30%;
+  }
+  .half-post-entry .contents {
+    padding: 40px;
+    font-size: 0.9rem;
+    width: 70%;
+    height: auto;
+    max-height: 300px;
+  }
+  
+  .half-post-entry .contents h2 {
+    font-size: 26px;
+  }
+  
+  .post-meta {
+    font-size: 0.8rem;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .h1,
+  .h2,
+  .h3,
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  
+  .date-read {
+    color: #b4b4b4;
+  }
+  
+  p {
+    font-weight: 300;
+    line-height: 1.7;
+    color: gray;
+    overflow: hidden;
+    height: 70px;
+  }

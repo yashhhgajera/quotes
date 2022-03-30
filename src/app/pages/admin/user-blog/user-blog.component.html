@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center row">
+    <div *ngFor="let blog of blogList" class="p-0 half-post-entry d-block d-lg-flex mb-3 col-md-8">
+        <div class="contents">
+            <h2><a (click)="navigateBlog(blog._id)">{{blog.blogTitle}}</a></h2>
+            <p [innerHtml]="blog.blogDescription" class="mb-3"></p>
+            <div class="post-meta">
+                <span class="d-block"><a (click)="navigateUser(blog.userId._id)">{{blog.userId.fullName |
+                        titlecase}}</a></span>
+                <span class="date-read small">{{blog.createdAt | date}}</span>
+                
+            </div>
+        </div>
+        <div class="img-bg"
+            style="background-image:url(http://localhost:4040/{{blog.path}});background-size: cover;background-repeat: no-repeat;">
+        </div>
+    </div>
+</div>

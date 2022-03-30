@@ -33,11 +33,6 @@ export class UserListComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
-
-  confirm(): void {
-   
-  }
-
   decline(): void {
     this.modalRef?.hide();
   }

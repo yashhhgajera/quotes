@@ -1,8 +1,11 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card h-auto">
         <div class="user text-center">
-            <a (click)="openModal(profilepic)" class="profile"
-                style="background-image: url(http://localhost:4040/{{user.profilePicUrl}});">
+            <a (click)="openModal(profilepic)" class="profile" style="background-image: url(http://localhost:4040/{{user.profilePicUrl}});">
+                <div class="middle-profilepic d-none">
+                    <div class="text-profilepic"><i class="fas fa-camera"></i></div>
+                    <div class="text-profilepic">Change it</div>
+                </div>
             </a>
         </div>
         <div class="mt-5 text-center">
@@ -25,19 +28,22 @@
             </div>
         </div>
     </div>
+
     <ng-template #profilepic>
         <div class="modal-body p-md-5">
-            <form [formGroup]="imageData">
-                <label for="exampleInputPassword1" class="form-label">Change Profile Photo</label>
-                <div class="input-group">
-                    <input type="file" (change)="onFileSelected($event)" formControlName="image" class="form-control"
-                        id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
-                        (click)="updateImage(user._id)">Update</button>
-                </div>
-            </form>
+    <form [formGroup]="imageData">
+        <label for="exampleInputPassword1" class="form-label">Change Profile Photo</label>
+        <div class="input-group">
+            <input type="file" (change)="onFileSelected($event)" formControlName="image"
+                class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+                aria-label="Upload">
+            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
+                (click)="updateImage(user._id)">Update</button>
         </div>
-    </ng-template>
+    </form>
+</div>
+</ng-template>
+
     <ng-template #profiledetail>
         <div class="modal-body p-md-5">
             <p class="text-center fs-5 fw-bold mb-3">Edit Profile</p>
@@ -54,4 +60,9 @@
             </form>
         </div>
     </ng-template>
-</div>
+
+
+
+
+
+
