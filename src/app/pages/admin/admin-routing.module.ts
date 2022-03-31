@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { UserBlogComponent } from './user-blog/user-blog.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { UserBlogComponent } from './users/user-blog/user-blog.component';
 
 const routes: Routes = [
   {
@@ -11,11 +11,11 @@ const routes: Routes = [
     children:[
       {
         path:'users',
-        component:UserListComponent
+        loadChildren: ()=>import('./users/users.module').then(m=>m.UsersModule)
       },
       {
         path:'blogs',
-        component:UserBlogComponent
+        component:BlogsComponent
       },
       {
         path:'',

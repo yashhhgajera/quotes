@@ -5,11 +5,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
-  selector: 'app-user-blog',
-  templateUrl: './user-blog.component.html',
-  styleUrls: ['./user-blog.component.scss']
+  selector: 'app-blogs',
+  templateUrl: './blogs.component.html',
+  styleUrls: ['./blogs.component.scss']
 })
-export class UserBlogComponent implements OnInit {
+export class BlogsComponent implements OnInit {
 
 
   blogList: any = [];

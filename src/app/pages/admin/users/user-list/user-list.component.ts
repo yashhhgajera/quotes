@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,7 +17,11 @@ export class UserListComponent implements OnInit {
     user:''
   }
   modalRef?: BsModalRef;
-  constructor(private account: AccountsService,private auth:AuthService,private modalService: BsModalService) { }
+  constructor(
+    private account: AccountsService,
+    private auth:AuthService,
+    private modalService: BsModalService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.showUserList()
@@ -45,6 +50,9 @@ export class UserListComponent implements OnInit {
   }
   decline(): void {
     this.modalRef?.hide();
+  }
+  navigateUser(id:any){
+    this.router.navigate(['./admin/users',id]);
   }
 
 

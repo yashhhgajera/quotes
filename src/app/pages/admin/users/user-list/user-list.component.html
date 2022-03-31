@@ -2,12 +2,12 @@
     <thead class="thead-light">
    
     <tr style="background-color: #e4e7ea; border-color: #c8ced3;" >
-            <th class="text-center text-secondary"><span class="material-icons">people</span></th>
+            <th class="text-center text-secondary"><i class="fa fa-users"></i></th>
             <th class="text-secondary">User</th>
             <th class="text-secondary">Email</th>
             <th class="text-secondary">Role</th>
             <th class="text-secondary">Activity</th>
-            <th class="text-secondary"></th>
+            <th class="text-secondary">Action</th>
         </tr>
     </thead>
     <tbody *ngFor="let user of userData">
@@ -19,7 +19,7 @@
                 </div>
             </td>
             <td>
-                <div><strong>{{ user.fullName | titlecase}}</strong></div>
+                <div><a (click)="navigateUser(user._id)"><strong>{{ user.fullName | titlecase }}</strong></a></div>
                 <div class="small text-muted">Registered: {{ user.createdAt | date }} </div>
             </td>
             <!-- <td class="text-center"><i title="us" id="us" class="flag-icon
@@ -36,7 +36,7 @@
             <!-- <td class="text-center">{{ user.password }}</td> --> 
             <td class="">{{ user.userType === roles.admin._id ? 'Admin' : user.userType === roles.user._id ? 'User' : 'No role provided' }}</td>
             <td>
-                <div class="small text-muted">Last login</div>{{ user.updatedAt }}
+                <div class="small text-muted">Last updated</div>{{ user.updatedAt | date:'medium' }}
             </td>
             <td class="float-left"><i class="fa fa-trash trashicon" (click)="openModal(logout)"></i></td>
         </tr>
