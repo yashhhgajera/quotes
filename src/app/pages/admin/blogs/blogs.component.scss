@@ -89,11 +89,14 @@
     border: none;
     border-radius: 0.8rem;
     background-color: #f5f2fc;
-    box-shadow:  1px 1px 20px -10px rgb(0 0 0 / 18%);
+    box-shadow: 1px 1px 20px -10px rgb(0 0 0 / 18%);
     &:hover{
       transform: scale(1.01);
     }
-    }
+  }
+  // .card::before{
+  //   opacity: 0.8;
+  // }
   .card .card-text{
     height: 100px;
     overflow:hidden;

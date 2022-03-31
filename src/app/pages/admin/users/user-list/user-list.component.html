@@ -12,9 +12,9 @@
     </thead>
     <tbody *ngFor="let user of userData">
         <tr>
-            <td class="text-center">
-                <div class="avatar">
-                    <img [src]=" user.profilePicUrl ? 'http://localhost:4040/'+user.profilePicUrl : 'assets/avatar.svg' " alt="UserProfileImage" class="rounded-pill" height="50" width="50">
+            <td class="d-flex align-items-center justify-content-center">
+                <div class="avatar rounded-pill" [style.background-image]="user.profilePicUrl ? 'url(http://localhost:4040/'+user.profilePicUrl+')' : 'url(assets/avatar.svg)'">
+                    <!-- <img [src]=" user.profilePicUrl ? 'http://localhost:4040/'+user.profilePicUrl : 'assets/avatar.svg' " alt="UserProfileImage" class="rounded-pill profile" height="50" width="50"> -->
                 </div>
             </td>
             <td>
