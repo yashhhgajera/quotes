@@ -10,7 +10,7 @@
         <div class="mt-5 text-center">
             <h2 class="mb-0">{{user.fullName | titlecase}}</h2> <span
                 class="text-muted d-block mb-2">{{user.email}}</span>
-            <div class="d-flex justify-content-between align-items-center mt-4 px-4 mb-5">
+            <div class="d-flex justify-content-between align-items-center mt-4 px-4 mb-4">
                 <div class="stats">
                     <h5 class="mb-0">Followers</h5> <span>{{user.followers.length}}</span>
                 </div>
@@ -21,7 +21,7 @@
                     <h5 class="mb-0">Blogs</h5> <span>{{blogsCount}}</span>
                 </div>
             </div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column px-md-4 mb-4">
                 <button class="btn text-white follow mb-2" style="background-color: #212240 !important;"
                     (click)="openModal(profiledetail)">Edit Profile</button>
             </div>

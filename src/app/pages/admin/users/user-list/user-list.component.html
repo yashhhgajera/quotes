@@ -14,16 +14,14 @@
         <tr>
             <td class="text-center">
                 <div class="avatar">
-                    <img *ngIf="user.profilePicUrl" src="http://localhost:4040/{{user.profilePicUrl}}" alt="UserProfileImage" class="rounded-pill img-fluid" width="50">
-                    <img *ngIf="!user.profilePicUrl" src="../../../../assets/avatar.svg" alt="UserProfileImage" class="rounded-pill img-fluid" width="50">
+                    <img [src]=" user.profilePicUrl ? 'http://localhost:4040/'+user.profilePicUrl : 'assets/avatar.svg' " alt="UserProfileImage" class="rounded-pill" height="50" width="50">
                 </div>
             </td>
             <td>
                 <div><a (click)="navigateUser(user._id)"><strong>{{ user.fullName | titlecase }}</strong></a></div>
                 <div class="small text-muted">Registered: {{ user.createdAt | date }} </div>
             </td>
-            <!-- <td class="text-center"><i title="us" id="us" class="flag-icon
-                    flag-icon-us h4 mb-0"></i></td> -->
+            
             <td>
                     <div class="float-left">{{ user.email }}</div>
                     <!-- <div class="float-right"><small class="text-muted">Jun 11,
