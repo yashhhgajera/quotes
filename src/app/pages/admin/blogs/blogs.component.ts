@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -18,7 +19,12 @@ export class BlogsComponent implements OnInit {
   modalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
 
-  constructor(private modalService: BsModalService, private blog: BlogService, private router: Router, private auth: AuthService) { }
+  constructor(
+    private modalService: BsModalService, 
+    private blog: BlogService, 
+    private router: Router, 
+    private auth: AuthService,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.auth.getUser().subscribe((res: any) => {
@@ -52,9 +58,12 @@ export class BlogsComponent implements OnInit {
   
   deleteBlog(blogId: any){
     this.modalRef?.hide();
-    this.blog.deleteBlog(blogId).subscribe(() => { 
+    this.blog.deleteBlog(blogId).subscribe((res:any) => { 
       let blogIndex = this.blogList.findIndex((i:any) => i._id === blogId);
       this.blogList.splice(blogIndex, 1);
+      this.alert.success(res.message)
+    },err=>{
+      this.alert.error(err.statusText);
     })
   }
 

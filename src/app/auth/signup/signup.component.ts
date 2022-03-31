@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginComponent } from '../login/login.component';
 
@@ -38,7 +39,8 @@ export class SignupComponent implements OnInit {
     public modalService:BsModalService, 
     private router:Router,
     private fb:FormBuilder,
-    private auth:AuthService) { }
+    private auth:AuthService,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.auth.getUserRole().subscribe((res:any)=>{
@@ -57,7 +59,6 @@ export class SignupComponent implements OnInit {
   signup() {
     if(this.signupForm.valid){
       this.isValid=true;
-      this.bsModalRef?.hide();
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
         localStorage.setItem('userRoleName',res.data.findUser.userType.userRoleName);
@@ -69,9 +70,11 @@ export class SignupComponent implements OnInit {
           else if(role==='user'){
             this.router.navigate(['user']);
           }
+          this.alert.success(res.message);
+          this.bsModalRef?.hide();
         }
       },err=>{
-        console.log(err);
+        this.alert.error(err.statusText);
       })
     }
     else{

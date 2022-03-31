@@ -6,6 +6,7 @@ import { BlogService } from 'src/app/services/blog.service';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { CheckBoxComponent } from '@syncfusion/ej2-angular-buttons';
 import { AuthService } from 'src/app/services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
 
 
 @Component({
@@ -26,7 +27,13 @@ export class CreateComponent implements OnInit {
   selectedFile: File | any;
   blogId: any;
 
-  constructor(private fb: FormBuilder, private blog: BlogService, private route: ActivatedRoute, private router: Router, private auth: AuthService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private blog: BlogService, 
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private auth: AuthService,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.auth.getUser().subscribe((res: any) => {
@@ -57,7 +64,6 @@ export class CreateComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile)
   }
 
   publish() {
@@ -68,11 +74,12 @@ export class CreateComponent implements OnInit {
       bData.set('blogTitle', String(this.blogData.value.blogTitle));
       bData.set('blogDescription', String(this.blogData.value.blogDescription));
       bData.set('userId', String(this.blogData.value.userId));
-      this.blog.createBlog(bData).subscribe(res => {
+      this.blog.createBlog(bData).subscribe((res:any) => {
         this.resetBlog();
         this.router.navigate(['./user/list']);
-      }, err => {
-        console.log(err)
+        this.alert.success(res.message);
+      },err=>{
+        this.alert.error(err.statusText);
       })
     } else {
       this.isValid = false;
@@ -86,11 +93,12 @@ export class CreateComponent implements OnInit {
       updatedData.append('image', this.selectedFile, this.selectedFile?.name),
       updatedData.set('blogTitle', String(this.blogData.value.blogTitle));
       updatedData.set('blogDescription', String(this.blogData.value.blogDescription));
-      this.blog.updateBlog(updatedData, this.blogId).subscribe(res => {
+      this.blog.updateBlog(updatedData, this.blogId).subscribe((res:any) => {
         this.resetBlog();
         this.router.navigate(['./user/list']);
-      }, err => {
-        console.log(err)
+        this.alert.success(res.message)
+      },err=>{
+        this.alert.error(err.statusText);
       })
     } else {
       this.isValid = false;

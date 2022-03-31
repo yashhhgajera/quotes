@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -26,7 +27,8 @@ export class UserBlogComponent implements OnInit {
     private router: Router, 
     private auth: AuthService, 
     private account : AccountsService,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.showBlog();
@@ -69,9 +71,12 @@ export class UserBlogComponent implements OnInit {
   
   deleteBlog(blogId: any){
     this.modalRef?.hide();
-    this.blog.deleteBlog(blogId).subscribe(() => { 
+    this.blog.deleteBlog(blogId).subscribe((res:any) => { 
       let blogIndex = this.blogList.findIndex((i:any) => i._id === blogId);
       this.blogList.splice(blogIndex, 1);
+      this.alert.success(res.message)
+    },err=>{
+      this.alert.error(err.statusText);
     })
   }
 
@@ -82,7 +87,4 @@ export class UserBlogComponent implements OnInit {
   decline(): void {
     this.modalRef?.hide();
   }
-
-
-
 }

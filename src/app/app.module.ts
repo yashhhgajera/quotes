@@ -13,7 +13,7 @@ import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
-
+import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
       debug: true,
     }),
     ShareIconsModule,
-    ShareButtonsPopupModule
+    ShareButtonsPopupModule,
+    NgToastModule
     
   ],
   providers: [AuthService, AuthGuard,

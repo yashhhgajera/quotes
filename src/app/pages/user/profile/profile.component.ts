@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -29,7 +30,13 @@ export class ProfileComponent implements OnInit {
     image: ['']
   });
 
-  constructor(private fb: FormBuilder, private account: AccountsService, private blog: BlogService, private auth: AuthService, private modalService: BsModalService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private account: AccountsService, 
+    private blog: BlogService, 
+    private auth: AuthService, 
+    private modalService: BsModalService,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.showUserData();
@@ -54,7 +61,10 @@ export class ProfileComponent implements OnInit {
       // this.user.fullName = this.profileData.value.fullName;
       // this.user.email = this.profileData.value.email;
       this.user = res.data;
-      this.modalRef?.hide()
+      this.alert.success(res.message);
+      this.modalRef?.hide();
+    },err=>{
+      this.alert.error(err.statusText);
     })
   }
 
@@ -65,11 +75,13 @@ export class ProfileComponent implements OnInit {
   updateImage(userId: any) {
     const imageData = new FormData();
     imageData.append('image', this.selectedFile, this.selectedFile?.name)
-    this.account.updateImage(userId, imageData).subscribe(res => {
+    this.account.updateImage(userId, imageData).subscribe((res:any) => {
       // this.user.profilePicUrl = this.selectedFile?.name;
       this.showUserData();
+      this.alert.success(res.message);
       this.modalRef?.hide();
-      console.log("Image Updated successfully");
+    },err=>{
+      this.alert.error(err.statusText);
     })
   }
 }

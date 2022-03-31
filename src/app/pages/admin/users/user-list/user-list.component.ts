@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class UserListComponent implements OnInit {
     private account: AccountsService,
     private auth:AuthService,
     private modalService: BsModalService,
-    private router:Router) { }
+    private router:Router,
+    public alert:AlertService) { }
 
   ngOnInit(): void {
     this.showUserList()
@@ -39,9 +41,12 @@ export class UserListComponent implements OnInit {
   }
   removeUSer(userId: any){
     this.modalRef?.hide();
-    this.account.deleteUser(userId).subscribe(() => { 
+    this.account.deleteUser(userId).subscribe((res:any) => { 
       let userIndex = this.userData.findIndex((i:any) => i._id === userId);
       this.userData.splice(userIndex, 1);
+      this.alert.success(res.message)
+    },err=>{
+      this.alert.error(err.statusText);
     })
   }
 

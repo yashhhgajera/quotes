@@ -30,9 +30,4 @@ export class UserHeaderComponent implements OnInit {
     this.modalRef?.hide();
   }
 
-  navigateMenu(url:string){
-    this.router.navigate(['user/',url])
-  }
-
-
 }

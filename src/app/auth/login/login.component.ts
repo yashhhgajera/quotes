@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 import { SignupComponent } from '../signup/signup.component';
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
     public modalService: BsModalService,
     private router: Router,
     private fb : FormBuilder,
-    private auth:AuthService
+    private auth:AuthService,
+    public alert:AlertService
     ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class LoginComponent implements OnInit {
   login() {
     if(this.loginForm.valid){
       this.isValid=true;
-      this.bsModalRef?.hide();
       this.auth.loginUser(this.loginForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
         localStorage.setItem('userRoleName',res.data.userdata.userType.userRoleName);
@@ -63,8 +64,10 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['user']);
           }
         }
+        this.alert.success(res.message);
+        this.bsModalRef?.hide();
       },err=>{
-        console.log(err);
+        this.alert.error(err.statusText);
       })
     }
     else{

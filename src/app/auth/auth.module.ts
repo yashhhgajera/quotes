@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AlertService } from '../services/alert.service';
 
 
 
@@ -19,6 +20,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,AlertService],
 })
 export class AuthModule { }
