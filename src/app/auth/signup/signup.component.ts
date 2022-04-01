@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
     password:['',
       [
         Validators.required,
-        Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')
       ]],
     userType:['']
   });;

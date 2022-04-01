@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { BlogsComponent } from './blogs/blogs.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     CommonModule,
     AdminRoutingModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    ComponentsModule
   ]
 })
 export class AdminModule { }

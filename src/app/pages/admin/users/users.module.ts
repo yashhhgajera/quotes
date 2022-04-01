@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserBlogComponent } from './user-blog/user-blog.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UserBlogComponent } from './user-blog/user-blog.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    ComponentsModule
   ]
 })
 export class UsersModule { }

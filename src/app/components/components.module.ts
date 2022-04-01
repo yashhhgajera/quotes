@@ -14,6 +14,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     GuestHeaderComponent,
     DashboardComponent,
     CarouselComponent,
+    BlogListComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     UserHeaderComponent,
     GuestHeaderComponent,
     DashboardComponent,
-    CarouselComponent
+    CarouselComponent,
+    BlogListComponent
   ]
 })
 export class ComponentsModule { }
