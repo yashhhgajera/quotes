@@ -1,107 +1,14 @@
-<!--<div class="container py-5">
-    <div class="d-flex justify-content-center row">
-        <div *ngFor="let blog of blogList" class="col-md-8">
-            <div class="blog-card d-flex overflow-hidden p-4
-			 flex-column comment-section my-2" style="background-color: #f5f5ff !important;">
-                <div class="p-2">
-                    <div class="d-flex flex-row user-info align-items-center">
-                        <img *ngIf="" src="http://localhost:4040/{{user.profilePicUrl}}" alt="Profile Pic">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <div class="d-flex flex-column justify-content-start mx-3">
-                            <a (click)="navigateUser(blog.userId._id)"><span
-                                    class="d-block font-weight-bold name">{{blog.userId.fullName |
-                                    titlecase}}</span></a>
-                            <span class="date text-black-50">
-                                {{blog.createdAt | date}}
-                            </span>
-                        </div>
-                    </div>
-                    <a (click)="navigateBlog(blog._id)">
-                        <div class="mt-4 mx-4">
-                            <strong class="fs-4">{{blog.blogTitle}}</strong>
-                        </div>
-                        <div class="mt-2 mx-4 fs-6 blogdes overflow-hidden" [innerHtml]="blog.blogDescription">
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <div class="d-flex flex-row fs-12">
-                        <div class="">
-                            <button (click)="likeCounter(blog._id)" class="btn">
-                                <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blog._id)" alt="like">
-                                <img src="../../../assets/icon_liked.svg" *ngIf="isLiked(blog._id)" alt="unlike">
-                            </button>
-                            <span class="mr-2">{{blog.likes.length}}</span>
-                        </div>
-                        <div class="mx-3">
-
-                            <button [matMenuTriggerFor]="menu" class="btn">
-                                <img src="../../../assets/icon_share.svg" alt="share">
-                            </button>
-                            <mat-menu #menu="matMenu" class="p-1">
-                                <share-buttons theme="custom-dark"
-                                    [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']"
-                                    [showIcon]="true" [show]="6" [url]="blogURL+blog._id">
-                                </share-buttons>
-                            </mat-menu>
-
-
-                            blogURL+blog._id <button class="btn"><img src="../../../assets/icon_share.svg" alt="share"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<!-- <div class="d-flex justify-content-center row">
-    <mat-card *ngFor="let blog of blogList" class="col-md-8 my-2">
-        <div class="d-flex w-100 justify-content-between">
-            <div class="h-100 w-70">
-                <mat-card-title>{{blog.blogTitle}}</mat-card-title>
-                <mat-card-subtitle>{{blog.createdAt | date}}</mat-card-subtitle>
-                <mat-card-content [innerHtml]="blog.blogDescription">
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button>LIKE</button><span class="mr-2">{{blog.likes.length}}</span>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-            </div>
-            <img src="http://localhost:4040/{{blog.path}}" alt="" srcset="" width="300">
-        </div>
-    </mat-card>
-</div> -->
-
 <div class="d-flex justify-content-center row">
     <div *ngFor="let blog of blogList" class="p-0 half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
         <div class="contents">
             <h2><a (click)="navigateBlog(blog._id)">{{blog.blogTitle}}</a></h2>
-            <p [innerHtml]="blog.blogDescription" class="mb-3"></p>
+            <p [innerHtml]="blog.blogDescription" class="mb-3 fade"></p>
             <div class="post-meta">
                 <span class="d-block"><a (click)="navigateUser(blog.userId._id)">{{blog.userId.fullName |
                         titlecase}}</a></span>
                 <span class="date-read small">{{blog.createdAt | date}}</span>
-                <div class="d-flex flex-row mt-2">
-                    <div class="me-3">
-                        <a (click)="likeCounter(blog._id)" class="me-2">
-                            <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blog._id)" width="20" alt="like">
-                            <img src="../../../assets/icon_liked.svg" *ngIf="isLiked(blog._id)" width="20" alt="unlike">
-                        </a>
-                        <span>{{blog.likes.length}}</span>
-                    </div>
-                    <div>
-                        <a [matMenuTriggerFor]="menu">
-                            <img src="../../../assets/icon_share.svg" width="20" alt="share">
-                        </a>
-                        <mat-menu #menu="matMenu" class="p-1">
-                            <share-buttons theme="custom-dark"
-                                [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']"
-                                [showIcon]="true" [show]="6" [url]="blogURL+blog._id">
-                            </share-buttons>
-                        </mat-menu>
-                    </div>
-                </div>
+                <app-like-share-button [blogId]="blog._id" [blogList]="blogList" [likeLen]="blog.likes.length"
+                    [user]="user"></app-like-share-button>
             </div>
         </div>
         <div class="img-bg"

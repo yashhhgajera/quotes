@@ -88,6 +88,7 @@
     position: unset !important;
     border: none;
     border-radius: 0.8rem;
+    height: 184px;
     background-color: #f5f2fc;
     box-shadow: 1px 1px 20px -10px rgb(0 0 0 / 18%);
     &:hover{
@@ -98,8 +99,16 @@
   //   opacity: 0.8;
   // }
   .card .card-text{
-    height: 100px;
     overflow:hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .line-clamp{
+    overflow:hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   a{
       cursor: pointer;

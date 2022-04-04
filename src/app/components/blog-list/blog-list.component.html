@@ -1,11 +1,11 @@
 <div class="container py-3">
-    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4">
         <div *ngFor="let blog of blogList" class="col">
             <div class="card flex-md-row mb-4 shadow-sm h-md-250"
                 [style]=" blog.path ? 'background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(245, 242, 252,1) 100%), url(http://localhost:4040/'+blog.path+'); background-size: cover;' : ''">
                 <div class="card-body overflow-hidden d-flex flex-column align-items-start">
                     <a (click)="navigateBlog(blog._id)">
-                        <strong class="d-inline-block mb-2 fs-5">{{blog.blogTitle}}</strong>
+                        <strong class="d-inline-block mb-2 fs-5 line-clamp">{{blog.blogTitle}}</strong>
                     </a>
                     <div class="card-text mb-auto fs-6" [innerHtml]="blog.blogDescription"></div>
 
@@ -17,7 +17,7 @@
                         </div>
                         <div>
                             <i *ngIf="admin" class="fa fa-trash trashicon" (click)="openModal(delete)"></i>
-                            <button *ngIf="!admin" [matMenuTriggerFor]="menu" class="btn p-0 m-0">
+                            <button *ngIf="usermode" [matMenuTriggerFor]="menu" class="btn p-0 m-0">
                                 <img src="../../../../assets/icon_more_horiz_black.svg" alt="more">
                             </button>
                         </div>

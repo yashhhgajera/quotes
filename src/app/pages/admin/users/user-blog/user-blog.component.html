@@ -1,1 +1,7 @@
+<div class="container">
+    <app-back-button></app-back-button>
+    <h2>
+        {{accountData.fullName | titlecase}}'s blogs 
+    </h2>
+</div>
 <app-blog-list [blogList]="blogList" [admin]="true"></app-blog-list>

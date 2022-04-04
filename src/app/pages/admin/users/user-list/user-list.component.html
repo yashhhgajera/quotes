@@ -18,7 +18,7 @@
                 </div>
             </td>
             <td>
-                <div><a (click)="navigateUser(user._id)"><strong>{{ user.fullName | titlecase }}</strong></a></div>
+                <div><a style="cursor: pointer;" (click)="navigateUser(user._id)"><strong>{{ user.fullName | titlecase }}</strong></a></div>
                 <div class="small text-muted">Registered: {{ user.createdAt | date }} </div>
             </td>
             

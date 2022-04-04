@@ -1,16 +1,21 @@
-<div class="container mt-5 d-flex justify-content-center">
+<div class="container">
+    <app-back-button></app-back-button>
+</div>
+<div class="d-flex justify-content-center">
     <div class="card p-3">
         <div class="d-flex align-items-center">
-            <div class="image me-3"> <img
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                    class="rounded" width="155"> </div>
-            <div class="w-100">
-                <h4 class="mb-0 mt-0">{{accountData.fullName | titlecase}}</h4> <span
-                    class="small">{{accountData.email}}</span>
+            <div class="image rounded me-3" [style.background-image]="accountData.profilePicUrl ? 'url(http://localhost:4040/'+accountData.profilePicUrl+')' : 'url(assets/avatar.svg)'">
+                <!-- <img
+                    [src]="accountData.profilePicUrl ? 'http://localhost:4040/'+accountData.profilePicUrl : 'assets/avatar.svg'"
+                    class="rounded" width="155" height="155"> -->
+            </div>
+            <div class="d-flex flex-column">
+                <h4 class="mb-0 mt-0">{{accountData.fullName | titlecase}}</h4>
+                <span class="small">{{accountData.email}}</span>
                 <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                    <div class="d-flex flex-column"> <span class="articles">Blogs</span> <span
-                            class="number1">{{blogsCount}}</span> </div>
-                    <div class="d-flex flex-column"> <span class="followers">Followers</span> <span
+                    <div class="d-flex flex-column me-4"> <span class="articles">Blogs</span> <span
+                            class="number1">{{blogList.length}}</span> </div>
+                    <div class="d-flex flex-column me-4"> <span class="followers">Followers</span> <span
                             class="number2">{{!accountData.followers.length ? '0' :
                             accountData.followers.length}}</span> </div>
                     <div class="d-flex flex-column"> <span class="rating">Following</span> <span
@@ -18,7 +23,7 @@
                             accountData.followings.length}}</span> </div>
                 </div>
                 
-                <div class="button mt-2 d-flex flex-row align-items-center">
+                <div class="button mt-2 w-100">
                     <button *ngIf="!isFollowed()" (click)="follow(accountData._id)"
                         class="btn btn-sm btn-primary me-2 w-100">
                         Follow
@@ -31,3 +36,4 @@
         </div>
     </div>
 </div>
+<app-blog-list [blogList]="blogList" [admin]="false" [usermode]="false"></app-blog-list>

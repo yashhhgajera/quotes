@@ -4,6 +4,7 @@
   <div class="main-container">
     <app-user-header></app-user-header>
     <div class="content">
+      <button *ngIf="admin" routerLink="/admin" class="btn btn-secondary m-2" style="position:absolute;">Admin Mode</button>
       <router-outlet></router-outlet>
     </div>
   </div>

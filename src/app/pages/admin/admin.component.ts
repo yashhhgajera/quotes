@@ -7,17 +7,17 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   template: `
   <nav class="bg-light border-bottom w-100 p-2 d-flex justify-content-between">
     <div>
-      <button class="btn me-2" routerLink="users" routerLinkActive="btn-dark">Users</button>
-      <button class="btn" routerLink="blogs" routerLinkActive="btn-dark">Blogs</button>
+      <button class="btn btn-secondary me-3" routerLink="/user">User Mode</button>
+      <button class="btn btn-sm me-2" routerLink="users" routerLinkActive="btn-dark">Users</button>
+      <button class="btn btn-sm" routerLink="blogs" routerLinkActive="btn-dark">Blogs</button>
     </div>
-    <div class="text-center">
-      <h1 class="p-0 m-0">
-        Administration Panel
-      </h1>
-    </div>
+    <h1 class="p-0 m-0 text-center">
+      Administration Panel
+    </h1>
     <div>
       <button class="btn btn-danger" (click)="openModal(logout)" title="Logout">
-        <img src="../../../assets/icon_logout.svg" alt="logout">
+        Log out
+        <!-- <img src="../../../assets/icon_logout.svg" alt="logout"> -->
       </button>
     </div>
   </nav>

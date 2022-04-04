@@ -15,6 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { LikeShareButtonComponent } from './like-share-button/like-share-button.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     GuestHeaderComponent,
     DashboardComponent,
     CarouselComponent,
-    BlogListComponent
+    BlogListComponent,
+    LikeShareButtonComponent,
+    BackButtonComponent
   ],
   imports: [
     CommonModule,
@@ -40,11 +44,13 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     CarouselModule.forRoot()
   ],
   exports: [
+    BackButtonComponent,
     FooterComponent,
     UserHeaderComponent,
     GuestHeaderComponent,
     DashboardComponent,
     CarouselComponent,
+    LikeShareButtonComponent,
     BlogListComponent
   ]
 })

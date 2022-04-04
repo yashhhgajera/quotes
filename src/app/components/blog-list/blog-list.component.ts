@@ -18,6 +18,7 @@ export class BlogListComponent implements OnInit {
   likeCount: number = 0;
   modalRef?: BsModalRef;
   @Input() admin = false;
+  @Input() usermode = true;
 
   constructor(
     private modalService: BsModalService, 

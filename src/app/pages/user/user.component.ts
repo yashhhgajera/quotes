@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  admin = false;
+
+  constructor(
+    private auth:AuthService
+  ) { }
 
   ngOnInit(): void {
+    if(this.auth.adminLoggedin()){
+      this.admin = true    
+    }else{
+      this.admin = false
+    }
   }
 
 }

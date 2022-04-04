@@ -13,7 +13,7 @@ export class AccountsComponent implements OnInit {
 
   accountData: any = {followers:[],followings:[]};
   user: any = {};
-  blogsCount: any;
+  blogList: any;
 
   constructor(private account: AccountsService, private route: ActivatedRoute, private blog: BlogService, private auth: AuthService) { }
 
@@ -35,7 +35,7 @@ export class AccountsComponent implements OnInit {
       });
     });
     this.blog.getuserBlog(accId).subscribe((res: any) => {
-      this.blogsCount = res.data.length;
+      this.blogList = res.data;
     })
   }
 
