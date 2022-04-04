@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from 'src/app/auth/login/login.component';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
@@ -13,7 +13,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class DashboardComponent implements OnInit {
 
-  blogList: any = [];
+  @Input() blogList: any = [];
   user: any;
   bsModalRef?: BsModalRef;
 
@@ -27,13 +27,6 @@ export class DashboardComponent implements OnInit {
     this.auth.getUser().subscribe((res: any) => {
       this.user = res.data;
     });
-    this.showBlog();
-  }
-
-  showBlog() {
-    this.blog.getallBlog().subscribe((res: any) => {
-      this.blogList = res.data;
-    })
   }
 
   navigateBlog(id: any) {

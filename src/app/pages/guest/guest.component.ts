@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-guest',
@@ -8,12 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class GuestComponent implements OnInit {
 
-  
-  constructor(private auth:AuthService) { }
+  blogList: any;
+
+  constructor(
+    private blog: BlogService) { }
 
   ngOnInit(): void {
+    this.showBlog();
 
-    
+  }
+
+  showBlog() {
+    this.blog.getallBlog().subscribe((res: any) => {
+      this.blogList = res.data;
+    })
   }
 
 }
