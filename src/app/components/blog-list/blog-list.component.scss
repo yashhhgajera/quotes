@@ -94,25 +94,26 @@
     &:hover{
       transform: scale(1.01);
     }
-  }
+}
   // .card::before{
   //   opacity: 0.8;
   // }
-  .card .card-text{
-    overflow:hidden;
+  .card-text{
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-  }
-  .line-clamp{
     overflow:hidden;
+    -webkit-box-orient: vertical;
+}
+  .line-clamp{
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    overflow:hidden;
+    line-height: 1.03;
     -webkit-box-orient: vertical;
-  }
+}
   a{
       cursor: pointer;
-  }
+}
 
   .trashicon{
     font-size: 16px;
