@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { AlertService } from 'src/app/services/alert.service';
@@ -22,13 +22,14 @@ export class ProfileComponent implements OnInit {
   blogsCount: any;
 
   profileData = this.fb.group({
-    fullName: [''],
-    email: ['']
+    fullName: ['',[Validators.required]],
+    email: ['',[Validators.email,Validators.required]]
   });
 
   imageData = this.fb.group({
-    image: ['']
+    image: ['',[Validators.required]]
   });
+  isValid = true;
 
   constructor(
     private fb: FormBuilder, 
@@ -48,6 +49,10 @@ export class ProfileComponent implements OnInit {
       this.blog.getuserBlog(this.user._id).subscribe((res:any)=>{
         this.blogsCount = res.data.length;
       })
+      this.profileData.setValue({
+        fullName: this.user.fullName,
+        email: this.user.email
+      })
     })
   }
 
@@ -57,15 +62,18 @@ export class ProfileComponent implements OnInit {
 
 
   editProfile(userId: any) {
-    this.account.updateProfile(userId, this.profileData.value).subscribe((res:any) => {
-      // this.user.fullName = this.profileData.value.fullName;
-      // this.user.email = this.profileData.value.email;
-      this.user = res.data;
-      this.alert.success(res.message);
-      this.modalRef?.hide();
-    },err=>{
-      this.alert.error(err.statusText);
-    })
+    if(this.profileData.valid){
+      this.isValid=true;
+      this.account.updateProfile(userId, this.profileData.value).subscribe((res:any) => {
+        this.user = res.data;
+        this.alert.success(res.message);
+        this.modalRef?.hide();
+      },err=>{
+        this.alert.error(err.statusText);
+      })
+    }else{
+      this.isValid=false;
+    }
   }
 
   onFileSelected(event: any) {
@@ -73,15 +81,20 @@ export class ProfileComponent implements OnInit {
   }
 
   updateImage(userId: any) {
-    const imageData = new FormData();
-    imageData.append('image', this.selectedFile, this.selectedFile?.name)
-    this.account.updateImage(userId, imageData).subscribe((res:any) => {
-      // this.user.profilePicUrl = this.selectedFile?.name;
-      this.showUserData();
-      this.alert.success(res.message);
-      this.modalRef?.hide();
-    },err=>{
-      this.alert.error(err.statusText);
-    })
+    if(this.imageData.valid){
+      this.isValid=true;
+      const imageData = new FormData();
+      imageData.append('image', this.selectedFile, this.selectedFile?.name)
+      this.account.updateImage(userId, imageData).subscribe((res:any) => {
+        // this.user.profilePicUrl = this.selectedFile?.name;
+        this.showUserData();
+        this.alert.success(res.message);
+        this.modalRef?.hide();
+      },err=>{
+        this.alert.error(err.statusText);
+      })
+    }else{
+      this.isValid=false;
+    }
   }
 }

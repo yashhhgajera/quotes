@@ -1,7 +1,8 @@
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card h-auto">
         <div class="user text-center">
-            <a (click)="openModal(profilepic)" class="profile" [style.background-image]="user.profilePicUrl ? 'url(http://localhost:4040/'+user.profilePicUrl+')' : 'url(assets/avatar.svg)'">
+            <a (click)="openModal(profilepic)" class="profile"
+                [style.background-image]="user.profilePicUrl ? 'url(http://localhost:4040/'+user.profilePicUrl+')' : 'url(assets/avatar.svg)'">
                 <div class="middle-profilepic d-none">
                     <div class="text-profilepic"><i class="fa fa-camera"></i></div>
                 </div>
@@ -30,18 +31,20 @@
 
     <ng-template #profilepic>
         <div class="modal-body p-md-5">
-    <form [formGroup]="imageData">
-        <label for="exampleInputPassword1" class="form-label">Change Profile Photo</label>
-        <div class="input-group">
-            <input type="file" (change)="onFileSelected($event)" formControlName="image"
-                class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
-                aria-label="Upload">
-            <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
-                (click)="updateImage(user._id)">Update</button>
+            <form [formGroup]="imageData">
+                <label for="exampleInputPassword1" class="form-label">Change Profile Photo</label>
+                <div class="input-group">
+                    <input type="file" (change)="onFileSelected($event)" formControlName="image" class="form-control"
+                        id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"
+                        (click)="updateImage(user._id)">Update</button>
+                </div>
+                <div *ngIf="imageData.get('image')?.invalid && !isValid" class="text-danger small">
+                    <div *ngIf="imageData.get('image')?.errors?.['required']">Image file is required.</div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-</ng-template>
+    </ng-template>
 
     <ng-template #profiledetail>
         <div class="modal-body p-md-5">
@@ -50,18 +53,19 @@
                 <div class="mb-3">
                     <label for="exampleInputFullName" class="form-label">Full name</label>
                     <input type="text" class="form-control" formControlName="fullName">
+                    <div *ngIf="profileData.get('fullName')?.invalid && !isValid" class="text-danger small">
+                        <div *ngIf="profileData.get('fullName')?.errors?.['required']">Full name is required.</div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" formControlName="email">
+                    <div *ngIf="profileData.get('email')?.invalid && !isValid" class="text-danger small">
+                        <div *ngIf="profileData.get('email')?.errors?.['email']">Email is invalid.</div>
+                        <div *ngIf="profileData.get('email')?.errors?.['required']">Email is required.</div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-dark col-12" (click)="editProfile(user._id)">Update</button>
             </form>
         </div>
     </ng-template>
-
-
-
-
-
-
