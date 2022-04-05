@@ -14,6 +14,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import {NgToastModule} from 'ng-angular-popup';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import {NgToastModule} from 'ng-angular-popup';
     }),
     ShareIconsModule,
     ShareButtonsPopupModule,
-    NgToastModule
+    NgToastModule,
+    SocialLoginModule
+
     
   ],
   providers: [AuthService, AuthGuard,
@@ -40,6 +43,18 @@ import {NgToastModule} from 'ng-angular-popup';
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true
+  },
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+        id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('349073077153-6r03keeds3hd6lgufrh7kdsas6vktknt.apps.googleusercontent.com')
+        }
+      ]
+    } as SocialAuthServiceConfig
   }],
   bootstrap: [AppComponent]
 })

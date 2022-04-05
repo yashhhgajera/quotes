@@ -1,4 +1,11 @@
+.main{
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 .content{
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
+    height: auto;
 }

@@ -8,18 +8,20 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { AlertService } from '../services/alert.service';
 
 
-
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
     ResetPasswordComponent,
-  ], 
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [AuthService,AlertService],
+  providers: [
+    AuthService,
+    AlertService
+  ],
 })
 export class AuthModule { }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -10,35 +11,44 @@ export class AuthService {
   private userRoleAPI = "http://localhost:4040/api/userRole";
   private userAPI = "http://localhost:4040/api/users/";
 
-  
 
-  constructor(private http:HttpClient) { }
 
-  getUserRole(){
+  constructor(
+    private http: HttpClient,
+    private google: SocialAuthService
+  ) { }
+
+  getUserRole() {
     return this.http.get(this.userRoleAPI);
   }
-  getUser(){
+  getUser() {
     return this.http.get(`${this.userAPI}auth`);
   }
-  createUser(data:any){
-    return this.http.post<any>(`${this.userAPI}signup`,data);
+  createUser(data: any) {
+    return this.http.post<any>(`${this.userAPI}signup`, data);
   }
-  loginUser(data:any){
-    return this.http.post<any>(this.loginAPI,data);
+  loginUser(data: any) {
+    return this.http.post<any>(this.loginAPI, data);
   }
-  userLoggedin(){
-    return localStorage.getItem('userRoleName')==='user';
+  userLoggedin() {
+    return localStorage.getItem('userRoleName') === 'user';
   }
-  adminLoggedin(){
-    return localStorage.getItem('userRoleName')==='admin';
+  adminLoggedin() {
+    return localStorage.getItem('userRoleName') === 'admin';
   }
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
   }
-  getOtp(email: any){
-    return this.http.post<any>(`${this.userAPI}sendOtp`,email);
+  getOtp(email: any) {
+    return this.http.post<any>(`${this.userAPI}sendOtp`, email);
   }
-  resetPassword(data: any){
+  resetPassword(data: any) {
     return this.http.post<any>(`${this.userAPI}forgatePassword`, data);
+  }
+  signupwithGoogle() {
+    return this.google.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  signOutGoogle(){
+    return this.google.signOut();
   }
 }

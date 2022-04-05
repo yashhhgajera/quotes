@@ -1,7 +1,11 @@
-<app-guest-header></app-guest-header>
-<app-carousel></app-carousel>
-<div class="content">
-    <p class="h4 mt-5 text-center">Discover More of What Matters To You</p>
-    <app-dashboard [blogList]="blogList"></app-dashboard>
+<div class="main">
+    <app-guest-header class="fixed"></app-guest-header>
+    <div class="content">
+        <app-carousel></app-carousel>
+        <div>
+            <p class="h4 mt-5 text-center">Discover More of What Matters To You</p>
+            <app-dashboard [blogList]="blogList"></app-dashboard>
+        </div>
+        <app-footer></app-footer>
+    </div>
 </div>
-<app-footer></app-footer>

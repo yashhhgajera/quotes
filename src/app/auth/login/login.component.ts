@@ -49,9 +49,19 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  google_login(){
+    this.auth.signupwithGoogle().then((res: any) => {
+      localStorage.setItem('google_auth', JSON.stringify(res))
+    })
+  }
+
   login() {
     if(this.loginForm.valid){
       this.isValid=true;
+      let email = this.loginForm.value.email.toLowerCase();
+      this.loginForm.patchValue({
+        email:email
+      })
       this.auth.loginUser(this.loginForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
         localStorage.setItem('userRoleName',res.data.userdata.userType.userRoleName);

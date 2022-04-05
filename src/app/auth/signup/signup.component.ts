@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -56,9 +57,19 @@ export class SignupComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  google_login(){
+    this.auth.signupwithGoogle().then((res: any) => {
+      localStorage.setItem('google_auth', JSON.stringify(res))
+    })
+  }
+
   signup() {
     if(this.signupForm.valid){
       this.isValid=true;
+      let email = this.signupForm.value.email.toLowerCase();
+      this.signupForm.patchValue({
+        email:email
+      })
       this.auth.createUser(this.signupForm.value).subscribe(res=>{
         localStorage.setItem('token',res.data.token);
         localStorage.setItem('userRoleName',res.data.findUser.userType.userRoleName);

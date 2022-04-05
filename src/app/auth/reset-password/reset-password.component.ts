@@ -70,7 +70,7 @@ export class ResetPasswordComponent implements OnInit {
     if(this.resetPassword.get('email')?.valid){
       this.isValid = true;
       let req = {
-        "email":this.resetPassword.value.email
+        "email":this.resetPassword.value.email.toLowerCase()
       }
       this.auth.getOtp(req).subscribe((res:any)=>{
         this.alert.info(res.data.user.otp);
@@ -90,6 +90,10 @@ export class ResetPasswordComponent implements OnInit {
   setPassword(){
     if(this.resetPassword.valid){
       this.isValid = true;
+      let email = this.resetPassword.value.email.toLowerCase();
+      this.resetPassword.patchValue({
+        email:email
+      })
       this.auth.resetPassword(this.resetPassword.value).subscribe((res:any)=>{
         this.alert.success(res.message)
         this.bsModalRef = this.modalService.show(LoginComponent);
