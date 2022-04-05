@@ -16,6 +16,7 @@ export class LikeShareButtonComponent implements OnInit {
   @Input() user: any;
   @Input() blogId: any;
   @Input() likeLen: any;
+  @Input() fullBlog: Boolean = false;
   bsModalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
 

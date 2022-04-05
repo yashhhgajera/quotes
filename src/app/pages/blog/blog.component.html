@@ -7,15 +7,6 @@
 	<div class="row justify-content-center">
 		<div class="col-md-6 px-4">
 			<div *ngFor="let blog of blogList" class="d-flex flex-column justify-content-center">
-				<h1>
-					<strong>{{blog.blogTitle}}</strong>
-				</h1>
-				<div class="d-flex justify-content-center mb-3">
-					<img src="http://localhost:4040/{{blog.path}}" class="img-fluid" alt="">
-				</div>
-				<div [innerHtml]="blog.blogDescription"></div>
-				<app-like-share-button [blogList]="blogList" [blogId]="blog._id" [likeLen]="blog.likes.length"
-					[user]="user"></app-like-share-button>
 				<p class="mt-2 mb-3">
 					<a (click)="navigateUser(blog.userId._id)" style="cursor: pointer;">
 						<img src="../../../assets/icon_account_black.svg" alt="avatar" width="16" height="16">
@@ -24,6 +15,15 @@
 						</strong>
 					</a>
 				</p>
+				<h1>
+					<strong>{{blog.blogTitle}}</strong>
+				</h1>
+				<div class="d-flex justify-content-center mb-3">
+					<img src="http://localhost:4040/{{blog.path}}" class="img-fluid" alt="">
+				</div>
+				<div style="text-align: justify;" [innerHtml]="blog.blogDescription"></div>
+				<app-like-share-button class="mb-3" [fullBlog]="true" [blogList]="blogList" [blogId]="blog._id" [likeLen]="blog.likes.length"
+					[user]="user"></app-like-share-button>
 			</div>
 		</div>
 	</div>

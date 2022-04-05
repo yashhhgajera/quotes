@@ -1,4 +1,4 @@
-<div class="d-flex flex-row mt-2">
+<div class="d-flex flex-row align-items-center mt-2" [class.justify-content-between]="fullBlog">
     <div class="me-3">
         <a (click)="likeCounter(blogId)" class="me-2">
             <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blogId)" width="20" alt="like">
@@ -7,7 +7,7 @@
         <span>{{likeLen}}</span>
     </div>
     <div>
-        <a [matMenuTriggerFor]="menu">
+        <a *ngIf="!fullBlog" [matMenuTriggerFor]="menu">
             <img src="../../../assets/icon_share.svg" width="20" alt="share">
         </a>
         <mat-menu #menu="matMenu" class="p-1">
@@ -16,5 +16,9 @@
                 [show]="6" [url]="blogURL+blogId">
             </share-buttons>
         </mat-menu>
+        <share-buttons *ngIf="fullBlog" theme="custom-dark"
+                [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']" [showIcon]="true"
+                [show]="6" [url]="blogURL+blogId">
+        </share-buttons>
     </div>
 </div>

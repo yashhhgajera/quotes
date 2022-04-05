@@ -10,13 +10,13 @@ $sb-text-size: 0.8em;
     --sb-background: transparent;
     --sb-min-width: fit-content;
     --sb-height: fit-content;
-    --sb-icon-size: 1.4em;
+    --sb-icon-size: 1em;
 
 
     .sb-icon {
       background-color: var(--button-color);
-      width: 2.5em;
-      min-height: 2.5em;
+      width: 1em;
+      height: 2em;
       border-radius: 50%;
       transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
     }
