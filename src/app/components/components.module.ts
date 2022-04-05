@@ -17,6 +17,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { LikeShareButtonComponent } from './like-share-button/like-share-button.component';
 import { BackButtonComponent } from './back-button/back-button.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BackButtonComponent } from './back-button/back-button.component';
     CarouselComponent,
     BlogListComponent,
     LikeShareButtonComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
