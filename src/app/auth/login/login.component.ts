@@ -15,17 +15,22 @@ import { SignupComponent } from '../signup/signup.component';
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-    email:['',
+    email: ['',
       [
         Validators.email,
         Validators.required
       ]],
-    password:['',
+    password: ['',
       [
         Validators.required,
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}')
       ]]
   });
+  googleData = {
+    "fullName": "",
+    "email": "",
+    "authToken": ""
+  };
 
   isValid = true;
   showPassword: boolean = false;
@@ -34,60 +39,72 @@ export class LoginComponent implements OnInit {
     public bsModalRef: BsModalRef,
     public modalService: BsModalService,
     private router: Router,
-    private fb : FormBuilder,
-    private auth:AuthService,
-    public alert:AlertService
-    ) { }
+    private fb: FormBuilder,
+    private auth: AuthService,
+    public alert: AlertService
+  ) { }
 
   ngOnInit(): void {
     this.loginForm.setValue({
-      'email':'nikunj@gmail.com',
-      'password':'P@$$w0rd'
+      'email': 'nikunj@gmail.com',
+      'password': 'P@$$w0rd'
     })
   }
-  passwordVisibility(){
+  passwordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  google_login(){
-    this.auth.signupwithGoogle().then((res: any) => {
-      localStorage.setItem('google_auth', JSON.stringify(res))
+  google_login() {
+    this.auth.signinwithGoogle().then((res: any) => {
+      this.googleData['authToken'] = res.authToken;
+      this.googleData['fullName'] = res.name;
+      this.googleData['email'] = res.email;
+      this.auth.googlesignin(this.googleData).subscribe((res: any) => {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('userRoleName', 'user');
+        this.router.navigate(['user']);
+        this.alert.success(res.message);
+        this.bsModalRef?.hide();
+      }, err => {
+        this.alert.error(err.statusText);
+      })
     })
+
   }
 
   login() {
-    if(this.loginForm.valid){
-      this.isValid=true;
+    if (this.loginForm.valid) {
+      this.isValid = true;
       let email = this.loginForm.value.email.toLowerCase();
       this.loginForm.patchValue({
-        email:email
+        email: email
       })
-      this.auth.loginUser(this.loginForm.value).subscribe(res=>{
-        localStorage.setItem('token',res.data.token);
-        localStorage.setItem('userRoleName',res.data.userdata.userType.userRoleName);
-        if(res.data.userdata.userType){
+      this.auth.loginUser(this.loginForm.value).subscribe(res => {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('userRoleName', res.data.userdata.userType.userRoleName);
+        if (res.data.userdata.userType) {
           let role = res.data.userdata.userType.userRoleName
-          if(role==='admin'){
+          if (role === 'admin') {
             this.router.navigate(['admin']);
           }
-          else if(role==='user'){
+          else if (role === 'user') {
             this.router.navigate(['user']);
           }
         }
         this.alert.success(res.message);
         this.bsModalRef?.hide();
-      },err=>{
+      }, err => {
         this.alert.error(err.statusText);
       })
     }
-    else{
-      this.isValid=false;
+    else {
+      this.isValid = false;
     }
   }
   openSignup() {
     this.bsModalRef = this.modalService.show(SignupComponent)
   }
-  
+
   resetPassword() {
     this.bsModalRef = this.modalService.show(ResetPasswordComponent)
   }

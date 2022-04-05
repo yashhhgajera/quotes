@@ -86,8 +86,7 @@ export class ProfileComponent implements OnInit {
       const imageData = new FormData();
       imageData.append('image', this.selectedFile, this.selectedFile?.name)
       this.account.updateImage(userId, imageData).subscribe((res:any) => {
-        // this.user.profilePicUrl = this.selectedFile?.name;
-        this.showUserData();
+        this.user = res.data.data;
         this.alert.success(res.message);
         this.modalRef?.hide();
       },err=>{

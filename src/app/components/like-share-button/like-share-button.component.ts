@@ -4,6 +4,7 @@ import { LoginComponent } from 'src/app/auth/login/login.component';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-like-share-button',
@@ -16,6 +17,7 @@ export class LikeShareButtonComponent implements OnInit {
   @Input() user: any;
   @Input() blogId: any;
   @Input() likeLen: any;
+  @Input() cmtLen: any;
   @Input() fullBlog: Boolean = false;
   bsModalRef?: BsModalRef;
   blogURL = 'http://localhost:4200/blog/';
@@ -29,12 +31,16 @@ export class LikeShareButtonComponent implements OnInit {
   }
 
   openModalWithComponent(type: string) {
-    type == 'login' ? this.bsModalRef = this.modalService.show(LoginComponent) : this.bsModalRef = this.modalService.show(SignupComponent)
+    type == 'signup' ? this.bsModalRef = this.modalService.show(SignupComponent) : this.bsModalRef = this.modalService.show(CommentComponent)
   }
 
   isLiked(blogId: any) {
     let blogData = this.blogList && this.blogList.find((blog: any) => blog._id == blogId);
     return !!blogData && blogData.likes.indexOf(this.user._id) > -1;
+  }
+
+  openCommentbox(){
+    this.openModalWithComponent('comment');
   }
 
   likeCounter(blogId: any) {

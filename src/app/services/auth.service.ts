@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 @Injectable({
@@ -12,10 +13,9 @@ export class AuthService {
   private userAPI = "http://localhost:4040/api/users/";
 
 
-
   constructor(
     private http: HttpClient,
-    private google: SocialAuthService
+    private google: SocialAuthService,
   ) { }
 
   getUserRole() {
@@ -45,10 +45,14 @@ export class AuthService {
   resetPassword(data: any) {
     return this.http.post<any>(`${this.userAPI}forgatePassword`, data);
   }
-  signupwithGoogle() {
+
+  googlesignin(data:any){
+    return this.http.post(`${this.userAPI}googleLogin`,data);
+  }
+  signinwithGoogle() {
     return this.google.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
-  signOutGoogle(){
+  signOutGoogle() {
     return this.google.signOut();
   }
 }

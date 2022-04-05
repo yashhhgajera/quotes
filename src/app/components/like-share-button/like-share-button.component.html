@@ -6,8 +6,11 @@
         </a>
         <span>{{likeLen}}</span>
     </div>
-    <div>
-        <i class="fa-solid fa-comment"></i>
+    <div class="me-3">
+        <a (click)="openCommentbox()" class="me-2">
+            <img src="../../../assets/icon_comment.svg" width="20" alt="comment">
+        </a>
+        <span>{{cmtLen}}</span>
     </div>
     <div>
         <a *ngIf="!fullBlog" [matMenuTriggerFor]="menu">
@@ -20,8 +23,8 @@
             </share-buttons>
         </mat-menu>
         <share-buttons *ngIf="fullBlog" theme="custom-dark"
-                [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']" [showIcon]="true"
-                [show]="6" [url]="blogURL+blogId">
+            [include]="['copy', 'facebook', 'whatsapp', 'linkedin', 'twitter',  'email']" [showIcon]="true" [show]="6"
+            [url]="blogURL+blogId">
         </share-buttons>
     </div>
 </div>
