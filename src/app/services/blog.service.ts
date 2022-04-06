@@ -21,6 +21,9 @@ export class BlogService {
   deleteBlog(id:any){
     return this.http.delete(this.blogAPI+`/${id}`);
   }
+  deleteBlogByUserId(userId:any){
+    return this.http.delete(this.blogAPI+`/userId/${userId}`);
+  }
   getallBlog(){
     return this.http.get(this.blogAPI);
   }

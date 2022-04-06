@@ -1,6 +1,9 @@
 <div class="container">
-    <h2 class="mt-3">
-        All blogs
-    </h2>
+    <div class="mt-3 w-100 d-flex justify-content-between align-items-center">
+        <h2 class="p-0 m-0">
+            All blogs 
+        </h2>
+        <!-- <button class="btn btn-sm btn-danger" (click)="deleteBlogs(accId)">Delete all</button> -->
+    </div>
 </div>
 <app-blog-list [blogList]="blogList" [admin]="true" [usermode]="false"></app-blog-list>

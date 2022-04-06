@@ -1,7 +1,21 @@
 <div class="container">
     <app-back-button></app-back-button>
-    <h2>
-        {{accountData.fullName | titlecase}}'s blogs 
-    </h2>
+    <div class="w-100 d-flex justify-content-between align-items-center">
+        <h2 class="p-0 m-0">
+            {{accountData.fullName | titlecase}}'s blogs
+        </h2>
+        <button class="btn btn-sm btn-danger" (click)="openModal(delete)">Delete all</button>
+        <ng-template #delete>
+            <div class="modal-body text-center">
+                <p class="mt-1">Are you sure?</p>
+                <button (click)="deleteBlogs(accId)" type="button" class="btn btn-default">
+                    Yes
+                </button>
+                <button (click)="decline()" type="button" class="btn bg-black text-white">
+                    No
+                </button>
+            </div>
+        </ng-template>
+    </div>
 </div>
 <app-blog-list [blogList]="blogList" [admin]="true" [usermode]="false"></app-blog-list>

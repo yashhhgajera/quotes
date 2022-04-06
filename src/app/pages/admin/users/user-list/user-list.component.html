@@ -36,9 +36,9 @@
             <td>
                 <div class="small text-muted">Last updated</div>{{ user.updatedAt | date:'medium' }}
             </td>
-            <td class="float-left"><i class="fa fa-trash trashicon" (click)="openModal(logout)"></i></td>
+            <td class="float-left"><i class="fa fa-trash trashicon" (click)="openModal(delete)"></i></td>
         </tr>
-        <ng-template #logout>
+        <ng-template #delete>
             <div class="modal-body text-center">
                 <p class="mt-1">Are you sure?</p>
                 <button (click)="removeUSer(user._id)"
