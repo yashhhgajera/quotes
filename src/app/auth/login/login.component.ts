@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   googleData = {
     "fullName": "",
     "email": "",
+    "userType":"",
+    "isActive": true,
     "authToken": ""
   };
 
@@ -48,6 +50,13 @@ export class LoginComponent implements OnInit {
     this.loginForm.setValue({
       'email': 'nikunj@gmail.com',
       'password': 'P@$$w0rd'
+    })
+    this.auth.getUserRole().subscribe((res: any) => {
+      let userRole = res.data.listRole.filter((role: any) => {
+        return role.userRoleName === 'user';
+      });
+
+      this.googleData['userType'] = userRole[0]._id;
     })
   }
   passwordVisibility() {

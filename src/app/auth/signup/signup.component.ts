@@ -34,6 +34,7 @@ export class SignupComponent implements OnInit {
     "fullName": "",
     "email": "",
     "userType": "",
+    "isActive": true,
     "authToken": ""
   };
   isValid = true;
