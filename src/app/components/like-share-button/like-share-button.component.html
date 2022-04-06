@@ -6,12 +6,9 @@
         </a>
         <span>{{likeLen}}</span>
     </div>
-    <div class="me-3">
-        <a (click)="openCommentbox()" class="me-2">
-            <img src="../../../assets/icon_comment.svg" width="20" alt="comment">
-        </a>
-        <span>{{cmtLen}}</span>
-    </div>
+    
+    <app-comment [blogId]="blogId" [cmtLen]="cmtLen"></app-comment>
+
     <div>
         <a *ngIf="!fullBlog" [matMenuTriggerFor]="menu">
             <img src="../../../assets/icon_share.svg" width="20" alt="share">
@@ -27,4 +24,8 @@
             [url]="blogURL+blogId">
         </share-buttons>
     </div>
+
 </div>
+
+
+

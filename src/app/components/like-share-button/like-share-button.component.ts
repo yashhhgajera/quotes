@@ -65,5 +65,6 @@ export class LikeShareButtonComponent implements OnInit {
       this.blogList[blogIndex].likes.push(userId);
     }
   }
+  
 
 }

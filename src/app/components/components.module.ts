@@ -18,6 +18,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { LikeShareButtonComponent } from './like-share-button/like-share-button.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { CommentComponent } from './comment/comment.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CommentComponent } from './comment/comment.component';
     ShareButtonsPopupModule,
     MatMenuModule,
     MatIconModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [
     BackButtonComponent,
