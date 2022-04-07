@@ -1,13 +1,14 @@
 <div class="d-flex flex-row align-items-center mt-2" [class.justify-content-between]="fullBlog">
-    <div class="me-3">
+    <div class="d-flex align-items-center justify-content-center">
         <a (click)="likeCounter(blogId)" class="me-2">
             <img src="../../../assets/icon_like.svg" *ngIf="!isLiked(blogId)" width="20" alt="like">
             <img src="../../../assets/icon_liked.svg" *ngIf="isLiked(blogId)" width="20" alt="unlike">
         </a>
-        <span>{{likeLen}}</span>
-    </div>
+        <span class="me-3">{{likeLen}}</span>
+
+        <app-comment [blogId]="blogId"></app-comment>
     
-    <app-comment [blogId]="blogId"></app-comment>
+    </div>
 
     <div>
         <a *ngIf="!fullBlog" [matMenuTriggerFor]="menu">

@@ -9,16 +9,16 @@ export class AlertService {
   constructor(public toast: NgToastService) { }
 
   success(msg:string){
-    this.toast.success({detail:'Success Message',summary:msg,duration:3000})
+    this.toast.success({detail:'Success Message',summary:msg,duration:1000})
   }
   error(msg:string){
-    this.toast.error({detail:'Error Message',summary:msg,duration:3000})
+    this.toast.error({detail:'Error Message',summary:msg,duration:1000})
   }
   warning(msg:string){
-    this.toast.warning({detail:'Warning Message',summary:msg,duration:3000})
+    this.toast.warning({detail:'Warning Message',summary:msg,duration:1000})
   }
   info(msg:string){
-    this.toast.info({detail:'Info Message',summary:msg,duration:10000})
+    this.toast.info({detail:'Info Message',summary:msg,duration:1000})
   }
 
 }

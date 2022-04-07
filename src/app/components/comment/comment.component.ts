@@ -22,12 +22,14 @@ export class CommentComponent implements OnInit {
     "text": ['', [Validators.required]]
   });
 
+  isValid = true;
+
   constructor(
-    private fb: FormBuilder, 
-    private auth: AuthService, 
-    private blog: BlogService, 
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private blog: BlogService,
     private modalService: BsModalService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.blog.getAllComment(this.blogId).subscribe((res: any) => {
@@ -40,34 +42,45 @@ export class CommentComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.isValid = true;
     this.modalRef = this.modalService.show(template);
   }
   dateDiff(blogDate: Date) {
     let d = new Date(blogDate);
     let calDate = this.date.getDate() - d.getDate();
-    return calDate == 0 ? ((this.date.getHours() - d.getHours()) == 0 ? (this.date.getMinutes() - d.getMinutes()) == 0 ? 'recently' : (this.date.getMinutes() - d.getMinutes()) + "m ago" : this.date.getHours() - d.getHours() + "h ago") : calDate + "d ago";
+    return calDate == 0 ? ((this.date.getHours() - d.getHours()) == 0 ? (this.date.getMinutes() - d.getMinutes()) <= 0 ? 'recently' : (this.date.getMinutes() - d.getMinutes()) + "m ago" : this.date.getHours() - d.getHours() + "h ago") : calDate + "d ago";
   }
   openModalWithComponent(type: string) {
     type == 'signup' ? this.modalRef = this.modalService.show(SignupComponent) : this.modalRef = this.modalService.show(CommentComponent);
   }
 
   addComment() {
-    if (this.auth.userLoggedin()) {
-    let data = {
-      "userId": this.userId,
-      "text": this.commentData.value.text
-    }
-    this.blog.postComment(this.blogId, data).subscribe((res: any) => {
-      this.commentData.reset();
-      this.comments.push(res.data);
-    }, (err) => {
-      console.log(err);
-    });
-  }else {
-    this.modalRef?.hide();
-    this.openModalWithComponent('signup');
-  }
-  }
 
+    if (this.auth.userLoggedin()) {
+      if (this.commentData.valid) {
+        this.isValid = true;
+        let data = {
+          "userId": this.userId,
+          "text": this.commentData.value.text
+        }
+        this.blog.postComment(this.blogId, data).subscribe((res: any) => {
+          this.commentData.reset();
+          this.comments.push(res.data);
+        }, (err) => {
+          console.log(err);
+        });
+      } else {
+        this.isValid = false;
+      }
+    } else {
+      this.modalRef?.hide();
+      this.openModalWithComponent('signup');
+    }
+
+  }
 
 }
+
+
+
+
