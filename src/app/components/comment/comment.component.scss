@@ -126,3 +126,14 @@ body {
 .mb-100 {
     margin-bottom: 100px
 }
+.modal-content{
+    height: 90vh ;
+    overflow: hidden ;
+}
+.modal-header{
+    top: 0;
+    overflow: hidden;
+}
+.modal-body{
+    overflow: scroll;
+}

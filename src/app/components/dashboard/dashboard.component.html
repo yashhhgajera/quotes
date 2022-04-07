@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center row">
-    <div *ngFor="let blog of blogList.reverse()" class="p-0 half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
+    <div *ngFor="let blog of blogList.slice().reverse()" class="p-0 half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
         <div class="contents">
             <a (click)="navigateBlog(blog._id)">
                 <h2 style="font-family: 'Cabin', sans-serif;">{{blog.blogTitle}}</h2>
