@@ -4,7 +4,7 @@
         <h2 class="p-0 m-0">
             {{accountData.fullName | titlecase}}'s blogs
         </h2>
-        <button class="btn btn-sm btn-danger" (click)="openModal(delete)">Delete all</button>
+        <button *ngIf="blogList.length!=0" class="btn btn-sm btn-danger" (click)="openModal(delete)">Delete all</button>
         <ng-template #delete>
             <div class="modal-body text-center">
                 <p class="mt-1">Are you sure?</p>
@@ -18,4 +18,4 @@
         </ng-template>
     </div>
 </div>
-<app-blog-list [blogList]="blogList" [admin]="true" [usermode]="false"></app-blog-list>
+<app-blog-list [blogList]="blogList" [admin]="true" [usermode]="false" [accName]="accountData.fullName"></app-blog-list>

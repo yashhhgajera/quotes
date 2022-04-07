@@ -1,4 +1,8 @@
 <div class="container py-3">
+    <div *ngIf="blogList.length == 0" class="col d-flex align-items-center justify-content-center flex-column">
+        <img src="assets/no_record.jpg" alt="no record" style="height: 60vh;">
+        <p class="text-center">No blogs found</p>
+    </div>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4">
         <div *ngFor="let blog of blogList.slice().reverse()" class="col">
             <div class="card flex-md-row mb-4 shadow-sm h-md-250"
@@ -18,7 +22,7 @@
                         <div>
                             <i *ngIf="admin" class="fa fa-trash trashicon" (click)="openModal(delete)"></i>
                             <button *ngIf="usermode" [matMenuTriggerFor]="menu" class="btn p-0 m-0">
-                                <img src="../../../../assets/icon_more_horiz_black.svg" alt="more">
+                                <img src="assets/icon_more_horiz_black.svg" alt="more">
                             </button>
                         </div>
                     </div>

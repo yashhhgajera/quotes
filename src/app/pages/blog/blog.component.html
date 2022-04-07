@@ -9,7 +9,7 @@
 			<div *ngFor="let blog of blogList" class="d-flex flex-column justify-content-center">
 				<p class="mt-2 mb-3">
 					<a (click)="navigateUser(blog.userId._id)" style="cursor: pointer;">
-						<img src="../../../assets/icon_account_black.svg" alt="avatar" width="16" height="16">
+						<img src="assets/icon_account_black.svg" alt="avatar" width="16" height="16">
 						<strong>
 							{{ blog.userId.fullName | titlecase }}
 						</strong>

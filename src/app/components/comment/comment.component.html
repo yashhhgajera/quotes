@@ -1,6 +1,6 @@
 <div class="me-3">
   <a class="me-2" (click)="openModal(comment)">
-    <img src="../../../assets/icon_comment.svg" width="20" alt="comment">
+    <img src="assets/icon_comment.svg" width="20" alt="comment">
   </a>
   <span>{{comments.length}}</span>
 </div>
@@ -19,13 +19,11 @@
           <div class="input-group mb-3">
             <input type="text" formControlName="text" class="form-control" placeholder="what are your thought?"
               required>
-              <button type="submit" class="btn btn-success" (click)="addComment()">Respond</button>
-            </div>
-            <div *ngIf="commentData.get('text')?.invalid && !isValid" class="text-danger small">
-              <div *ngIf="commentData.get('text')?.errors?.['required']">Comment is empty.</div>
-            </div>
-          <!-- <div class="d-flex align-items-center justify-content-end">
-          </div> -->
+            <button type="submit" class="btn btn-success" (click)="addComment()">Respond</button>
+          </div>
+          <div *ngIf="commentData.get('text')?.invalid && !isValid" class="text-danger small">
+            <div *ngIf="commentData.get('text')?.errors?.['required']">Comment is empty.</div>
+          </div>
         </form>
       </div>
     </div>
@@ -34,21 +32,21 @@
         <p>No comments</p>
       </div>
       <div class="d-flex justify-content-center mt-2 mb-3 row">
-        <div *ngFor="let comment of comments.slice().reverse()" class="col-md-12">
+        <div *ngFor="let comment of comments.slice().reverse();let i=index;" class="col-md-12">
           <div class="card">
             <div class="comment-widgets w-100">
               <div class="d-flex flex-column comment-row">
                 <div class="d-flex w-100 justify-content-between">
                   <div class="d-flex">
-                    <div class="p-2"><span class="round"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="user"
-                          width="30"></span></div>
+                    <div class="p-2"><span class="round"><img [src]="getProfilePic(comment.userId) ? 'http://localhost:4040/'+getProfilePic(comment.userId) : 'assets/avatar.svg'" alt="user"
+                          width="30" height="30"></span></div>
                     <div class="comment-text w-100">
-                      <div class="large">Samso Nagaro</div>
+                      <div class="large">{{getName(comment.userId) | titlecase}}</div>
                       <div class="small" style="color: #b4b4b4;">{{
                         dateDiff(comment.date) }}</div>
                     </div>
                   </div>
-                  <img src="assets/icon_more_horiz_black.svg" alt="user" width="30" />
+                  <a *ngIf="comment.userId==userId" (click)="deleteComment(comment._id,((comments.length-i)-1))"><i class="fa fa-trash"></i><!-- <img src="assets/icon_delete.svg" alt="user" width="30" />--></a>
                 </div>
                 <div class="px-2">
                   <p class="mb-1 mt-3">{{comment.text}}</p>

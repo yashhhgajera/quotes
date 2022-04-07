@@ -19,6 +19,7 @@ export class BlogListComponent implements OnInit {
   modalRef?: BsModalRef;
   @Input() admin = false;
   @Input() usermode = true;
+  @Input() accName:any;
 
   constructor(
     private modalService: BsModalService, 

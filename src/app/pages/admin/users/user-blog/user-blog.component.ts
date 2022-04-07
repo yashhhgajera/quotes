@@ -14,7 +14,7 @@ import { BlogService } from 'src/app/services/blog.service';
 export class UserBlogComponent implements OnInit {
 
 
-  blogList: any | null;
+  blogList: any;
   user: any;
   accountData: any;
   accId:any;

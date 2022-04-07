@@ -17,7 +17,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     <div>
       <button class="btn btn-danger" (click)="openModal(logout)" title="Logout">
         Log out
-        <!-- <img src="../../../assets/icon_logout.svg" alt="logout"> -->
       </button>
     </div>
   </nav>
