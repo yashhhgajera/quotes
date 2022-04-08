@@ -1,0 +1,30 @@
+<div class="row justify-content-evenly mt-5">
+    <div class="col-sm-6 col-lg-3">
+        <a routerLink="/admin/users">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Users</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="assets/blog_list.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <h4 class="m-3">Total Users</h4>
+                <p class="m-3">{{accounts.length}}</p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <a routerLink="/admin/users">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>Blogs</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="assets/user_list.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <h4 class="m-3">Total blogs</h4>
+                <p class="m-3">{{blogs.length}}</p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+    </div>
+</div>

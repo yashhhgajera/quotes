@@ -6,11 +6,12 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   selector: 'app-admin',
   template: `
   <nav class="bg-light border-bottom w-100 p-2 d-flex justify-content-between">
-    <div>
+    <!-- <div>
       <button *ngIf="false" class="btn btn-secondary me-3" routerLink="/user">User Mode</button>
-      <button class="btn btn-sm me-2" routerLink="users" routerLinkActive="btn-dark">Users</button>
-      <button class="btn btn-sm" routerLink="blogs" routerLinkActive="btn-dark">Blogs</button>
-    </div>
+      <button class="btn me-2" routerLink="dashboard" routerLinkActive="btn-dark">Dashboard</button>
+      <button class="btn me-2" routerLink="users" routerLinkActive="btn-dark">Users</button>
+      <button class="btn" routerLink="blogs" routerLinkActive="btn-dark">Blogs</button>
+    </div> -->
     <h1 class="p-0 m-0 text-center">
       Administration Panel
     </h1>
