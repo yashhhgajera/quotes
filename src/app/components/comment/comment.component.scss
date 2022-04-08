@@ -47,30 +47,45 @@
 
 .card{
     border: none;
+    
 }
-body {
-    background-color: #D32F2F;
-    font-family: 'Calibri', sans-serif !important
-}
+// body {
+//     background-color: #D32F2F;
+//     font-family: 'Calibri', sans-serif !important
+// }
 
 .card-no-border .card {
     border: 0px;
     border-radius: 4px;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1.25rem;
 }
 
 .comment-widgets .comment-row:hover {
-    background: rgba(0, 0, 0, 0.02);
-    cursor: pointer
+    background: rgba(136, 10, 62, 0.02);
+    cursor: pointer;
+    .commentHeader a{
+        display:block;
+        color: #b4b4b4;
+        &:hover{
+        color: red;
+    }
+    }
+}
+.commentHeader a{
+    display: none;
+    color: #b4b4b4;
+    height: 16px;
+
 }
 
+// rgba(0, 0, 0, 0.02)
 .comment-widgets .comment-row {
     border-bottom: 1px solid rgba(120, 130, 140, 0.13);
     padding: 15px
@@ -97,9 +112,9 @@ body {
     border-radius: 100%
 }
 
-.label-info {
-    background-color: #1976d2
-}
+// .label-info {
+//     background-color: #1976d2
+// }
 
 .label-success {
     background-color: green
@@ -107,16 +122,6 @@ body {
 
 .label-danger {
     background-color: #ef5350
-}
-
-.action-icons a {
-    padding-left: 7px;
-    vertical-align: middle;
-    color: #99abb4
-}
-
-.action-icons a:hover {
-    color: #1976d2
 }
 
 .mt-100 {
@@ -137,3 +142,4 @@ body {
 .modal-body{
     overflow: scroll;
 }
+

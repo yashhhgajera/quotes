@@ -36,7 +36,7 @@
           <div class="card">
             <div class="comment-widgets w-100">
               <div class="d-flex flex-column comment-row">
-                <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex w-100 justify-content-between commentHeader">
                   <div class="d-flex">
                     <div class="p-2"><span class="round"><img [src]="getProfilePic(comment.userId) ? 'http://localhost:4040/'+getProfilePic(comment.userId) : 'assets/avatar.svg'" alt="user"
                           width="30" height="30"></span></div>
@@ -46,7 +46,7 @@
                         dateDiff(comment.date) }}</div>
                     </div>
                   </div>
-                  <a *ngIf="comment.userId==userId" (click)="deleteComment(comment._id,((comments.length-i)-1))"><i class="fa fa-trash"></i><!-- <img src="assets/icon_delete.svg" alt="user" width="30" />--></a>
+                  <a *ngIf="comment.userId==userId" (click)="deleteComment(comment._id,((comments.length-i)-1))">  <span class="material-icons fs-6">clear</span> <!-- <img src="assets/icon_delete.svg" alt="user" width="30" />--></a>
                 </div>
                 <div class="px-2">
                   <p class="mb-1 mt-3">{{comment.text}}</p>

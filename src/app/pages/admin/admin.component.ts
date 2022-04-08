@@ -7,7 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   template: `
   <nav class="bg-light border-bottom w-100 p-2 d-flex justify-content-between">
     <div>
-      <button class="btn btn-secondary me-3" routerLink="/user">User Mode</button>
+      <button *ngIf="false" class="btn btn-secondary me-3" routerLink="/user">User Mode</button>
       <button class="btn btn-sm me-2" routerLink="users" routerLinkActive="btn-dark">Users</button>
       <button class="btn btn-sm" routerLink="blogs" routerLinkActive="btn-dark">Blogs</button>
     </div>
