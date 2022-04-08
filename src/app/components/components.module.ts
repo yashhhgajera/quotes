@@ -19,6 +19,7 @@ import { LikeShareButtonComponent } from './like-share-button/like-share-button.
 import { BackButtonComponent } from './back-button/back-button.component';
 import { CommentComponent } from './comment/comment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
+    TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AuthModule,
     ShareButtonsModule.withConfig({

@@ -7,16 +7,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ComponentsModule } from 'src/app/components/components.module';
-
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AdminComponent,
     BlogsComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
+    MatCardModule,
     MatMenuModule,
     MatIconModule,
     ComponentsModule

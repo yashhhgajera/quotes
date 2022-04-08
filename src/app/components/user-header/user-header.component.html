@@ -1,7 +1,6 @@
 <div class="d-flex flex-sm-column bg-black sidebar align-items-center justify-content-sm-between justify-content-center py-3">
 	<a routerLink="./home"
-		class="d-sm-block d-none link-dark text-decoration-none"
-		title="Home">
+		class="d-sm-block d-none link-dark text-decoration-none">
 		<img src="assets/whitelogo.svg"
 			height="50"
 			width="50"
@@ -10,27 +9,30 @@
 	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
 			<a routerLink="./home"
+				tooltip="Home"
+        		placement="right"
 				routerLinkActive="active"
-				class="nav-link py-3"
-				title="Home">
+				class="nav-link py-3">
 				<img src="assets/icon_home.svg"
 					alt="home">
 			</a>
 		</li>
 		<li>
 			<a routerLink="./list"
+			tooltip="List"
+        		placement="right"
 				routerLinkActive="active"
-				class="nav-link py-3"
-				title="List">
+				class="nav-link py-3">
 				<img src="assets/icon_list.svg"
 					alt="list">
 			</a>
 		</li>
 		<li>
 			<a routerLink="./create"
+			tooltip="Create"
+        		placement="right"
 				routerLinkActive="active"
-				class="nav-link py-3"
-				title="Create">
+				class="nav-link py-3">
 				<img src="assets/icon_create.svg"
 					alt="create">
 			</a>
@@ -39,9 +41,10 @@
 	<ul class="nav flex-sm-column text-center">
 		<li class="nav-item">
 			<a routerLink="./profile"
+			tooltip="Profile"
+        		placement="right"
 				routerLinkActive="active"
-				class="nav-link py-3"
-				title="Profile">
+				class="nav-link py-3">
 				<img src="assets/icon_account.svg"
 					alt="account">
 			</a>
@@ -49,7 +52,8 @@
 		<li>
 			<a (click)="openModal(logout)"
 				class="nav-link py-3"
-				title="Logout">
+				tooltip="Logout"
+        		placement="right">
 				<img src="assets/icon_logout.svg"
 					alt="logout">
 			</a>
