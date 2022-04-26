@@ -210,7 +210,21 @@ p {
     // text-decoration:underline;
   }
 }
-
+.form-control{
+  width: 68%;
+  margin: auto;
+  padding: 4px 4px 4px 40px;
+  background: transparent url("../../../assets/search_icon.svg") no-repeat 13px center;
+  &:focus{
+    box-shadow: none;
+    border: 1px solid black;
+    // background: #f8f8f8;
+  }
+  &::placeholder{
+    color: #c7c7c7;
+    font-family: 'Cabin', sans-serif;
+  }
+}
 // .fade{
 //   position: relative;
 //   height: 4.6em;

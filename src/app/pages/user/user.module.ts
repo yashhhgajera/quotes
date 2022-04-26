@@ -13,7 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountsService } from 'src/app/services/accounts.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AlertModule.forRoot(),
     MatMenuModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers:[AuthService,BlogService,AccountsService]
 })

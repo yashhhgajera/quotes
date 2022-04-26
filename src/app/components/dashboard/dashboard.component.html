@@ -1,5 +1,10 @@
+<div *ngIf="!guestMode" class="searchbar">
+    <input class="form-control" type="search" [(ngModel)]="search" placeholder="what are you looking for?">
+</div>
+
 <div class="d-flex justify-content-center row">
-    <div *ngFor="let blog of blogList.slice().reverse(); let i=index" class="p-0
+    <div *ngFor="let blog of blogList.slice().reverse() | filter:search; let
+        i=index" class="p-0
         half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
         <div *ngIf="guestMode ? i<=4 : true" class="contents">
             <a (click)="navigateBlog(blog._id)">
@@ -7,19 +12,25 @@
                 <p [innerHtml]="blog.blogDescription" class="mb-3 line-clamp"></p>
             </a>
             <div class="post-meta">
-                <span class="d-block"><a (click)="navigateUser(blog.userId._id)">{{blog.userId.fullName | titlecase}}</a></span>
+                <span class="d-block"><a
+                        (click)="navigateUser(blog.userId._id)">{{blog.userId.fullName
+                        | titlecase}}</a></span>
                 <span class="date-read small">{{blog.createdAt | date}}</span>
-                <app-like-share-button [blogId]="blog._id" [blogList]="blogList" [likeLen]="blog.likes.length"
+                <app-like-share-button [blogId]="blog._id" [blogList]="blogList"
+                    [likeLen]="blog.likes.length"
                     [user]="user"></app-like-share-button>
             </div>
         </div>
-        <a (click)="navigateBlog(blog._id)" class="img-bg" style="background-image:url(http://localhost:4040/{{blog.path}});background-size:
+        <a (click)="navigateBlog(blog._id)" class="img-bg"
+            style="background-image:url(http://localhost:4040/{{blog.path}});background-size:
             cover;background-repeat: no-repeat;">
         </a>
 
     </div>
-    <a *ngIf="guestMode" class="text-center d-flex align-items-center justify-content-center link"
-        (click)="openModalWithComponent('signup')">show more<span class="p-0 material-icons" style="margin-left: 3px;">
+    <a *ngIf="guestMode" class="text-center d-flex align-items-center
+        justify-content-center link"
+        (click)="openModalWithComponent('signup')">show more<span class="p-0
+            material-icons" style="margin-left: 3px;">
             arrow_right_alt
         </span>
     </a>

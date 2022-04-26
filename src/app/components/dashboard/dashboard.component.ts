@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   @Input() guestMode = false;
   user: any;
   bsModalRef?: BsModalRef;
+  search: any;
 
   constructor(
     private modalService: BsModalService, 

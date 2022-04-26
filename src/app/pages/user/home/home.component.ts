@@ -9,6 +9,7 @@ import { BlogService } from 'src/app/services/blog.service';
 export class HomeComponent implements OnInit {
 
   blogList:any;
+  search: any;
   constructor(
     private blog:BlogService
   ) { }

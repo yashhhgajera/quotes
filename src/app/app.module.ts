@@ -15,6 +15,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import {NgToastModule} from 'ng-angular-popup';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -34,10 +36,9 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
     ShareIconsModule,
     ShareButtonsPopupModule,
     NgToastModule,
-    SocialLoginModule
-
-    
-  ],
+    SocialLoginModule,
+    Ng2SearchPipeModule
+    ],
   providers: [AuthService, AuthGuard,
   {
     provide:HTTP_INTERCEPTORS,

@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { BlogService } from 'src/app/services/blog.service';
 import { AuthModule } from 'src/app/auth/auth.module';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     HomeRoutingModule,
     AuthModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   providers:[BlogService],
   exports:[]

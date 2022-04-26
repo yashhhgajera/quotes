@@ -18,8 +18,9 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { LikeShareButtonComponent } from './like-share-button/like-share-button.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { CommentComponent } from './comment/comment.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,10 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     MatMenuModule,
     MatIconModule,
     CarouselModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule
+
   ],
   exports: [
     BackButtonComponent,
