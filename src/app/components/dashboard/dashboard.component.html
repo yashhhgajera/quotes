@@ -6,7 +6,7 @@
     <div *ngFor="let blog of blogList.slice().reverse() | filter:search; let
         i=index" class="p-0
         half-post-entry d-block d-lg-flex g-md-3 g-2 col-md-8">
-        <div *ngIf="guestMode ? i<=4 : true" class="contents">
+        <div *ngIf="guestMode ? i<=9 : true" class="contents">
             <a (click)="navigateBlog(blog._id)">
                 <h2 style="font-family: 'Cabin', sans-serif;">{{blog.blogTitle}}</h2>
                 <p [innerHtml]="blog.blogDescription" class="mb-3 line-clamp"></p>

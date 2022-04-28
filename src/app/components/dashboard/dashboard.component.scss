@@ -225,6 +225,19 @@ p {
     font-family: 'Cabin', sans-serif;
   }
 }
+
+@media (orientation:portrait) and (max-width:767px) {
+  .form-control{
+    width: 100%;
+  }
+}
+
+// @media (orientation:portrait) and (max-width:465px) {
+//   .form-control{
+//     width: 100%;
+//   }
+// }
+
 // .fade{
 //   position: relative;
 //   height: 4.6em;

@@ -74,7 +74,8 @@
         display:block;
         color: #b4b4b4;
         &:hover{
-        color: red;
+        color: white;
+        background-color: #c1c1c1;
     }
     }
 }
@@ -82,6 +83,9 @@
     display: none;
     color: #b4b4b4;
     height: 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
 
 }
 
@@ -141,4 +145,11 @@
 }
 .modal-body{
     overflow: scroll;
+}
+.form-control{
+    box-shadow: none;
+    border:1px solid #cdcdcd;
+    &:focus{
+        border: 1px solid #6b6b6b
+    }
 }
