@@ -55,8 +55,8 @@ export class CommentComponent implements OnInit {
   }
   dateDiff(blogDate: Date) {
     let d = new Date(blogDate);
-    let calDate = this.date.getDate() - d.getDate();
-    return calDate == 0 ? ((this.date.getHours() - d.getHours()) == 0 ? (this.date.getMinutes() - d.getMinutes()) <= 0 ? 'recently' : (this.date.getMinutes() - d.getMinutes()) + "m ago" : this.date.getHours() - d.getHours() + "h ago") : calDate + "d ago";
+    let calDate = Math.abs(this.date.getDate() - d.getDate());
+    return calDate == 0 ? ((this.date.getHours() - d.getHours()) == 0 ? (this.date.getMinutes() - d.getMinutes()) <= 0 ? 'recently' : (this.date.getMinutes() - d.getMinutes()) + "m ago" : (this.date.getHours() - d.getHours()) + "h ago") : calDate + "d ago";
   }
   openModalWithComponent(type: string) {
     type == 'signup' ? this.modalRef = this.modalService.show(SignupComponent) : this.modalRef = this.modalService.show(CommentComponent);
